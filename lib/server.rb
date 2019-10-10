@@ -1,7 +1,6 @@
 require 'active_record'
 require 'sinatra/base'
 require 'sinatra/json'
-require 'sinatra/namespace'
 require_relative 'models/job'
 require_relative './helpers/job_helper'
 require_relative './models/request_parser.rb'
@@ -21,8 +20,6 @@ def multiple_exclusions(position_exclusions)
 end
 
 class Server < Sinatra::Base
-  register Sinatra::Namespace
-
   get '/' do
     erb :search
   end
