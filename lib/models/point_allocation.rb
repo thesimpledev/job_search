@@ -5,7 +5,6 @@ class PointAllocation
               :bad_matches,  # [Array<String>] bad key words that were matched
               :passing_score # [Integer] score needed to pass
 
-
   # initialize and keep track of points, good_matches, bad matches, and passing
   # score while allocate points and parsing text to find matches
   # @param [String] text to be parsed
@@ -17,9 +16,10 @@ class PointAllocation
     @bad_matches = []
     @good_matches = []
     @passing_score = passing_score
-    text = text.downcase
-    allocate_good_matches(text, good_keywords)
-    allocate_bad_matches(text, bad_keywords)
+    @words_found = {}
+    text.downcase.split(' ').each { |word| @words_found[word] = true }
+    allocate_good_matches(good_keywords)
+    allocate_bad_matches(bad_keywords)
   end
 
   # @return [Boolean] whether it passed or not
@@ -29,19 +29,20 @@ class PointAllocation
 
   private
 
+  attr_reader :words_found
   attr_writer :points
 
-  def allocate_good_matches(text, good_keywords)
-    match(good_keywords, text, :good_matches)
+  def allocate_good_matches(good_keywords)
+    match(good_keywords, :good_matches)
   end
 
-  def allocate_bad_matches(text, bad_keywords)
-    match(bad_keywords, text, :bad_matches)
+  def allocate_bad_matches(bad_keywords)
+    match(bad_keywords, :bad_matches)
   end
 
-  def match(keywords, text, attribute)
+  def match(keywords, attribute)
     keywords.each do |word, value|
-      if text.split(' ').include?(word)
+      if words_found[word]
         self.points += value.to_i
         send(attribute) << word
       end
