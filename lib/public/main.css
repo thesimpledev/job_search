@@ -48,7 +48,7 @@ table {
 }
 
 /* my resets */
-* {box-sizing: border-box};
+* { box-sizing: border-box }
 
 a,
 body {
@@ -68,14 +68,13 @@ a {
 }
 
 .container {
-  width: 800px;
+  max-width: 800px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
 /* NAV ************************************************************************/
 .nav-container {
-  display: flex;
   justify-content: center;
   background: #222;
   margin-bottom: 20px;
@@ -83,6 +82,7 @@ a {
 }
 
 .nav {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
