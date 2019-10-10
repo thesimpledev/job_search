@@ -1,5 +1,5 @@
 require 'colorize'
-require_relative '../config/settings'
+require_relative '../../config/settings'
 require_relative 'alerts/alert_debug'
 require_relative 'alerts/alert_simple'
 

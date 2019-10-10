@@ -1,5 +1,5 @@
 require_relative '../../lib/storage'
-require_relative '../../lib/job'
+require_relative '../../lib/models/job'
 require 'active_record'
 
 ActiveRecord::Base.establish_connection(

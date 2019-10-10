@@ -5,7 +5,7 @@ require_relative 'browser'
 require_relative 'job'
 require_relative 'parser'
 require_relative 'point_allocation'
-require_relative '../config/settings'
+require_relative '../../config/settings'
 
 ActiveRecord::Base.establish_connection(
   adapter: 'sqlite3',

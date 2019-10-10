@@ -1,0 +1,86 @@
+<form class="search" action="/jobs" method="post">
+  <label
+    for="passing_points"
+    class="search-label label-good">Passing Points</label>
+  <input
+    type="range"
+    id="passing_points"
+    value="50"
+    min="1"
+    max="100"
+    name="passing_points"/>
+
+  <section class="fields">
+    <fieldset>
+      <label
+        for="good-keywords"
+        class="search-label label-good">
+        Good Keywords
+      </label>
+      <textarea
+        id="good-keywords"
+        class="textarea-goodkeywords"
+        name="good_keywords">
+css 10
+html 10
+ruby 20
+ruby on rails 20
+react 10
+redux 10
+beer 5
+appacademy 100
+apprentice 5
+beer 5
+culture 5
+cypress 5
+enzyme 5
+equity 5
+javascript 5
+jest 5
+jquery 5
+mysql 5
+postgresql 5
+postgres 5
+pto 5</textarea>
+    </fieldset>
+
+    <fieldset>
+      <label
+        for="bad-keywords"
+        class="search-label label-bad">
+        Bad Keywords
+      </label>
+      <textarea
+        id="bad-keywords"
+        class="textarea-bad"
+        name="bad_keywords">
+phd -10
+crypto -10
+blockchain -10
+java -10
+c# -10
+c++ -10</textarea>
+    </fieldset>
+
+    <fieldset>
+      <label
+        for="bad-keywords"
+        class="search-label label-bad">
+        Position Exclusions
+      </label>
+      <textarea
+        id="bad-keywords"
+        class="textarea-bad"
+        name="position_exclusions">
+senior
+lead
+instructor
+scientist
+aws
+teaching
+teacher</textarea>
+    </fieldset>
+  </section>
+
+  <button>Start Search</button>
+</form>
