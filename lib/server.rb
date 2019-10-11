@@ -44,6 +44,7 @@ class Server < Sinatra::Base
     end
 
     @jobs = @jobs.select { |job| job.passing_score? }
+                 .sort { |a, b| b.points <=> a.points }
     erb :job_index
   end
 
