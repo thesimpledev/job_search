@@ -1,4 +1,5 @@
 * [About](#about)
+* [Todo](#todo)
 * [Setup](#setup)
 * [Settings](#settings)
 * [Observer Pattern](#observer_pattern)
@@ -6,6 +7,18 @@
 
 # About
 I will give a brief overview of why I've built this and how it works from a high level soon!
+
+# Todo
+- [ ] Allow searches to be saved to be used later
+- [ ] After clicking search, disable button
+- [ ] Allow user to hide post
+- [ ] Fix record's location field ('- ' prepands all locations)
+- [ ] Allow description to be shown on click
+- [ ] Store & display date scraped
+- [ ] Store & display date posted
+- [ ] Add search query for GlassDoor for campany with position title
+- [ ] Allow search by location (but use a select from existing records)
+- [ ] Create chrone/sidekiq job to scrape every 24 hours
 
 # Setup
 I will be adding information on how to set this up soon! :D
