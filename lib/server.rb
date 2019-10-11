@@ -13,6 +13,10 @@ ActiveRecord::Base.establish_connection(
 )
 
 class Server < Sinatra::Base
+  # TODO: set only for dev enviroment
+  set :bind, '0.0.0.0'
+  set :port, 1234
+
   get '/' do
     erb :search
   end
