@@ -23,8 +23,9 @@ I will give a brief overview of why I've built this and how it works from a high
 # Setup
 > Make sure you have postgresql first (https://postgresapp.com/)
 1. run `psql`, then `CREATE TABLE better_jobs`
-2. run `ruby db/migrations/1_initial_schema.rb` then `ruby db/migrations/2_remove_review_status.rb`
-3. bundle install
+2. run `export APP_ENV=development`
+3. run `ruby db/migrations/1_initial_schema.rb` then `ruby db/migrations/2_remove_review_status.rb`
+4. bundle install
 
 > Running the server
 * run `ruby lib/server.rb` and visit `localhost:1234`
