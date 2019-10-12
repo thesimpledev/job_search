@@ -1,13 +1,9 @@
 class AlertDebug
   class << self
-    def of_pass_or_fail_for(job)
-      if job.passing_score?
-        puts("Passed, '#{job.position}' with points: #{job.points}!"
-          .black
-          .on_green)
-      else
-        puts("Failed, '#{job.position}' with points: #{job.points}.".red)
-      end
+    def job_saved(job)
+      puts("saved, '#{job.position}"
+        .black
+        .on_green)
     end
 
     def already_saved
