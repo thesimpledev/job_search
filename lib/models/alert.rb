@@ -8,8 +8,8 @@ class Alert
   SELECTED_ALERTER = SETTINGS[:simple_output] ? AlertSimple : AlertDebug
 
   class << self
-    def of_pass_or_fail_for(job)
-      SELECTED_ALERTER.of_pass_or_fail_for(job)
+    def job_saved(job)
+      SELECTED_ALERTER.job_saved(job)
     end
 
     def already_saved

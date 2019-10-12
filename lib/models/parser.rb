@@ -21,6 +21,7 @@ class Parser
       begin
         go_to_card(job_card, i)
         job = parse_job_posting(job_card)
+        Alert.job_saved(job)
         job.save
       rescue => e
         # TODO: fixme, figure out why this is breaking

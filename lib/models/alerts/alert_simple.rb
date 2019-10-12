@@ -1,7 +1,7 @@
 class AlertSimple
   class << self
-    def of_pass_or_fail_for(job)
-      job.passing_score? ? print(' √ '.green) : print(' X '.red)
+    def job_saved(job)
+      print(' √ '.green)
     end
 
     def already_saved
