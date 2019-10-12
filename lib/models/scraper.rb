@@ -52,6 +52,7 @@ class Scraper
             pages: pages,
             date_ran: Date.today
           )
+          binding.pry
           scrape.jobs << jobs.flatten
           puts '-' * 20
           puts 'Done with search or an error occurred.'
