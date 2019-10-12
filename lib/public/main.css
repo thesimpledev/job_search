@@ -144,6 +144,9 @@ a {
   justify-content: center;
   align-items: center;
   color: white;
+  font-size: 11px;
+  padding: 2px;
+  border-bottom-right-radius: 5px;
 }
 
 .job-points-passing {
@@ -181,6 +184,7 @@ a {
 
 .job-location {
   font-size: 12px;
+  align-self: flex-start;
 }
 
 .job-body {
@@ -213,11 +217,13 @@ a {
 .good-keyword {
   background: #badc58;
   margin-right: 5px;
+  font-weight: 400;
 }
 
 .bad-keyword {
   background: #ff7979;
   margin-left: 5px;
+  font-weight: 400;
 }
 
 /* SEARCH */
@@ -311,4 +317,68 @@ textarea {
   border: 1px solid #ff7979;
   box-shadow: inset 0 0 5px #ff7979;
   outline: none;
+}
+
+/* Media query modifications when display < 500px */
+@media screen and (max-width: 500px) {
+
+  .job-position {
+    font-size: 13px;
+  }
+
+  .job-company {
+    font-size: 12px;
+  }
+
+  .keyword-matches {
+    flex-direction: column;
+  }
+
+  .bad-keyword {
+    margin-top: 3px;
+    margin-right: 2px;
+    margin-left: 0px;
+  }
+
+  .good-keyword {
+    margin-right: 2px;
+  }
+
+  .job-card {
+    position: relative;
+    display: block;
+  }
+
+  .job-location {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+  }
+
+  .keyword {
+    padding: 3.0px;
+  }
+
+  .job-position {
+    margin-bottom: 3.0px;
+  }
+
+  .nav-logo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-logo span {
+    margin-left: 0px;
+  }
+
+  .job-points-passing {
+    padding: 3px;
+
+  }
+
+  .job-link {
+
+  }
+
 }
