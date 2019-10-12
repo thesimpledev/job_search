@@ -1,5 +1,6 @@
 require 'sinatra'
 require_relative 'models/job'
+require_relative '../lib/models/scrape'
 require_relative './helpers/job_helper'
 require_relative './models/request_parser.rb'
 require_relative '../lib/models/query_builder'
@@ -12,6 +13,11 @@ class Server < Sinatra::Base
 
   get '/' do
     erb :search
+  end
+
+  get '/scrapes' do
+    @scrapes = Scrape.includes(:jobs).all
+    erb :scrapes
   end
 
   get '/jobs' do

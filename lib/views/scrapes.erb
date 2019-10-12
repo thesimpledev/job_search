@@ -1,0 +1,13 @@
+<% @scrapes.each do |scrape| %>
+  <ul>
+    <li>id: <%= scrape.id %></li>
+    <li>position: <%= scrape.position %></li>
+    <li>location: <%= scrape.location %></li>
+    <li>duration: <%= scrape.duration %></li>
+    <li>start: <%= scrape.start %></li>
+    <li>finish: <%= scrape.finish %></li>
+    <li>time_per_job: <%= scrape.time_per_job %></li>
+    <li>date_ran: <%= scrape.date_ran %></li>
+    <li>jobs_scraped: <%= scrape.jobs.count %></li>
+  </ul>
+<% end %>
