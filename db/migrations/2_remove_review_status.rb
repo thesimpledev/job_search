@@ -3,7 +3,7 @@ require 'active_record'
 
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
-  database: 'better_jobs'
+  database: ENV['DATABASE_URL'] || 'better_jobs'
 )
 
 ActiveRecord::Schema.define do

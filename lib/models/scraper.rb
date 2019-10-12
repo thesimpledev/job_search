@@ -9,7 +9,7 @@ require_relative '../../config/settings'
 
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
-  database: 'better_jobs'
+  database: ENV['DATABASE_URL'] || 'better_jobs'
 )
 
 # pull together objects to perform their individual jobs
