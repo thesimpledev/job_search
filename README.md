@@ -9,24 +9,7 @@
 I will give a brief overview of why I've built this and how it works from a high level soon!
 
 # Todo
-- [ ] Allow searches to be saved to be used later
-- [ ] After clicking search, disable button
-- [ ] Allow user to hide post
-- [ ] Fix record's location field ('- ' prepands all locations)
-- [ ] Allow description to be shown on click
-- [ ] Store & display date scraped
-- [ ] Store & display date posted
-- [ ] Add search query for GlassDoor for campany with position title
-- [ ] Allow search by location (but use a select from existing records)
-- [ ] Create chrone/sidekiq job to scrape every 24 hours
-- [ ] Show amount of matches / total jobs
-- [ ] Allow multi word keywords (use regexp)
-- [ ] Fix errors for no data in fields
-- [ ] Allow users to see non-matches (show all)
-- [ ] Keep track of amount of jobs scraped on each scrape
-- [ ] Keep track of duration of scrape
-- [ ] Create method to show average time to scrape each job
-- [ ] Use downcase method in SQL since we're using postgresql now
+If you are curious about what's being worked on, or would like to contribute, you can find the trello board here: https://trello.com/b/it7zy8Tq/betterjobs.
 
 # Setup
 > Make sure you have postgresql first (https://postgresapp.com/)
