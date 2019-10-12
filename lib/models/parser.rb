@@ -23,6 +23,7 @@ class Parser
         job = parse_job_posting(job_card)
         Alert.job_saved(job)
         job.save
+        jobs << job
       rescue => e
         # TODO: fixme, figure out why this is breaking
         # puts "*" * 20
