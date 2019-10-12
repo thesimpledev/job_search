@@ -29,11 +29,13 @@
               <% end %>
             </ul>
 
-            <ul class="bad-keywords">
-              <% job.bad_matches.each do |matched_keyword| %>
-                <li class="keyword bad-keyword"><%= matched_keyword %></li>
-              <% end %>
-            </ul>
+            <% if job.bad_matches.length > 0 %>
+              <ul class="bad-keywords">
+                <% job.bad_matches.each do |matched_keyword| %>
+                  <li class="keyword bad-keyword"><%= matched_keyword %></li>
+                <% end %>
+              </ul>
+            <% end %>
           </section>
         <% end %>
       </main>
