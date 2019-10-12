@@ -17,11 +17,10 @@ class Parser
     job_cards.each_with_index do |job_card, i|
       next if already_saved?(job_card)
       next if prime?(job_card)
-      next if bad_position?(job_card)
 
       begin
         go_to_card(job_card, i)
-        job = job_from_card(job_card)
+        job = parse_job_posting(job_card)
         job.save
       rescue => e
         # TODO: fixme, figure out why this is breaking
@@ -59,12 +58,6 @@ class Parser
     end
   end
 
-  def job_from_card(job_card)
-    job = parse_job_posting(job_card)
-    Alert.of_pass_or_fail_for(job)
-    job
-  end
-
   def prime?(job_card)
     downcased_text = job_card.text.downcase
     return false unless downcased_text =~ /indeed prime/ || downcased_text =~ /seen by indeed/
@@ -90,13 +83,5 @@ class Parser
       job_id: job_card.attribute('id'),
       url: job_card.find_element(tag_name: 'a').attribute('href')
     }
-  end
-
-  def bad_position?(job_card)
-    bad_position = SETTINGS[:position_exclusions].find { |title| job_card.text.downcase.include?(title) }
-    if bad_position
-      Alert.bad_position(bad_position)
-      true
-    end
   end
 end

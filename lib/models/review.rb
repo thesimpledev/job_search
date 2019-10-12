@@ -3,12 +3,6 @@ require 'tty-table'
 require_relative 'point_allocation'
 require_relative '../../config/settings'
 
-PointAllocation.settings(
-  GOOD_KEYWORDS: SETTINGS[:good_keywords],
-  BAD_KEYWORDS: SETTINGS[:bad_keywords],
-  PASSING_POINTS: SETTINGS[:passing_points]
-)
-
 class Review
   attr_reader :browser
 
