@@ -1,5 +1,5 @@
 SETTINGS = {
-  places: ['San Francisco Bay Area, CA'],
+  places: ['San Francisco, CA'],
 
   positions: [
     'Software Engineer',
