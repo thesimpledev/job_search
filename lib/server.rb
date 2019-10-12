@@ -1,15 +1,9 @@
-require 'active_record'
 require 'sinatra'
 require_relative 'models/job'
 require_relative './helpers/job_helper'
 require_relative './models/request_parser.rb'
 require_relative '../lib/models/query_builder'
-require 'pry'
-
-ActiveRecord::Base.establish_connection(
-  adapter: 'postgresql',
-  database: ENV['DATABASE_URL'] || 'better_jobs'
-)
+require_relative '../config/environment'
 
 class Server < Sinatra::Base
   # TODO: set only for dev enviroment

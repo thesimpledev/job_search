@@ -1,9 +1,4 @@
-require 'active_record'
-
-ActiveRecord::Base.establish_connection(
-  adapter: 'postgresql',
-  database: ENV['DATABASE_URL'] || 'better_jobs'
-)
+require_relative '../../config/environment'
 
 ActiveRecord::Schema.define do
   create_table :jobs, force: true do |t|
