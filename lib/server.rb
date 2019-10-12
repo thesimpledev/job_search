@@ -8,8 +8,8 @@ require_relative '../lib/models/query_builder'
 require 'pry'
 
 ActiveRecord::Base.establish_connection(
-  adapter: 'sqlite3',
-  database: './job_search.db'
+  adapter: 'postgresql',
+  database: 'better_jobs'
 )
 
 class Server < Sinatra::Base
