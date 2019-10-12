@@ -10,7 +10,7 @@ if ENV['APP_ENV'] == 'development'
 else
   database_params = URI.parse(ENV['DATABASE_URL'])
   ActiveRecord::Base.establish_connection(
-    adapter: database_params.scheme,
+    adapter: database_params.scheme == 'postgres' ? 'postgresql' : db.scheme,
     host: database_params.host,
     username: database_params.user,
     password: database_params.password,
