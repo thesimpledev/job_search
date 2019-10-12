@@ -5,6 +5,7 @@ require_relative 'point_allocation'
 class Job < ActiveRecord::Base
   after_initialize :set_date_scraped_to_today
   attr_reader :point_allocation
+  belongs_to :scrape, optional: true
   delegate :points,
            :passing_score?,
            :good_matches,
