@@ -1,6 +1,5 @@
 require 'active_record'
-require 'sinatra/base'
-require 'sinatra/json'
+require 'sinatra'
 require_relative 'models/job'
 require_relative './helpers/job_helper'
 require_relative './models/request_parser.rb'
