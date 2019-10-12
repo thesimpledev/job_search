@@ -18,8 +18,11 @@ class Scraper
   end
 
   def initialize
-    @driver = Selenium::WebDriver.for(:chrome)
-    @wait = Selenium::WebDriver::Wait.new(timeout: 1)
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--window-size=1920,1080')
+    @driver = Selenium::WebDriver.for(:chrome, options: options)
+    @wait = Selenium::WebDriver::Wait.new(timeout: 10)
     @browser = Browser.new(driver, wait)
     @parser = Parser.new(driver, browser, wait)
   end
