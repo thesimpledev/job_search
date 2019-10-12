@@ -26,6 +26,7 @@ I will give a brief overview of why I've built this and how it works from a high
 - [ ] Keep track of amount of jobs scraped on each scrape
 - [ ] Keep track of duration of scrape
 - [ ] Create method to show average time to scrape each job
+- [ ] Use downcase method in SQL since we're using postgresql now
 
 # Setup
 > Make sure you have postgresql first (https://postgresapp.com/)
