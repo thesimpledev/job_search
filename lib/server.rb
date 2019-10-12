@@ -9,7 +9,7 @@ require 'pry'
 
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
-  database: 'better_jobs'
+  database: ENV['DATABASE_URL'] || 'better_jobs'
 )
 
 class Server < Sinatra::Base
