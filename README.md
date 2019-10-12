@@ -21,7 +21,13 @@ I will give a brief overview of why I've built this and how it works from a high
 - [ ] Create chrone/sidekiq job to scrape every 24 hours
 
 # Setup
-I will be adding information on how to set this up soon! :D
+> Make sure you have postgresql first (https://postgresapp.com/)
+1. run `psql`, then `CREATE TABLE better_jobs`
+2. run `ruby db/migrations/1_initial_schema.rb` then `ruby db/migrations/2_remove_review_status.rb`
+3. bundle install
+
+> Running the server
+* run `ruby lib/server.rb` and visit `localhost:1234`
 
 # Settings
 All settings can be found in **`config/settings.rb`**. I have mine checked into version control as a example of how to approach the file. Feel free to delete my settings to insert your own.
