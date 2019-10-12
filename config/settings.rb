@@ -1,16 +1,11 @@
 SETTINGS = {
-  places: [
-    'Hawaii',
-    'New York, New York',
-    'Remote',
-    'San Francisco Bay Area, CA',
-  ],
+  places: ['San Francisco Bay Area, CA'],
 
-  positions: ['Software Engineer'],
-    # 'Web Developer',
-    # 'Software Developer',
-    # 'Ruby on Rails'
-  # ],
+  positions: [
+    'Software Engineer',
+    'Web Developer',
+    'Software Developer'
+  ],
 
   position_exclusions: [
     ' it ',
