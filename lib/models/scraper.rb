@@ -6,11 +6,7 @@ require_relative 'job'
 require_relative 'parser'
 require_relative 'point_allocation'
 require_relative '../../config/settings'
-
-ActiveRecord::Base.establish_connection(
-  adapter: 'postgresql',
-  database: ENV['DATABASE_URL'] || 'better_jobs'
-)
+require_relative '../../config/environment'
 
 # pull together objects to perform their individual jobs
 # in order to scrape jobs
