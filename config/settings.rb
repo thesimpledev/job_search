@@ -97,5 +97,5 @@ SETTINGS = {
   },
 
   passing_points: 50,
-  simple_output: true
+  simple_output: false
 }
