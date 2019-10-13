@@ -221,6 +221,21 @@ a {
 }
 
 /* SEARCH */
+.search-jumbo {
+  padding: 25px 0;
+  text-align: center;
+  color: #222;
+  background: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 1px #ccc;
+}
+
+.search-jumbo span {
+  font-weight: 700;
+}
+
 .search-container {
   max-width: 200px;
   margin: 0 auto;

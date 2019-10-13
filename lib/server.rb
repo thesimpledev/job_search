@@ -12,6 +12,7 @@ class Server < Sinatra::Base
   set :port, 1234
 
   get '/' do
+    @job_count = Job.count
     erb :search
   end
 
