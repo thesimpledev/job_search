@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/reloader'
 require_relative 'models/job'
 require_relative 'models/scrape'
 require_relative 'helpers/job_helper'
