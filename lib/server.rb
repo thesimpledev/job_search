@@ -8,9 +8,11 @@ require_relative 'models/query_builder'
 require_relative '../config/environment'
 
 class Server < Sinatra::Base
-  # TODO: set only for dev enviroment
-  set :bind, '0.0.0.0'
-  set :port, 1234
+  configure :development do
+    register Sinatra::Reloader
+    set :bind, '0.0.0.0'
+    set :port, 4567
+  end
 
   get '/' do
     @job_count = Job.count
