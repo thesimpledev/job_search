@@ -134,7 +134,7 @@ a {
   display: flex;
   transition: 0.25s box-shadow, 0.25s transform;
   overflow: hidden;
-  box-shadow: 0 2px 2px #ccc;
+  box-shadow: 0 2px 1px #ccc;
 }
 
 .job-points {
