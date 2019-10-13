@@ -2,6 +2,8 @@
   <h1>Oh noes. We didn't find any jobs. Try altering your search.</h1>
 <% end %>
 
+<p>Matched <%= @jobs.count %> out of <%= @total_jobs %> jobs</p>
+
 <% @jobs.each do |job| %>
   <li class="job-card">
     <% if job.point_allocation %>
