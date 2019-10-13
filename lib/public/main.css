@@ -306,9 +306,9 @@ textarea {
 
 /* Media query modifications when display < 500px */
 @media screen and (max-width: 500px) {
-
   .job-position {
     font-size: 13px;
+    margin-bottom: 3px;
   }
 
   .job-company {
@@ -336,16 +336,12 @@ textarea {
 
   .job-location {
     position: absolute;
-    right: 10px;
+    right: 6px;
     top: 6px;
   }
 
   .keyword {
-    padding: 3.0px;
-  }
-
-  .job-position {
-    margin-bottom: 3.0px;
+    padding: 3px;
   }
 
   .nav-logo {
@@ -359,11 +355,5 @@ textarea {
 
   .job-points-passing {
     padding: 3px;
-
   }
-
-  .job-link {
-
-  }
-
 }
