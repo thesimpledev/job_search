@@ -1,9 +1,9 @@
 require 'sinatra'
 require_relative 'models/job'
-require_relative '../lib/models/scrape'
-require_relative './helpers/job_helper'
-require_relative './models/request_parser.rb'
-require_relative '../lib/models/query_builder'
+require_relative 'models/scrape'
+require_relative 'helpers/job_helper'
+require_relative 'models/request_parser.rb'
+require_relative 'models/query_builder'
 require_relative '../config/environment'
 
 class Server < Sinatra::Base
