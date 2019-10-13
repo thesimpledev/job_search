@@ -1,8 +1,6 @@
 require 'active_record'
 
-raise 'APP_ENV not set' unless ENV['APP_ENV']
-
-if ENV['APP_ENV'] == 'development'
+if !ENV['APP_ENV'] # development
   ActiveRecord::Base.establish_connection(
     adapter: 'postgresql',
     database: 'better_jobs'
