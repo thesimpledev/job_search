@@ -228,18 +228,18 @@ a {
 
 /* SEARCH *********************************************************************/
 .search-jumbo {
-  padding: 25px 0;
-  text-align: center;
   color: #222;
-  background: white;
   font-size: 18px;
   margin-bottom: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 1px #ccc;
+  font-size: 12px;
 }
 
 .search-jumbo span {
   font-weight: 700;
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 1px #ccc;
 }
 
 .search-container {
@@ -255,6 +255,12 @@ a {
 
 fieldset {
   width: 30%;
+  background: white;
+  transition: 0.5s border, 0.5s box-shadow;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 2px #ccc;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 button {
@@ -270,52 +276,55 @@ button {
   cursor: pointer;
   border-radius: 5px;
   box-shadow: 0 2px 2px forestgreen;
+  margin-bottom: 20px;
+}
+
+.passing-points-container {
+  background: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 1px #ccc;
+}
+
+.passing-points-label {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 input[type='range'] {
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .search-label {
   display: block;
-  margin-bottom: 10px;
   font-size: 14px;
   font-weight: 700;
   text-align: center;
+  padding: 20px 0;
 }
 
 .label-good {
-  color: #badc58;
+  background: #badc58;
+  color: white;
 }
 
 .label-bad {
-  color: #ff7979;
+  background: #ff7979;
+  color: white;
 }
 
 textarea {
-  background: white;
   border: none;
-  border-radius: 5px;
   width: 100%;
   height: 400px;
   resize: none;
   color: #222;
   padding: 20px;
-  transition: 0.5s border, 0.5s box-shadow;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 2px #ccc;
+  line-height: 1.5;
 }
 
-.textarea-goodkeywords:focus {
-  border: 1px solid #badc58;
-  box-shadow: inset 0 0 5px #badc58;
-  outline: none;
-}
-
-.textarea-bad:focus {
-  border: 1px solid #ff7979;
-  box-shadow: inset 0 0 5px #ff7979;
+textarea:focus {
   outline: none;
 }
 
@@ -323,9 +332,9 @@ textarea {
   display: inline-flex;
   border-radius: 5px;
   margin-bottom: 5px;
-  border: 1px solid #222;
   font-size: 10px;
   align-items: center;
+  background: white;
 }
 
 .search-location input {
