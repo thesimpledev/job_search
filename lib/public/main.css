@@ -329,11 +329,16 @@ textarea {
 }
 
 .search-location input {
-  padding: 5px;
+  display: none;
 }
 
 .search-location label {
   padding: 5px;
+}
+
+.search-location.selected {
+  background: #badc58;
+  box-shadow: 0 2px 1px #ccc;
 }
 
 /* Media query modifications when display < 500px */
