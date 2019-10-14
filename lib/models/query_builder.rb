@@ -17,6 +17,7 @@ class QueryBuilder
   end
 
   # builds a query string to exclude many words
+  # must be used before any other and/or method calls
   #
   # example usage:
   # query = QueryBuilder.new('jobs')
