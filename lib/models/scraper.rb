@@ -31,8 +31,8 @@ class Scraper
 
   def run
     system('clear')
-    SETTINGS[:places].shuffle.each do |location|
-      SETTINGS[:positions].shuffle.each do |position|
+    SETTINGS[:positions].shuffle.each do |position|
+      SETTINGS[:places].shuffle.each do |location|
         start = Time.now
         pages = 0
         jobs = []
