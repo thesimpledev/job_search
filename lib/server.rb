@@ -15,7 +15,15 @@ class Server < Sinatra::Base
   end
 
   get '/' do
+    location_query = <<-SQL
+      SELECT DISTINCT(location), COUNT(location)
+      FROM jobs
+      GROUP BY location
+      ORDER BY COUNT(location) DESC
+    SQL
+
     @job_count = Job.count
+    @location_with_count = ActiveRecord::Base.connection.execute(location_query)
     erb :search
   end
 
