@@ -22,6 +22,7 @@ class Scraper
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     options.add_argument('--window-size=1920,1080')
+    options.add_argument('--disable-dev-shm-usage')
     @driver = Selenium::WebDriver.for(:chrome, options: options)
     @wait = Selenium::WebDriver::Wait.new(timeout: 10)
     @browser = Browser.new(driver, wait)
