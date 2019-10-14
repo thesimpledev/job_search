@@ -13,7 +13,7 @@
     type="range"
     id="passing_points"
     value="50"
-    min="1"
+    min="0"
     max="100"
     name="passing_points"/>
 
@@ -88,6 +88,17 @@ teaching
 teacher</textarea>
     </fieldset>
   </section>
+
+  <ul>
+    <% @location_with_count.each do |record| %>
+      <li class="search-location">
+        <input type="radio" name="location" value="<%= record['location'] %>" id="<%= record['location'] %>"/>
+        <label for="<%= record['location'] %>">
+          <%= record['location'] %> - <%= record['count'] %>
+        </label>
+      </li>
+    <% end %>
+  </ul>
 
   <button>Start Search</button>
 </form>

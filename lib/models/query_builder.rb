@@ -1,18 +1,56 @@
 class QueryBuilder
+  attr_reader :select, :table, :where_conditions
+
+  def initialize(table, select = nil)
+    self.table = table
+    self.where_conditions = []
+    self.select = select || "*"
+  end
+
   # builds a query string to exclude many words
   #
   # example usage:
-  # query_string = QueryBuilder.exclude_all('jobs', 'position', ['senior', 'lead'])
-  # Job.where(query_string)
+  # query = QueryBuilder.new('jobs')
+  # query.exclude_all('position', ['senior', 'lead'])
+  # Job.find_by_sql(query)
   #
-  # @param [String] table_name to exclude from
   # @param [String] column_name to exclude from
   # @param [Array<String>] words to exclude
-  def self.exclude_all(table_name, column_name, words)
+  def exclude_all(column_name, words)
     output = []
     words.each do |word|
-      output << "#{column_name} LIKE '%#{word}%'"
+      output << "LOWER(#{column_name}) LIKE LOWER('%#{word}%')"
     end
-    "SELECT * FROM #{table_name} WHERE NOT (#{output.join(' OR ')})"
+    where("NOT (#{output.join(' OR ')})")
+  end
+
+  def where(condition)
+    self.where_conditions = [condition]
+  end
+
+  def and(condition)
+    self.where_conditions << "#{no_conditions? ? nil : 'AND'} #{condition}"
+  end
+
+  def or(condition)
+    self.where_conditions << "#{no_conditions? ? nil : 'OR'} #{condition}"
+  end
+
+  def to_str
+    "SELECT #{select} FROM #{table} #{where_query}"
+  end
+
+  # @return [String] joined where query or '' if no conditions
+  def where_query
+    return '' if no_conditions?
+    "WHERE #{where_conditions.join(' ')}"
+  end
+
+  private
+
+  attr_writer :select, :table, :where_conditions
+
+  def no_conditions?
+    where_conditions.empty?
   end
 end
