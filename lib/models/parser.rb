@@ -80,10 +80,23 @@ class Parser
     {
       position: driver.find_element(id: 'vjs-jobtitle').text,
       company: driver.find_element(id: 'vjs-cn').text,
-      location: driver.find_element(id: 'vjs-loc').text,
+      location: sanitize_location(driver.find_element(id: 'vjs-loc').text),
       description: driver.find_element(id: 'vjs-content').text,
       job_id: job_card.attribute('id'),
       url: job_card.find_element(tag_name: 'a').attribute('href')
     }
+  end
+
+  # location can come in as '- some city name, STATEINITIALS (extra detail)'
+  # so no matter what we match all words up to comma and state initials after
+  #
+  # example:
+  # sanitize_location('- San Luis Somewhere, CA (extra details here)')
+  # => 'San Luis Somewhere, CA'
+  #
+  # @param [String] location to sanitize
+  # @return [String] sanitized location
+  def sanitize_location(location)
+    location.match(/[-\s]*(?'location'[\w*\s*]*, \w+)/)[:location]
   end
 end
