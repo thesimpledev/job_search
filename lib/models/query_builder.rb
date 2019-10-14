@@ -1,6 +1,15 @@
 class QueryBuilder
   attr_reader :select, :table, :where_conditions
 
+  def self.unique_with_count(table, column, order = "ASC")
+    <<-SQL
+      SELECT DISTINCT(#{column}), COUNT(#{column})
+      FROM #{table}
+      GROUP BY #{column}
+      ORDER BY COUNT(#{column}) #{order}
+    SQL
+  end
+
   def initialize(table, select = nil)
     self.table = table
     self.where_conditions = []
