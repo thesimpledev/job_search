@@ -281,7 +281,7 @@ fieldset {
   overflow: hidden;
 }
 
-button {
+input[type='submit'] {
   display: block;
   width: 100%;
   padding: 10px;
@@ -297,7 +297,7 @@ button {
   margin-bottom: 20px;
 }
 
-button:disabled {
+input[type='submit']:disabled {
   background: #ccc !important;
   cursor: default;
   box-shadow: 0 2px 2px #aaa;
@@ -347,6 +347,10 @@ textarea:focus {
   font-size: 10px;
   align-items: center;
   background: white;
+}
+
+.search-location.hidden {
+  display: none;
 }
 
 .search-location input {
