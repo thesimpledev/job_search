@@ -6,6 +6,11 @@
 </section>
 
 <form class="search" action="/jobs" method="get">
+  <div class="form-section-header">
+    <span>1</span>
+    <h4>Choose points needed to pass</h4>
+  </div>
+
   <div class="passing-points-container">
     <label
       for="passing_points"
@@ -23,6 +28,10 @@
       name="passing_points"/>
   </div>
 
+  <div class="form-section-header">
+    <span>2</span>
+    <h4>Define your keywords</h4>
+  </div>
   <section class="fields">
     <fieldset>
       <label
@@ -95,7 +104,12 @@ teacher</textarea>
     </fieldset>
   </section>
 
-  <ul>
+  <div class="form-section-header">
+    <span>3</span>
+    <h4>Select a location</h4>
+    <button id="toggleLocations">Show all locations</button>
+  </div>
+  <ul class="search-locations">
     <% @location_with_count.each_with_index do |record, i| %>
       <li class="search-location <%= i.zero? ? 'selected' : '' %>">
         <input type="radio"
@@ -109,8 +123,6 @@ teacher</textarea>
         </label>
       </li>
     <% end %>
-
-    <button id="toggleLocations">Show all locations</button>
   </ul>
 
   <input type="submit" value="Start Search">
