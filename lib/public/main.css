@@ -297,6 +297,13 @@ button {
   margin-bottom: 20px;
 }
 
+button:disabled {
+  background: #ccc !important;
+  cursor: default;
+  box-shadow: 0 2px 2px #aaa;
+  color: #222222;
+}
+
 input[type='range'] {
   width: 100%;
 }
