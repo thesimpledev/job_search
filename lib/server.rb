@@ -29,11 +29,6 @@ class Server < Sinatra::Base
   end
 
   get '/jobs' do
-    @jobs = Job.all
-    erb :job_index
-  end
-
-  post '/jobs' do
     @total_jobs = Job.where(location: params['location']).count
 
     hashed_params = RequestParser.parse_search_params(params)
