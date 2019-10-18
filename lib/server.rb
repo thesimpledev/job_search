@@ -12,6 +12,7 @@ class Server < Sinatra::Base
     register Sinatra::Reloader
     set :bind, '0.0.0.0'
     set :port, 4567
+    set :logging, true
   end
 
   get '/' do
