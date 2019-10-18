@@ -12,12 +12,11 @@ class PointAllocation
   # @param [Hash] bad_keywords with String as key and negative points as value
   # @param [Integer] passing_score is the amount of points needed to pass
   def initialize(text = '', good_keywords = {}, bad_keywords = {}, passing_score = 0) # TODO: change to options
-    @points = 0
-    @bad_matches = []
-    @good_matches = []
-    @passing_score = passing_score
-    @words_found = {}
-    text.downcase.split(' ').each { |word| @words_found[word] = true }
+    self.points = 0
+    self.bad_matches = []
+    self.good_matches = []
+    self.passing_score = passing_score
+    self.words_found = text
     allocate_good_matches(good_keywords)
     allocate_bad_matches(bad_keywords)
   end
@@ -30,7 +29,7 @@ class PointAllocation
   private
 
   attr_reader :words_found
-  attr_writer :points
+  attr_writer :bad_matches, :good_matches, :passing_score, :points
 
   def allocate_good_matches(good_keywords)
     match(good_keywords, :good_matches)
@@ -47,5 +46,10 @@ class PointAllocation
         send(attribute) << word
       end
     end
+  end
+
+  def words_found=(text)
+    @words_found = {}
+    text.downcase.split(' ').each { |word| @words_found[word] = true }
   end
 end
