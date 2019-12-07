@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sprockets'
 require_relative 'models/job'
 require_relative 'models/scrape'
 require_relative 'helpers/job_helper'
@@ -13,6 +14,16 @@ class Server < Sinatra::Base
     set :bind, '0.0.0.0'
     set :port, 4567
     set :logging, true
+  end
+
+  set :environment, Sprockets::Environment.new
+
+  environment.append_path 'assets/styles'
+  environment.append_path 'assets/scripts'
+
+  get '/assets/*' do
+    env['PATH_INFO'].sub!('/assets', '')
+    settings.environment.call(env)
   end
 
   get '/' do
