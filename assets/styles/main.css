@@ -354,6 +354,10 @@ textarea:focus {
   background: white;
 }
 
+.search-location > label {
+  cursor: pointer;
+}
+
 .search-location.hidden {
   display: none;
 }
