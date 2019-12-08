@@ -58,8 +58,8 @@ body {
 
 /* BASICS *********************************************************************/
 body {
-  font-family: arial;
-  background: #efefef;
+  font-family: 'Open Sans', sans-serif;
+  background: url('/background.png');
 }
 
 a {
@@ -81,6 +81,7 @@ a {
 }
 
 .nav {
+  height: 30px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -95,7 +96,7 @@ a {
 }
 
 .nav-logo span {
-  color: #777;
+  color: #ddd;
   font-size: 12px;
   font-weight: 400;
   margin-left: 10px;
@@ -123,7 +124,10 @@ a {
 }
 
 /* JOBS ***********************************************************************/
-.jobs {
+.jobs > p {
+  color: white;
+  font-size: 12px;
+  margin-bottom: 20px;
 }
 
 .job-card {
@@ -131,9 +135,15 @@ a {
   margin-bottom: 10px;
   border-radius: 5px;
   display: flex;
-  transition: 0.25s box-shadow, 0.25s transform;
+  transition: 0.25s box-shadow, 0.25s margin;
   overflow: hidden;
-  box-shadow: 0 2px 1px #ccc;
+  box-shadow: 0 0 2px 2px #222;
+}
+
+.job-card:hover {
+  box-shadow: 0 0 0 2px greenyellow;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 .job-points {
@@ -142,15 +152,14 @@ a {
   width: 50px;
   justify-content: center;
   align-items: center;
-  color: white;
   font-size: 11px;
   padding: 2px;
-  border-bottom-right-radius: 5px;
+  color: #222;
+  font-weight: 700;
 }
 
 .job-points-passing {
-  background: #badc58;
-  box-shadow: inset 0 0 10px #6ab04c;
+  background: greenyellow;
 }
 
 .job-points-failing {
@@ -187,8 +196,7 @@ a {
 }
 
 .job-body {
-  border-top: 1px solid #efefef;
-  padding: 10px;
+  padding: 0 10px 10px 10px;
 }
 
 .job-link {
@@ -214,32 +222,35 @@ a {
 }
 
 .good-keyword {
-  background: #badc58;
+  background: greenyellow;
   margin-right: 5px;
   font-weight: 400;
 }
 
 .bad-keyword {
-  background: #ff7979;
+  background: orangered;
   margin-left: 5px;
   font-weight: 400;
 }
 
 /* SEARCH *********************************************************************/
 .search-jumbo {
-  color: #222;
-  display: flex;
+  color: white;
   justify-content: space-between;
   margin-bottom: 20px;
-  font-size: 12px;
+  padding: 100px 0;
+  text-align: center;
 }
 
-.search-jumbo span {
+.search-jumbo-title {
   font-weight: 700;
-  background: white;
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: 0 2px 1px #ccc;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.search-jumbo-detail {
+  color: #777;
+  margin-bottom: 20px;
 }
 
 .passing-points-container {
@@ -258,7 +269,7 @@ a {
 }
 
 .points-to-pass {
-  background: #badc58;
+  background: greenyellow;
   color: white;
   border-radius: 5px;
   display: inline-block;
@@ -275,9 +286,7 @@ a {
 fieldset {
   width: 30%;
   background: white;
-  transition: 0.5s border, 0.5s box-shadow;
   margin-bottom: 20px;
-  box-shadow: 0 2px 2px #ccc;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -286,15 +295,14 @@ input[type='submit'] {
   display: block;
   width: 100%;
   padding: 10px;
-  background: linear-gradient(#badc58, #6ab04c);
+  background: greenyellow;
   border: none;
   font-weight: 700;
-  color: white;
+  color: #222;
   line-height: 1.5;
   transition: 0.5s background;
   cursor: pointer;
   border-radius: 5px;
-  box-shadow: 0 2px 2px forestgreen;
   margin-bottom: 20px;
 }
 
@@ -306,25 +314,78 @@ input[type='submit']:disabled {
 }
 
 input[type='range'] {
+  display: none;
+}
+
+.slider {
+  background-color: white;
+  border-radius: 10px;
+  height: 50px;
+  overflow: hidden;
   width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+  cursor: ew-resize;
+}
+
+.slider-fill {
+  background: greenyellow;
+  height: 100%;
+  width: 50%;
+  position: relative;
+}
+
+.slider-label-container {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  top: 0;
+  left: 20px;
+  align-items: center;
+  pointer-events: none;
+  z-index: 200;
+  font-size: 14px;
+}
+
+.slider-label-container i {
+  color: limegreen;
+  margin-right: 5px;
+}
+
+.slider-label-detail {
+  color: #222;
+  font-weight: 700;
+  user-select: none;
+}
+
+.search-label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.label-good {
+  color: limegreen;
+}
+
+.label-bad {
+  color: darkred;
 }
 
 .search-label {
   display: block;
   font-size: 14px;
   font-weight: 700;
-  text-align: center;
-  padding: 20px 0;
+  color: #222;
 }
 
 .label-good {
-  background: #badc58;
-  color: white;
+  background: greenyellow;
 }
 
 .label-bad {
-  background: #ff7979;
-  color: white;
+  background: orangered;
 }
 
 textarea {
@@ -352,10 +413,11 @@ textarea:focus {
   font-size: 10px;
   align-items: center;
   background: white;
+  transition: opacity 0.25s;
 }
 
-.search-location > label {
-  cursor: pointer;
+.search-location:hover {
+  opacity: 50%;
 }
 
 .search-location.hidden {
@@ -367,28 +429,37 @@ textarea:focus {
 }
 
 .search-location label {
-  padding: 5px;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .search-location.selected {
-  background: #badc58;
-  box-shadow: 0 2px 1px #ccc;
+  background: greenyellow;
+  color: #222;
+}
+
+.search-location.selected:hover {
+  opacity: 100%;
 }
 
 .form-section-header {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  font-size: 14px;
 }
 
 .form-section-header span {
-  background: #333;
-  color: white;
+  background: white;
+  color: #222;
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 10px;
   border-radius: 3px;
-  font-size: 10px;
   padding: 5px 10px;
+}
+
+.form-section-header h4 {
+  color: white;
 }
 
 #toggleLocations {

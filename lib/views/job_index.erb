@@ -1,46 +1,48 @@
-<% if @jobs.empty? %>
-  <h1>Oh noes. We didn't find any jobs. Try altering your search.</h1>
-<% end %>
+<div class="container jobs">
+  <% if @jobs.empty? %>
+    <h1>Oh noes. We didn't find any jobs. Try altering your search.</h1>
+  <% end %>
 
-<p>Matched <%= @jobs.count %> out of <%= @total_jobs %> jobs</p>
+  <p>Matched <%= @jobs.count %> out of <%= @total_jobs %> jobs</p>
 
-<% @jobs.each do |job| %>
-  <li class="job-card">
-    <% if job.point_allocation %>
-      <aside class="job-points <%= pass_or_fail_class(job) %>">
-        <p><%= job.points %></p>
-      </aside>
-    <% end %>
+  <% @jobs.each do |job| %>
+    <li class="job-card">
+      <% if job.point_allocation %>
+        <aside class="job-points <%= pass_or_fail_class(job) %>">
+          <p><%= job.points %></p>
+        </aside>
+      <% end %>
 
-    <main class="job-main">
-      <a href="<%= job.url %>" target="_blank" class="job-link">
-        <div class="job-heading">
-          <h3 class="job-position"><%= job.position %></h3>
-          <h4 class="job-company"><%= job.company %></h4>
-        </div>
+      <main class="job-main">
+        <a href="<%= job.url %>" target="_blank" class="job-link">
+          <div class="job-heading">
+            <h3 class="job-position"><%= job.position %></h3>
+            <h4 class="job-company"><%= job.company %></h4>
+          </div>
 
-        <h5 class="job-location"><%= job.location %></h5>
-      </a>
+          <h5 class="job-location"><%= job.location %></h5>
+        </a>
 
-      <main class="job-body">
-        <% if job.point_allocation %>
-          <section class="keyword-matches">
-            <ul class="good-keywords">
-              <% job.good_matches.each do |matched_keyword| %>
-                <li class="keyword good-keyword"><%= matched_keyword %></li>
-              <% end %>
-            </ul>
-
-            <% if job.bad_matches.length > 0 %>
-              <ul class="bad-keywords">
-                <% job.bad_matches.each do |matched_keyword| %>
-                  <li class="keyword bad-keyword"><%= matched_keyword %></li>
+        <main class="job-body">
+          <% if job.point_allocation %>
+            <section class="keyword-matches">
+              <ul class="good-keywords">
+                <% job.good_matches.each do |matched_keyword| %>
+                  <li class="keyword good-keyword"><%= matched_keyword %></li>
                 <% end %>
               </ul>
-            <% end %>
-          </section>
-        <% end %>
+
+              <% if job.bad_matches.length > 0 %>
+                <ul class="bad-keywords">
+                  <% job.bad_matches.each do |matched_keyword| %>
+                    <li class="keyword bad-keyword"><%= matched_keyword %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </section>
+          <% end %>
+        </main>
       </main>
-    </main>
-  </li>
-<% end %>
+    </li>
+  <% end %>
+</div>

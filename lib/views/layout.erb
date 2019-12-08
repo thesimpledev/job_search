@@ -4,22 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/main.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+  <title>Better Jobs - For Software Engineers</title>
 </head>
 <body>
   <section class="nav-container">
     <nav class="nav container">
       <a href="/" class="nav-logo">Better Jobs <span>&lt;For Software Engineers /&gt;</span></a>
 
-
       <ul class="nav-links">
-        <li><a href="#" class="nav-link">About</a></li>
-        <li><a href="/scrapes" class="nav-link">Scrapes</a></li>
-        <li><a href="/" class="nav-link nav-search">New Search</a></li>
+        <li><a href="/" class="nav-link">About</a></li>
+        <li><a href="/" class="nav-link">Logs</a></li>
+        <% if request.path != '/' %>
+          <li><a href="/" class="nav-link nav-search">New Search</a></li>
+        <% end %>
       </ul>
     </nav>
   </section>
 </body>
-  <div class="container">
+  <div>
     <%= yield %>
   </div>
 </html>

@@ -69,8 +69,58 @@
     toggleButton.addEventListener('click', toggle);
   }
 
+  // points slider
+  function pointsSlider() {
+    const slider = document.querySelector('.slider');
+    const sliderFill = document.querySelector('.slider-fill');
+    const sliderLabelDetail = document.querySelector('.slider-label-detail');
+    const rangeInput = document.querySelector('#passing_points');
+    let mouseHeld = false;
+
+    function updateInputValue(points) {
+      rangeInput.value = points;
+    }
+
+    slider.addEventListener('mousedown', function(e) {
+      mouseHeld = true;
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      const sliderBoundingRect = slider.getBoundingClientRect();
+
+      if (mouseHeld) {
+        if (e.clientX <= sliderBoundingRect.left) {
+          // off left side
+          sliderFill.style.width = '0px';
+          sliderLabelDetail.textContent = 'No points';
+          updateInputValue(0);
+        } else if (e.clientX >= sliderBoundingRect.right) {
+          // off right side
+          sliderFill.style.width = '100%';
+          sliderLabelDetail.textContent = '100 points';
+          updateInputValue(100);
+        } else {
+          let points = parseInt(e.offsetX / sliderBoundingRect.width * 100);
+          if (points < 0) {
+            points = 0;
+          } else if (points > 100) {
+            points = 0;
+          }
+
+          sliderLabelDetail.textContent = `${points} points`;
+          sliderFill.style.width = `${e.offsetX}px`;
+          updateInputValue(points);
+        }
+      }
+    });
+
+    document.addEventListener('mouseup', function(e) {
+      mouseHeld = false;
+    });
+  }
+
   locationButtonSelect();
-  showPassingPoints();
   disableSubmitAfterClicking();
   toggleLocations();
+  pointsSlider();
 })();

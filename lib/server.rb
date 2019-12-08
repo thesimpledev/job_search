@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sprockets'
+require 'pry'
 require_relative 'models/job'
 require_relative 'models/scrape'
 require_relative 'helpers/job_helper'
