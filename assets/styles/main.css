@@ -380,6 +380,14 @@ input[type='range'] {
   color: #222;
 }
 
+.label-explanation {
+  padding: 10px;
+  background: #222;
+  color: white;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .label-good {
   background: greenyellow;
 }
