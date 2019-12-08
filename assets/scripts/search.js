@@ -15,25 +15,9 @@
     buttons.forEach(button => button.addEventListener('click', toggleButton));
   }
 
-  // show required points to pass when value changes
-  function showPassingPoints() {
-    const slider = document.querySelector('#passing_points');
-    const placeholder = document.querySelector("[data-id='pointsToPass']");
-
-    function updatePlaceholder(e) {
-      if (placeholder.innerText != e.target.value) {
-        placeholder.textContent = e.target.value;
-      }
-    }
-
-    slider.addEventListener('mousemove', updatePlaceholder); // desktop
-    slider.addEventListener('touchmove', updatePlaceholder); // mobile
-  }
-
-
   // disable button after submitting and append '.'s while waiting for search
   function disableSubmitAfterClicking() {
-    const form = document.querySelector('form');
+    const form = document.querySelector('form.search');
     const submitButton = document.querySelector("input[type='submit']");
 
     form.addEventListener('submit', function() {
