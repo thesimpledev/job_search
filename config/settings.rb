@@ -16,9 +16,7 @@ SETTINGS = {
   ],
 
   positions: [
-    'Software Engineer',
-    'Web Developer',
-    'Software Developer'
+    'Software Engineer'
   ],
 
   position_exclusions: [
