@@ -81,11 +81,15 @@
       rangeInput.value = points;
     }
 
-    slider.addEventListener('mousedown', function(e) {
+    function startSlide() {
       mouseHeld = true;
-    });
+    }
 
-    document.addEventListener('mousemove', function(e) {
+    function endSlide() {
+      mouseHeld = false;
+    }
+
+    function sliderSlide(e) {
       const sliderBoundingRect = slider.getBoundingClientRect();
 
       if (mouseHeld) {
@@ -112,11 +116,17 @@
           updateInputValue(points);
         }
       }
-    });
+    }
 
-    document.addEventListener('mouseup', function(e) {
-      mouseHeld = false;
-    });
+
+    slider.addEventListener('mousedown', startSlide);
+    slider.addEventListener('touchstart', startSlide);
+
+    document.addEventListener('mousemove', sliderSlide);
+    document.addEventListener('touchmove', sliderSlide);
+
+    document.addEventListener('mouseup', endSlide);
+    document.addEventListener('touchend', endSlide);
   }
 
   locationButtonSelect();
