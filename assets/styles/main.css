@@ -260,11 +260,11 @@ a {
   font-size: 24px;
   margin-bottom: 10px;
   color: var(--green);
+  line-height: 1.5;
 }
 
 .search-jumbo-detail {
   color: white;
-  font-weight: 700;
   margin-bottom: 20px;
 }
 
@@ -299,7 +299,7 @@ a {
 }
 
 fieldset {
-  width: 30%;
+  width: 32%;
   background: white;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -495,7 +495,20 @@ textarea:focus {
   color: #aaa;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+  /* SEARCH *******************************************************************/
+  .fields {
+    display: block;
+  }
+
+  fieldset {
+    width: 100%;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
   /* JOB MEDIA QUERIES ********************************************************/
   .job-position {
     font-size: 13px;
