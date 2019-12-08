@@ -10,7 +10,9 @@ SETTINGS = {
     'Bellevue, WA',
     'Washington',
     'Rhode Island',
-    'Massachusetts'
+    'Massachusetts',
+    'Denver, CO',
+    'Boulder, CO',
   ],
 
   positions: [
