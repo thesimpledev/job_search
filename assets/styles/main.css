@@ -306,7 +306,7 @@ fieldset {
   overflow: hidden;
 }
 
-input[type='submit'] {
+button.submit {
   display: block;
   width: 100%;
   padding: 10px;
@@ -321,11 +321,9 @@ input[type='submit'] {
   margin-bottom: 20px;
 }
 
-input[type='submit']:disabled {
+button.disabled {
   background: #ccc !important;
-  cursor: default;
-  box-shadow: 0 2px 2px #aaa;
-  color: var(--gray)222;
+  cursor: not-allowed;
 }
 
 input[type='range'] {

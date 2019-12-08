@@ -18,15 +18,15 @@
   // disable button after submitting and append '.'s while waiting for search
   function disableSubmitAfterClicking() {
     const form = document.querySelector('form.search');
-    const submitButton = document.querySelector("input[type='submit']");
+    const submitButton = document.querySelector('button.submit');
 
     form.addEventListener('submit', function() {
-      submitButton.setAttribute('disabled', 'true');
-      submitButton.value = 'Searching, one moment...';
+      submitButton.classList.add('disabled');
+      submitButton.textContent = 'Searching, one moment...';
 
       // append '.'s while waiting on search
       setInterval(function() {
-        submitButton.value += '.';
+        submitButton.textContent += '.';
       }, 500);
     });
   }
