@@ -56,10 +56,19 @@ body {
   color: #333;
 }
 
+/* COLORS *********************************************************************/
+:root {
+  --gray: #272822;
+  --green: #A6E22E;
+  --pink: #F92672;
+  --orange: #FD971F;
+  --blue: #66D9EF;
+}
+
 /* BASICS *********************************************************************/
 body {
   font-family: 'Open Sans', sans-serif;
-  background: url('/background.png');
+  background: var(--gray);
 }
 
 a {
@@ -75,7 +84,8 @@ a {
 /* NAV ************************************************************************/
 .nav-container {
   justify-content: center;
-  background: #222;
+  background: var(--gray);
+  border-bottom: 1px solid #222;
   margin-bottom: 20px;
   padding: 5px 0;
 }
@@ -96,7 +106,7 @@ a {
 }
 
 .nav-logo span {
-  color: #ddd;
+  color: #555;
   font-size: 12px;
   font-weight: 400;
   margin-left: 10px;
@@ -137,11 +147,11 @@ a {
   display: flex;
   transition: 0.25s box-shadow, 0.25s margin;
   overflow: hidden;
-  box-shadow: 0 0 2px 2px #222;
+  box-shadow: 0 0 2px 2px var(--gray);
 }
 
 .job-card:hover {
-  box-shadow: 0 0 0 2px greenyellow;
+  box-shadow: 0 0 0 2px var(--green);
   margin-left: -10px;
   margin-right: -10px;
 }
@@ -154,12 +164,12 @@ a {
   align-items: center;
   font-size: 11px;
   padding: 2px;
-  color: #222;
+  color: var(--gray);
   font-weight: 700;
 }
 
 .job-points-passing {
-  background: greenyellow;
+  background: var(--green);
 }
 
 .job-points-failing {
@@ -174,7 +184,7 @@ a {
 
 .job-link {
   padding: 10px;
-  color: #222;
+  color: var(--gray);
   display: block;
 }
 
@@ -221,13 +231,13 @@ a {
 }
 
 .good-keyword {
-  background: greenyellow;
+  background: var(--green);
   margin-right: 5px;
   font-weight: 400;
 }
 
 .bad-keyword {
-  background: orangered;
+  background: orangere;
   margin-left: 5px;
   font-weight: 400;
 }
@@ -239,16 +249,22 @@ a {
   margin-bottom: 20px;
   padding: 100px 0;
   text-align: center;
+  background: url('/jumboBackground.jpg');
+  background-size: cover;
+  background-position: center;
+  margin-top: -20px;
 }
 
 .search-jumbo-title {
   font-weight: 700;
   font-size: 24px;
   margin-bottom: 10px;
+  color: var(--green);
 }
 
 .search-jumbo-detail {
-  color: #777;
+  color: white;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
@@ -268,7 +284,7 @@ a {
 }
 
 .points-to-pass {
-  background: greenyellow;
+  background: var(--green);
   color: white;
   border-radius: 5px;
   display: inline-block;
@@ -294,10 +310,10 @@ input[type='submit'] {
   display: block;
   width: 100%;
   padding: 10px;
-  background: greenyellow;
+  background: var(--green);
   border: none;
   font-weight: 700;
-  color: #222;
+  color: var(--gray);
   line-height: 1.5;
   transition: 0.5s background;
   cursor: pointer;
@@ -309,7 +325,7 @@ input[type='submit']:disabled {
   background: #ccc !important;
   cursor: default;
   box-shadow: 0 2px 2px #aaa;
-  color: #222222;
+  color: var(--gray)222;
 }
 
 input[type='range'] {
@@ -328,7 +344,7 @@ input[type='range'] {
 }
 
 .slider-fill {
-  background: greenyellow;
+  background: var(--green);
   height: 100%;
   width: 50%;
   position: relative;
@@ -352,7 +368,7 @@ input[type='range'] {
 }
 
 .slider-label-detail {
-  color: #222;
+  color: var(--gray);
   font-weight: 700;
   user-select: none;
 }
@@ -376,7 +392,7 @@ input[type='range'] {
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: #222;
+  color: var(--gray);
 }
 
 .label-explanation {
@@ -388,11 +404,11 @@ input[type='range'] {
 }
 
 .label-good {
-  background: greenyellow;
+  background: var(--green);
 }
 
 .label-bad {
-  background: orangered;
+  background: var(--pink);
 }
 
 textarea {
@@ -400,7 +416,7 @@ textarea {
   width: 100%;
   height: 400px;
   resize: none;
-  color: #222;
+  color: var(--gray);
   padding: 20px;
   line-height: 1.5;
 }
@@ -441,8 +457,8 @@ textarea:focus {
 }
 
 .search-location.selected {
-  background: greenyellow;
-  color: #222;
+  background: var(--green);
+  color: var(--gray);
 }
 
 .search-location.selected:hover {
@@ -458,7 +474,7 @@ textarea:focus {
 
 .form-section-header span {
   background: white;
-  color: #222;
+  color: var(--gray);
   display: inline-block;
   margin-right: 10px;
   border-radius: 3px;
