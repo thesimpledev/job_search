@@ -138,8 +138,47 @@
     slider.addEventListener('touchleave', endSlide);
   }
 
+  function saveAndReloadSearch() {
+    const form = document.querySelector('form.search');
+    const goodKeywords = document.querySelector('#good-keywords');
+    const badKeywords = document.querySelector('#bad-keywords');
+    const positionExclusions = document.querySelector('#position-exclusions');
+
+    form.addEventListener('submit', function() {
+      localStorage.setItem('goodKeywords', goodKeywords.value);
+      localStorage.setItem('badKeywords', badKeywords.value);
+      localStorage.setItem('positionExclusions', positionExclusions.value);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const storedGoodKeywords = localStorage.getItem('goodKeywords');
+      const storedBadKeywords = localStorage.getItem('badKeywords');
+      const storedPositionExclusions = localStorage.getItem('positionExclusions');
+
+      [
+        {
+          storage: storedGoodKeywords,
+          field: goodKeywords
+        },
+        {
+          storage: storedBadKeywords,
+          field: badKeywords
+        },
+        {
+          storage: storedPositionExclusions,
+          field: positionExclusions
+        },
+      ].forEach(function(element) {
+        if (element.storage) {
+          element.field.value = element.storage;
+        }
+      });
+    });
+  }
+
   locationButtonSelect();
   disableSubmitAfterClicking();
   toggleLocations();
   pointsSlider();
+  saveAndReloadSearch();
 })();
