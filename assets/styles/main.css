@@ -467,7 +467,13 @@ textarea:focus {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 14px;
+}
+
+.form-section-header div {
+  align-items: center;
+  display: flex;
 }
 
 .form-section-header span {
