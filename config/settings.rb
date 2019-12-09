@@ -13,6 +13,7 @@ SETTINGS = {
     'Massachusetts',
     'Denver, CO',
     'Boulder, CO',
+    'New Jersey'
   ],
 
   positions: [
