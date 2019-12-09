@@ -251,7 +251,7 @@ a {
 }
 
 .bad-keyword {
-  background: orangere;
+  background: var(--pink);
   margin-left: 5px;
   font-weight: 400;
 }
