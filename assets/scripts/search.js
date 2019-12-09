@@ -118,12 +118,21 @@
           points = 100;
         }
 
-        sliderLabelDetail.textContent = `${points} point${points === 1 ? '' : 's'}`;
+        sliderLabelDetail.textContent = _pluralizePoints(points);
         sliderFill.style.width = `${e.touches[0].clientX}px`;
         updateInputValue(points);
       }
     }
 
+    function setInitialFill() {
+      const points = rangeInput.value;
+      sliderLabelDetail.textContent = _pluralizePoints(points);
+      sliderFill.style.width = `${points}%`;
+    }
+
+    function _pluralizePoints(points) {
+      return `${points} point${points === 1 ? '' : 's'}`;
+    }
 
     slider.addEventListener('mousedown', startSlide);
     slider.addEventListener('touchstart', startSlide);
@@ -136,26 +145,35 @@
 
     slider.addEventListener('mouseleave', endSlide);
     slider.addEventListener('touchleave', endSlide);
+
+    document.addEventListener('DOMContentLoaded', setInitialFill);
   }
 
   function saveAndReloadSearch() {
     const form = document.querySelector('form.search');
+    const pointsToPass = document.querySelector('#passing_points');
     const goodKeywords = document.querySelector('#good-keywords');
     const badKeywords = document.querySelector('#bad-keywords');
     const positionExclusions = document.querySelector('#position-exclusions');
 
     form.addEventListener('submit', function() {
+      localStorage.setItem('pointsToPass', pointsToPass.value);
       localStorage.setItem('goodKeywords', goodKeywords.value);
       localStorage.setItem('badKeywords', badKeywords.value);
       localStorage.setItem('positionExclusions', positionExclusions.value);
     });
 
     document.addEventListener('DOMContentLoaded', function() {
+      const storedPointsToPass = localStorage.getItem('pointsToPass');
       const storedGoodKeywords = localStorage.getItem('goodKeywords');
       const storedBadKeywords = localStorage.getItem('badKeywords');
       const storedPositionExclusions = localStorage.getItem('positionExclusions');
 
       [
+        {
+          storage: storedPointsToPass,
+          field: pointsToPass
+        },
         {
           storage: storedGoodKeywords,
           field: goodKeywords
@@ -186,10 +204,10 @@
     });
   }
 
+  saveAndReloadSearch();
   locationButtonSelect();
   disableSubmitAfterClicking();
   toggleLocations();
   pointsSlider();
-  saveAndReloadSearch();
   resetSearch();
 })();
