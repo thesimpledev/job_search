@@ -1,0 +1,165 @@
+.jobs > p {
+  color: white;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.no-matches-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-matches-text {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 25px;
+  margin-top: 150px;
+  text-align: center;
+}
+
+.job-card {
+  background: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  transition: 0.25s box-shadow, 0.25s margin;
+  overflow: hidden;
+  box-shadow: 0 0 2px 2px $gray;
+}
+
+.job-card:hover {
+  box-shadow: 0 0 0 2px $green;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.job-points {
+  display: flex;
+  min-width: 50px;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  padding: 2px;
+  color: $gray;
+  font-weight: 700;
+}
+
+.job-points-passing {
+  background: $green;
+}
+
+.job-points-failing {
+  background: #ff7979;
+  box-shadow: inset 0 0 10px #eb4d4b;
+}
+
+
+.job-main {
+  flex-grow: 1;
+}
+
+.job-link {
+  padding: 10px;
+  color: $gray;
+  display: block;
+}
+
+.job-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-company {
+  color: #777;
+  font-size: 14px;
+}
+
+.job-position {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.job-location {
+  font-size: 12px;
+  align-self: flex-start;
+}
+
+.job-body {
+  margin-top: 10px;
+}
+
+/* KEYWORDS *******************************************************************/
+.keyword-matches {
+  display: flex;
+  justify-content: space-between;
+}
+
+.good-keywords,
+.bad-keywords {
+  display: flex;
+}
+
+.keyword {
+  padding: 5px;
+  font-size: 10px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.good-keyword {
+  background: $green;
+  margin-right: 5px;
+  font-weight: 400;
+}
+
+.bad-keyword {
+  background: $pink;
+  margin-left: 5px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  .job-position {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  .job-company {
+    font-size: 12px;
+  }
+
+  .keyword-matches {
+    flex-direction: column;
+  }
+
+  .bad-keyword {
+    margin-top: 3px;
+    margin-right: 2px;
+    margin-left: 0px;
+  }
+
+  .good-keyword {
+    margin-right: 2px;
+  }
+
+  .job-card {
+    position: relative;
+    display: block;
+  }
+
+  .job-location {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+  }
+
+  .keyword {
+    padding: 3px;
+  }
+
+  .job-points-passing {
+    padding: 3px;
+  }
+}
