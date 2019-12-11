@@ -1,3 +1,4 @@
+require 'sassc'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sprockets'
@@ -24,7 +25,7 @@ class Server < Sinatra::Base
   environment.append_path 'assets/scripts'
 
   environment.js_compressor  = Uglifier.new(harmony: true)
-  environment.css_compressor = :scss
+  environment.css_compressor = :sassc
 
   get '/assets/*' do
     env['PATH_INFO'].sub!('/assets', '')
