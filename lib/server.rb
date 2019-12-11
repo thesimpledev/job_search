@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sprockets'
 require 'pry'
+require 'uglifier'
 require_relative 'models/job'
 require_relative 'models/scrape'
 require_relative 'helpers/job_helper'
@@ -21,6 +22,9 @@ class Server < Sinatra::Base
 
   environment.append_path 'assets/styles'
   environment.append_path 'assets/scripts'
+
+  environment.js_compressor  = Uglifier.new(harmony: true)
+  environment.css_compressor = :scss
 
   get '/assets/*' do
     env['PATH_INFO'].sub!('/assets', '')
