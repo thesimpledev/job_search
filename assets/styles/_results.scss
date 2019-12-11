@@ -1,5 +1,5 @@
 .jobs > p {
-  color: white;
+  color: #222;
   font-size: 12px;
   margin-bottom: 20px;
 }
@@ -23,9 +23,8 @@
   margin-bottom: 10px;
   border-radius: 5px;
   display: flex;
-  transition: 0.25s box-shadow, 0.25s margin;
   overflow: hidden;
-  box-shadow: 0 0 2px 2px $gray;
+  transition: 0.5s margin;
 }
 
 .job-card:hover {

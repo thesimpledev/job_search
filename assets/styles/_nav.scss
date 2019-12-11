@@ -1,9 +1,7 @@
 .nav-container {
   justify-content: center;
-  background: $gray;
-  border-bottom: 1px solid #222;
   margin-bottom: 20px;
-  padding: 5px 0;
+  background: #222;
 }
 
 .nav {
@@ -12,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
 }
 
 .nav-logo {

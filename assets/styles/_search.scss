@@ -1,26 +1,28 @@
 .search-jumbo {
   color: white;
   justify-content: space-between;
-  margin-bottom: 20px;
   padding: 100px 0;
-  text-align: center;
-  background: url('/jumboBackground.jpg');
-  background-size: cover;
-  background-position: center;
   margin-top: -20px;
 }
 
 .search-jumbo-title {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 42px;
   margin-bottom: 10px;
-  color: $green;
-  line-height: 1.5;
+  color: #222;
 }
 
 .search-jumbo-detail {
-  color: white;
+  color: #ccc;
   margin-bottom: 20px;
+}
+
+.search-jumbo-action {
+  background-color: $green;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 10px;
+  font-size: 14px;
 }
 
 .passing-points-container {
@@ -28,7 +30,6 @@
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 1px #ccc;
   text-align: center;
 }
 
@@ -149,11 +150,10 @@ input[type='range'] {
 }
 
 .label-explanation {
-  padding: 10px;
-  background: #222;
-  color: white;
+  border-bottom: 1px solid #efefef;
   font-size: 12px;
   line-height: 1.5;
+  padding: 20px;
 }
 
 .label-good {
@@ -241,7 +241,7 @@ textarea:focus {
 }
 
 .form-section-header h4 {
-  color: white;
+  color: $gray;
 }
 
 #toggleLocations {
