@@ -101,12 +101,14 @@
     const goodKeywords = document.querySelector('#good-keywords');
     const badKeywords = document.querySelector('#bad-keywords');
     const positionExclusions = document.querySelector('#position-exclusions');
+    const location = document.querySelector('select');
 
     form.addEventListener('submit', function() {
       localStorage.setItem('pointsToPass', pointsToPass.value);
       localStorage.setItem('goodKeywords', goodKeywords.value);
       localStorage.setItem('badKeywords', badKeywords.value);
       localStorage.setItem('positionExclusions', positionExclusions.value);
+      localStorage.setItem('location', location.value);
     });
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -114,6 +116,7 @@
       const storedGoodKeywords = localStorage.getItem('goodKeywords');
       const storedBadKeywords = localStorage.getItem('badKeywords');
       const storedPositionExclusions = localStorage.getItem('positionExclusions');
+      const storedLocation = localStorage.getItem('location');
 
       [
         {
@@ -132,6 +135,10 @@
           storage: storedPositionExclusions,
           field: positionExclusions
         },
+        {
+          storage: storedLocation,
+          field: location
+        }
       ].forEach(function(element) {
         if (element.storage) {
           element.field.value = element.storage;
