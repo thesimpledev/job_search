@@ -178,46 +178,6 @@ textarea:focus {
   outline: none;
 }
 
-.search-locations {
-  margin-bottom: 10px;
-}
-
-.search-location {
-  display: inline-flex;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  font-size: 10px;
-  align-items: center;
-  background: white;
-  transition: opacity 0.25s;
-}
-
-.search-location:hover {
-  opacity: 50%;
-}
-
-.search-location.hidden {
-  display: none;
-}
-
-.search-location input {
-  display: none;
-}
-
-.search-location label {
-  cursor: pointer;
-  padding: 10px;
-}
-
-.search-location.selected {
-  background: $green;
-  color: $gray;
-}
-
-.search-location.selected:hover {
-  opacity: 100%;
-}
-
 .form-section-header {
   margin-bottom: 10px;
   display: flex;
@@ -229,6 +189,11 @@ textarea:focus {
 .form-section-header div {
   align-items: center;
   display: flex;
+  margin-right: 10px;
+}
+
+.form-section-header select {
+  flex: 1;
 }
 
 .form-section-header span {
@@ -242,16 +207,6 @@ textarea:focus {
 
 .form-section-header h4 {
   color: $gray;
-}
-
-#toggleLocations {
-  border: none;
-  outline: none;
-  text-decoration: underline;
-  background: none;
-  cursor: pointer;
-  float: right;
-  color: #aaa;
 }
 
 @media screen and (max-width: $breakpoint-mobile) {

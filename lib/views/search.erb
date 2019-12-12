@@ -136,23 +136,14 @@ teacher</textarea>
         <span>3</span>
         <h4>Select a location</h4>
       </div>
-      <button id="toggleLocations">Show all locations</button>
+      <select name="location">
+        <% @location_with_count.each do |location| %>
+         <option value="<%= location['location'] %>">
+           <%= "#{location['location']} - #{location['count']} jobs" %>
+         </option>
+        <% end %>
+      </select>
     </div>
-    <ul class="search-locations">
-      <% @location_with_count.each_with_index do |record, i| %>
-        <li class="search-location <%= i.zero? ? 'selected' : '' %>">
-          <input type="radio"
-                 name="location"
-                 value="<%= record['location'] %>"
-                 id="<%= record['location'] %>"
-                 <%= i.zero? ? 'checked' : '' %>
-          />
-          <label for="<%= record['location'] %>">
-            <%= record['location'] %> - <%= record['count'] %>
-          </label>
-        </li>
-      <% end %>
-    </ul>
 
     <button class="submit">Search</button>
   </form>
