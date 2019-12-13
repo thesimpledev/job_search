@@ -136,7 +136,7 @@ teacher</textarea>
         <span>3</span>
         <h4>Select a location</h4>
       </div>
-      <select name="location">
+      <select class="location" name="location">
         <% @location_with_count.each do |location| %>
          <option value="<%= location['location'] %>">
            <%= "#{location['location']} - #{location['count']} jobs" %>
