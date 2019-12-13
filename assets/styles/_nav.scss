@@ -1,7 +1,7 @@
 .nav-container {
   justify-content: center;
   margin-bottom: 20px;
-  background: #222;
+  background: $black;
 }
 
 .nav {
@@ -21,10 +21,11 @@
 }
 
 .nav-logo span {
-  color: #555;
+  color: $gray-medium;
   font-size: 12px;
   font-weight: 400;
   margin-left: 10px;
+  margin-top: 5px;
 }
 
 .nav-links {
@@ -42,7 +43,7 @@
 .nav-search {
   background: linear-gradient(#badc58, #6ab04c);
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: $border-radius;
   font-size: 12px;
   font-weight: 700;
   color: white;
