@@ -1,4 +1,28 @@
 (function() {
+
+  function locationSelect() {
+    const locationElements = document.querySelectorAll('.location-selection');
+    const selectedLocation = document.querySelector('.selected-location');
+    const locationForm = document.querySelector('#location');
+    const jumbo = document.querySelector('.search-jumbo');
+    const locationToBackground = {
+      'San Francisco, CA': `url('assets/sanfrancisco.jpg')`,
+      'New York, NY': `url('assets/newyork.jpg')`,
+      'Boston, MA': `url('assets/boston.jpg')`,
+      'Austin, TX': `url('assets/austin.jpg')`,
+      'Seattle, WA': `url('assets/seattle.jpg')`
+    };
+
+    locationElements.forEach(element => {
+      element.addEventListener('click', function(e) {
+        const location = e.currentTarget.lastElementChild.textContent;
+        locationForm.value = location;
+        selectedLocation.textContent = location;
+        jumbo.style.backgroundImage = locationToBackground[location];
+      });
+    });
+  }
+
   // disable button after submitting and append '.'s while waiting for search
   function disableSubmitAfterClicking() {
     const form = document.querySelector('form.search');
@@ -101,7 +125,7 @@
     const goodKeywords = document.querySelector('#good-keywords');
     const badKeywords = document.querySelector('#bad-keywords');
     const positionExclusions = document.querySelector('#position-exclusions');
-    const location = document.querySelector('select');
+    const location = document.querySelector('#location');
 
     form.addEventListener('submit', function() {
       localStorage.setItem('pointsToPass', pointsToPass.value);
@@ -157,6 +181,7 @@
     });
   }
 
+  locationSelect();
   saveAndReloadSearch();
   disableSubmitAfterClicking();
   pointsSlider();

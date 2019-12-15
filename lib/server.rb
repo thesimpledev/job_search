@@ -21,6 +21,7 @@ class Server < Sinatra::Base
 
   set :environment, Sprockets::Environment.new
 
+  environment.append_path 'assets/images'
   environment.append_path 'assets/styles'
   environment.append_path 'assets/scripts'
 

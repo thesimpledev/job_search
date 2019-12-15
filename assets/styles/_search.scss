@@ -1,15 +1,60 @@
 .search-jumbo {
   color: white;
   justify-content: space-between;
-  padding: 80px 0 50px;
-  margin-top: -20px;
+  padding: 100px 0;
+  margin-bottom: 20px;
+  background-color: #ccc;
+  background-image: url('sanfrancisco.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
-.search-jumbo-title {
+.search-jumbo-title,
+.search-jumbo-location {
   font-weight: 700;
   font-size: 42px;
   margin-bottom: 10px;
-  color: $black;
+  color: white;
+}
+
+.search-jumbo-location {
+  span {
+    display: inline-block;
+    border-bottom: 3px solid greenyellow;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+}
+
+.location-selections {
+  cursor: pointer;
+  font-size: 10px;
+
+  p {
+    transition: 0.5s box-shadow, 0.5s background;
+    border-radius: $border-radius;
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.25);
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-weight: 400;
+
+    &:hover {
+      box-shadow: $box-shadow;
+      background: $green;
+    }
+  }
+
+  span {
+    margin-left: 5px;
+    font-weight: 700;
+  }
+}
+
+.location-selection-image-preload {
+  display: none;
 }
 
 .search-jumbo-detail {
@@ -23,29 +68,6 @@
   display: inline-block;
   padding: 10px 25px;
   font-size: 14px;
-}
-
-.passing-points-container {
-  background: white;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: $border-radius;
-  text-align: center;
-}
-
-.passing-points-label {
-  font-size: 14px;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.points-to-pass {
-  background: $green;
-  color: white;
-  border-radius: $border-radius;
-  display: inline-block;
-  padding: 5px;
-  font-weight: 700;
 }
 
 .fields {

@@ -9,7 +9,6 @@ class Scrape < ActiveRecord::Base
             :position, # what position was searched
             :start,    # when the scrape begin
             :pages,    # amount of pages traversed
-            :date_ran, # when the scrape was ran
             presence: true
 
   def duration

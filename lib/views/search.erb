@@ -1,13 +1,31 @@
 <section class="search-jumbo">
   <div class="container">
     <p class="search-jumbo-title">Find awesome job matches</p>
-    <p class="search-jumbo-detail">Like an Engineer, not a robot</p>
-    <p class="search-jumbo-action"><%= @job_count %> jobs, and counting</p>
+    <p class="search-jumbo-location">in
+      <span class="selected-location">
+        San Francisco, CA
+      </span>
+    </p>
+    <div class="location-selections">
+      <% @location_with_count.each do |record| %>
+        <p class="location-selection">
+          <%= record['count'] %>
+          <span><%= record['location'] %></span>
+        </p>
+      <% end %>
+    </div>
   </div>
+  <img src="assets/sanfrancisco.jpg" class="location-selection-image-preload" />
+  <img src="assets/newyork.jpg" class="location-selection-image-preload" />
+  <img src="assets/boston.jpg" class="location-selection-image-preload" />
+  <img src="assets/austin.jpg" class="location-selection-image-preload" />
+  <img src="assets/seattle.jpg" class="location-selection-image-preload" />
 </section>
 
 <div class="container">
   <form class="search" action="/jobs" method="get">
+    <input type="hidden" name="location" value="San Francisco, CA" id="location" />
+
     <div class="form-section-header">
       <div>
         <span>1</span>
@@ -130,20 +148,6 @@ teaching
 teacher</textarea>
       </fieldset>
     </section>
-
-    <div class="form-section-header">
-      <div>
-        <span>3</span>
-        <h4>Select a location</h4>
-      </div>
-      <select class="location" name="location">
-        <% @location_with_count.each do |location| %>
-         <option value="<%= location['location'] %>">
-           <%= "#{location['location']} - #{location['count']} jobs" %>
-         </option>
-        <% end %>
-      </select>
-    </div>
 
     <button class="submit">Search</button>
   </form>
