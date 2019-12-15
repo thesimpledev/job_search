@@ -1,11 +1,12 @@
 require 'active_record'
 require 'colorize'
 require_relative 'point_allocation'
+require_relative '../../config/settings'
 
 class Job < ActiveRecord::Base
   after_initialize :set_date_scraped_to_today
   attr_reader :point_allocation
-  belongs_to :scrape, optional: true
+  belongs_to :scrape
   delegate :points,
            :passing_score?,
            :good_matches,
@@ -19,7 +20,9 @@ class Job < ActiveRecord::Base
             :location,
             :position,
             :url,
+            :search_location,
             presence: true
+  validates :search_location, inclusion: { in: SETTINGS[:places] }
 
   def self.matches
     all.select(&:passing_score?)

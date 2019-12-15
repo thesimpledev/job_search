@@ -45,21 +45,24 @@ class Scraper
             jobs << parser.parse_jobs
           end
         rescue => e
-          scrape = Scrape.create!(
-            location: location,
-            position: position,
-            start: start,
-            finish: Time.now,
-            pages: pages,
-            date_ran: Date.today
-          )
-          scrape.jobs << jobs.flatten
-          puts '-' * 20
-          puts 'Done with search or an error occurred.'
-          puts e
-          puts '-' * 20
-        end
-      end
-    end
+          Scrape.transaction do
+            scrape = Scrape.create!(
+              location: location,
+              position: position,
+              start: start,
+              finish: Time.now,
+              pages: pages,
+              date_ran: Date.today
+            )
+            scrape.jobs << jobs.flatten
+            scrape.jobs.update_all(search_location: location)
+            puts '-' * 20
+            puts 'Done with search or an error occurred.'
+            puts e
+            puts '-' * 20
+          end # transaction
+        end # rescue
+      end # location loop
+    end # position loop
   end
 end
