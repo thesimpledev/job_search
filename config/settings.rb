@@ -2,18 +2,11 @@ SETTINGS = {
   places: [
     'San Francisco, CA',
     'Seattle, WA',
-    'California',
     'Remote',
     'New York, NY',
-    'Redmond, WA',
-    'Kirkland, WA',
-    'Bellevue, WA',
-    'Washington',
-    'Rhode Island',
-    'Massachusetts',
+    'Boston, MA',
     'Denver, CO',
-    'Boulder, CO',
-    'New Jersey'
+    'New Jersey, NJ'
   ],
 
   positions: [
