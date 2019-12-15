@@ -6,14 +6,14 @@
     const locationForm = document.querySelector('#location');
     const jumbo = document.querySelector('.search-jumbo');
     const locationToBackground = {
-      'San Francisco, CA': `url('assets/sanfrancisco.jpg')`,
-      'New York, NY': `url('assets/newyork.jpg')`,
-      'Boston, MA': `url('assets/boston.jpg')`,
-      'Austin, TX': `url('assets/austin.jpg')`,
-      'Seattle, WA': `url('assets/seattle.jpg')`,
-      'Denver, CO': `url('assets/denver.jpg')`,
-      'Jersey City, NJ': `url('assets/jerseycity.jpg')`,
-      'Remote': `url('assets/remote.jpg')`,
+      'San Francisco, CA': 'sanfrancisco.jpg',
+      'New York, NY': 'newyork.jpg',
+      'Boston, MA': 'boston.jpg',
+      'Austin, TX': 'austin.jpg',
+      'Seattle, WA': 'seattle.jpg',
+      'Denver, CO': 'denver.jpg',
+      'Jersey City, NJ': 'jerseycity.jpg',
+      'Remote': 'remote.jpg',
     };
 
     locationElements.forEach(element => {
@@ -21,7 +21,7 @@
         const location = e.currentTarget.lastElementChild.textContent;
         locationForm.value = location;
         selectedLocation.textContent = location;
-        jumbo.style.backgroundImage = locationToBackground[location];
+        jumbo.style.backgroundImage = `url('assets/${locationToBackground[location]}')`;
       });
     });
   }
