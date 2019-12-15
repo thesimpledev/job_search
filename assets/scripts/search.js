@@ -10,7 +10,10 @@
       'New York, NY': `url('assets/newyork.jpg')`,
       'Boston, MA': `url('assets/boston.jpg')`,
       'Austin, TX': `url('assets/austin.jpg')`,
-      'Seattle, WA': `url('assets/seattle.jpg')`
+      'Seattle, WA': `url('assets/seattle.jpg')`,
+      'Denver, CO': `url('assets/denver.jpg')`,
+      'Jersey City, NJ': `url('assets/jerseycity.jpg')`,
+      'Remote': `url('assets/remote.jpg')`,
     };
 
     locationElements.forEach(element => {

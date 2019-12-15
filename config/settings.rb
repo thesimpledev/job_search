@@ -6,7 +6,7 @@ SETTINGS = {
     'New York, NY',
     'Boston, MA',
     'Denver, CO',
-    'New Jersey, NJ'
+    'Jersey City, NJ'
   ],
 
   positions: [
