@@ -1,7 +1,6 @@
 require 'active_record'
 
 if ENV['RACK_ENV'] != 'production'
-  ENV['APP_ENV'] = 'development'
   ActiveRecord::Base.establish_connection(
     adapter: 'postgresql',
     database: 'better_jobs'
