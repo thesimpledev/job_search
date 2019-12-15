@@ -1,7 +1,5 @@
 (function() {
-
-  function locationSelect() {
-    const locationElements = document.querySelectorAll('.location-selection');
+  function _setLocation(location) {
     const selectedLocation = document.querySelector('.selected-location');
     const locationForm = document.querySelector('#location');
     const jumbo = document.querySelector('.search-jumbo');
@@ -16,12 +14,18 @@
       'Remote': 'remote.jpg',
     };
 
+    locationForm.value = location;
+    selectedLocation.textContent = location;
+    jumbo.style.backgroundImage = `url('assets/${locationToBackground[location]}')`;
+  }
+
+  function locationSelect() {
+    const locationElements = document.querySelectorAll('.location-selection');
+
     locationElements.forEach(element => {
       element.addEventListener('click', function(e) {
         const location = e.currentTarget.lastElementChild.textContent;
-        locationForm.value = location;
-        selectedLocation.textContent = location;
-        jumbo.style.backgroundImage = `url('assets/${locationToBackground[location]}')`;
+        _setLocation(location);
       });
     });
   }
@@ -144,6 +148,7 @@
       const storedBadKeywords = localStorage.getItem('badKeywords');
       const storedPositionExclusions = localStorage.getItem('positionExclusions');
       const storedLocation = localStorage.getItem('location');
+      _setLocation(storedLocation);
 
       [
         {
