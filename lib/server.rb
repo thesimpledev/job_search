@@ -36,7 +36,7 @@ class Server < Sinatra::Base
   get '/' do
     @job_count = Job.count
     @location_with_count = ActiveRecord::Base.connection.execute(
-      QueryBuilder.unique_with_count('jobs', 'location', 'DESC')
+      QueryBuilder.unique_with_count('jobs', 'search_location', 'DESC')
     )
     erb :search
   end
