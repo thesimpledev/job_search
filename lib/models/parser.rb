@@ -1,5 +1,6 @@
 require_relative 'job'
 require_relative 'alert'
+require 'pry'
 
 # responsible for pulling data from page to return job postings
 class Parser
@@ -33,26 +34,20 @@ class Parser
     @wait = wait
   end
 
-  def parse_jobs
+  def parse_jobs(search_location)
     jobs = []
 
     job_cards.each_with_index do |job_card, i|
       next if already_saved?(job_card)
       next if prime?(job_card)
 
-      begin
-        go_to_card(job_card, i)
-        job = parse_job_posting(job_card)
-        Alert.job_saved(job)
-        job.save
-        jobs << job
-      rescue => e
-        # TODO: fixme, figure out why this is breaking
-        # puts "*" * 20
-        # puts "rescued"
-        # puts e
-        # puts "*" * 20
-      end
+      go_to_card(job_card, i)
+      job = parse_job_posting(job_card)
+      Alert.job_saved(job)
+      job.date_scraped = Date.today
+      job.search_location = search_location
+      job.save!
+      jobs << job
     end
 
     jobs

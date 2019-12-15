@@ -18,7 +18,6 @@ class Job < ActiveRecord::Base
             :location,
             :position,
             :url,
-            :search_location,
             presence: true
   validates :search_location, inclusion: { in: SETTINGS[:places] }
 

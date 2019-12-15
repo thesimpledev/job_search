@@ -14,8 +14,8 @@ require_relative '../../config/environment'
 class Scraper
   attr_reader :driver, :wait, :browser, :parser
 
-  def self.start
-    new.run
+  def self.start(breakpoint = nil)
+    new.run(breakpoint)
   end
 
   def initialize
@@ -29,7 +29,7 @@ class Scraper
     @parser = Parser.new(driver, browser, wait)
   end
 
-  def run
+  def run(break_at_page = nil)
     system('clear')
     SETTINGS[:positions].shuffle.each do |position|
       SETTINGS[:places].shuffle.each do |location|
@@ -42,25 +42,23 @@ class Scraper
           browser.search(position, location)
           browser.each_page do
             pages += 1
-            jobs << parser.parse_jobs
+            jobs << parser.parse_jobs(location)
+            raise 'Breaking' if break_at_page && break_at_page == pages
           end
         rescue => e
-          Scrape.transaction do
-            scrape = Scrape.create!(
-              location: location,
-              position: position,
-              start: start,
-              finish: Time.now,
-              pages: pages,
-              date_ran: Date.today
-            )
-            scrape.jobs << jobs.flatten
-            scrape.jobs.update_all(search_location: location)
-            puts '-' * 20
-            puts 'Done with search or an error occurred.'
-            puts e
-            puts '-' * 20
-          end # transaction
+          scrape = Scrape.create!(
+            location: location,
+            position: position,
+            start: start,
+            finish: Time.now,
+            pages: pages,
+          )
+          scrape.jobs << jobs.flatten
+          scrape.jobs.update_all(search_location: location)
+          puts '-' * 20
+          puts 'Done with search or an error occurred.'
+          puts e
+          puts '-' * 20
         end # rescue
       end # location loop
     end # position loop
