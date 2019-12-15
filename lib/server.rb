@@ -47,12 +47,12 @@ class Server < Sinatra::Base
   end
 
   get '/jobs' do
-    @total_jobs = Job.where(location: params['location']).count
+    @total_jobs = Job.where(search_location: params['location']).count
 
     hashed_params = RequestParser.parse_search_params(params)
     query = QueryBuilder.new('jobs')
     query.exclude_all('position', hashed_params[:position_exclusions])
-    query.and("location = '#{params['location']}'")
+    query.and("search_location = '#{params['location']}'")
     @jobs = Job.find_by_sql(query)
 
     @jobs.each do |job|
