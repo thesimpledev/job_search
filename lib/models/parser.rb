@@ -6,7 +6,6 @@ require 'pry'
 class Parser
   attr_reader :browser, :driver, :wait
 
-  # TODO: make unit tests for
   # location can come in as '- some city name, STATEINITIALS (extra detail)'
   # or as '- Remote (extra details)'. So we either match words before comma
   # and initials after or just the remote part. If it's already sanitized, it
@@ -41,13 +40,18 @@ class Parser
       next if already_saved?(job_card)
       next if prime?(job_card)
 
-      go_to_card(job_card, i)
-      job = parse_job_posting(job_card)
-      Alert.job_saved(job)
-      job.date_scraped = Date.today
-      job.search_location = search_location
-      job.save!
-      jobs << job
+      begin
+        go_to_card(job_card, i)
+        job = parse_job_posting(job_card)
+        Alert.job_saved(job)
+        job.date_scraped = Date.today
+        job.search_location = search_location
+        job.save!
+        jobs << job
+      rescue => e
+        puts e
+        puts 'Rescue timeout error most likely'
+      end
     end
 
     jobs
