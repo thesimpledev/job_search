@@ -24,6 +24,17 @@ class Server < Sinatra::Base
   end
 
   get '/' do
+    if params[:reset]
+      %i[
+        good_keywords
+        bad_keywords
+        position_exclusions
+        passing_points
+      ].each do |cookie_key|
+        cookies.delete(cookie_key)
+      end
+    end
+
     @job_count = Job.count
     @location_with_count = ActiveRecord::Base.connection.execute(
       QueryBuilder.unique_with_count('jobs', 'search_location', 'DESC')

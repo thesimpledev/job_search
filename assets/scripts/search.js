@@ -117,18 +117,7 @@
     slider.addEventListener('touchleave', endSlide);
   }
 
-  function resetSearch() {
-    const resetButton = document.querySelector('button.reset');
-
-    resetButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      localStorage.clear();
-      window.location.reload();
-    });
-  }
-
   locationSelect();
   disableSubmitAfterClicking();
   pointsSlider();
-  resetSearch();
 })();
