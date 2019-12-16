@@ -10,7 +10,6 @@
       'Austin, TX': 'austin.jpg',
       'Seattle, WA': 'seattle.jpg',
       'Denver, CO': 'denver.jpg',
-      'Jersey City, NJ': 'jerseycity.jpg',
       'Remote': 'remote.jpg',
     };
 
