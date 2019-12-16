@@ -27,6 +27,7 @@ class QueryBuilder
   # @param [String] column_name to exclude from
   # @param [Array<String>] words to exclude
   def exclude_all(column_name, words)
+    return where("") if words.empty?
     output = []
     words.each do |word|
       output << "LOWER(#{column_name}) LIKE LOWER('%#{word}%')"
