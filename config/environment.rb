@@ -1,4 +1,14 @@
+# gems
 require 'active_record'
+require 'sassc'
+require 'sinatra'
+require 'sinatra/reloader'
+require 'sprockets'
+require 'pry'
+require 'uglifier'
+
+# app
+Dir["lib/**/*.rb"].each { |f| require_relative "../#{f}" }
 
 if ENV['RACK_ENV'] != 'production'
   ActiveRecord::Base.establish_connection(
