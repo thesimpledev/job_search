@@ -51,7 +51,7 @@ class Server < Sinatra::Base
 
     hashed_params = RequestParser.parse_search_params(params)
     query = QueryBuilder.new('jobs')
-    query.exclude_all('position', hashed_params[:position_exclusions])
+    query.exclude_all('position', hashed_params[:position_exclusions]) unless hashed_params[:position_exclusions] = ''
     query.and("search_location = '#{params['location']}'")
     @jobs = Job.find_by_sql(query)
 

@@ -149,7 +149,7 @@
       const storedLocation = localStorage.getItem('location');
       _setLocation(storedLocation);
 
-      [
+      const fieldsToFill = [
         {
           storage: storedPointsToPass,
           field: pointsToPass
@@ -170,8 +170,10 @@
           storage: storedLocation,
           field: location
         }
-      ].forEach(function(element) {
-        if (element.storage) {
+      ];
+
+      fieldsToFill.forEach(function(element) {
+        if (element.storage !== undefined) {
           element.field.value = element.storage;
         }
       });
