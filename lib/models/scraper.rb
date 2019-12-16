@@ -14,6 +14,10 @@ require_relative '../../config/environment'
 class Scraper
   attr_reader :driver, :wait, :browser, :parser
 
+  def self.locations(*locations)
+    new.run(nil, locations)
+  end
+
   def self.start(breakpoint = nil)
     new.run(breakpoint)
   end
@@ -29,10 +33,10 @@ class Scraper
     @parser = Parser.new(driver, browser, wait)
   end
 
-  def run(break_at_page = nil)
+  def run(break_at_page = nil, locations = nil)
     system('clear')
     SETTINGS[:positions].shuffle.each do |position|
-      SETTINGS[:places].shuffle.each do |location|
+      (locations || SETTINGS[:places]).shuffle.each do |location|
         start = Time.now
         pages = 0
         jobs = []
