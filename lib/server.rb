@@ -8,6 +8,7 @@ class Server < Sinatra::Base
     set :logging, true
   end
 
+  helpers Sinatra::Cookies
   set :environment, Sprockets::Environment.new
 
   environment.append_path 'assets/images'
@@ -36,9 +37,15 @@ class Server < Sinatra::Base
   end
 
   get '/jobs' do
+    hashed_params = RequestParser.parse_search_params(params)
+
+    cookies[:location] = params['location']
+    cookies[:good_keywords] = hashed_params[:good_keywords]
+    cookies[:bad_keywords] = params[:bad_keywords]
+    cookies[:passing_points] = params['passing_points'].to_i
+
     @total_jobs = Job.where(search_location: params['location']).count
 
-    hashed_params = RequestParser.parse_search_params(params)
     @jobs = if hashed_params[:position_exclusions].empty?
               Job
             else

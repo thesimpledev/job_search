@@ -1,10 +1,13 @@
-<section class="search-jumbo">
+<section
+  class="search-jumbo"
+ style="background-image: url(assets/<%= location_to_background %>)"
+>
   <div class="gradient"></div>
   <div class="container">
     <p class="search-jumbo-title">Find awesome job matches</p>
     <p class="search-jumbo-location">near
       <span class="selected-location">
-        San Francisco, CA
+        <%= stored_location_or_default %>
       </span>
     </p>
     <div class="location-selections">
@@ -27,7 +30,7 @@
 
 <div class="container">
   <form class="search" action="/jobs" method="get">
-    <input type="hidden" name="location" value="San Francisco, CA" id="location" />
+    <input type="hidden" name="location" value="<%= stored_location_or_default %>" id="location" />
 
     <div class="form-section-header">
       <div>
@@ -39,16 +42,16 @@
     <input
       type="range"
       id="passing_points"
-      value="50"
+      value="<%= stored_points_or_default %>"
       name="passing_points"
     />
 
     <div class="slider">
-      <div class="slider-fill"></div>
+      <div class="slider-fill" style="width: <%= stored_points_or_default %>%"></div>
 
       <div class="slider-label-container">
         <i class="fas fa-check"></i>
-        <p class="slider-label-detail">50 points</p>
+        <p class="slider-label-detail"><%= pluralized_points %></p>
       </div>
     </div>
 

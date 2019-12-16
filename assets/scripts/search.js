@@ -100,12 +100,6 @@
       }
     }
 
-    function setInitialFill() {
-      const points = rangeInput.value;
-      sliderLabelDetail.textContent = _pluralizePoints(points);
-      sliderFill.style.width = `${points}%`;
-    }
-
     function _pluralizePoints(points) {
       return `${points} point${points === 1 ? '' : 's'}`;
     }
@@ -121,63 +115,6 @@
 
     slider.addEventListener('mouseleave', endSlide);
     slider.addEventListener('touchleave', endSlide);
-
-    document.addEventListener('DOMContentLoaded', setInitialFill);
-  }
-
-  function saveAndReloadSearch() {
-    const form = document.querySelector('form.search');
-    const pointsToPass = document.querySelector('#passing_points');
-    const goodKeywords = document.querySelector('#good-keywords');
-    const badKeywords = document.querySelector('#bad-keywords');
-    const positionExclusions = document.querySelector('#position-exclusions');
-    const location = document.querySelector('#location');
-
-    form.addEventListener('submit', function() {
-      localStorage.setItem('pointsToPass', pointsToPass.value);
-      localStorage.setItem('goodKeywords', goodKeywords.value);
-      localStorage.setItem('badKeywords', badKeywords.value);
-      localStorage.setItem('positionExclusions', positionExclusions.value);
-      localStorage.setItem('location', location.value);
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const storedPointsToPass = localStorage.getItem('pointsToPass');
-      const storedGoodKeywords = localStorage.getItem('goodKeywords');
-      const storedBadKeywords = localStorage.getItem('badKeywords');
-      const storedPositionExclusions = localStorage.getItem('positionExclusions');
-      const storedLocation = localStorage.getItem('location');
-      _setLocation(storedLocation);
-
-      const fieldsToFill = [
-        {
-          storage: storedPointsToPass,
-          field: pointsToPass
-        },
-        {
-          storage: storedGoodKeywords,
-          field: goodKeywords
-        },
-        {
-          storage: storedBadKeywords,
-          field: badKeywords
-        },
-        {
-          storage: storedPositionExclusions,
-          field: positionExclusions
-        },
-        {
-          storage: storedLocation,
-          field: location
-        }
-      ];
-
-      fieldsToFill.forEach(function(element) {
-        if (element.storage !== undefined) {
-          element.field.value = element.storage;
-        }
-      });
-    });
   }
 
   function resetSearch() {
@@ -191,7 +128,6 @@
   }
 
   locationSelect();
-  saveAndReloadSearch();
   disableSubmitAfterClicking();
   pointsSlider();
   resetSearch();

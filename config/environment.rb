@@ -2,6 +2,7 @@
 require 'active_record'
 require 'sassc'
 require 'sinatra'
+require "sinatra/cookies"
 require 'sinatra/reloader'
 require 'sprockets'
 require 'pry'
