@@ -2,6 +2,7 @@
   color: white;
   justify-content: space-between;
   padding: 100px 0;
+  margin-top: -60px;
   margin-bottom: 20px;
   background-color: #ccc;
   background-image: url('sanfrancisco.jpg');
@@ -22,12 +23,11 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, transparent 50%, #efefef);
+  background: linear-gradient(to bottom, transparent 75%, #efefef);
 }
 
 .search-jumbo-title,
 .search-jumbo-location {
-  font-weight: 700;
   font-size: 42px;
   margin-bottom: 10px;
   color: white;
@@ -37,6 +37,7 @@
   span {
     display: inline-block;
     border-bottom: 3px solid greenyellow;
+    font-weight: 700;
     padding-bottom: 5px;
     margin-bottom: 20px;
     cursor: pointer;

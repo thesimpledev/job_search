@@ -9,7 +9,7 @@
   <link rel='icon' href="icon.png" />
   <title>Better Jobs - For Software Engineers</title>
 </head>
-<body>
+<body class="<%= request.path == '/' ? 'landing' : '' %>">
   <section class="nav-container">
     <nav class="nav">
       <a href="/" class="nav-logo">Better Jobs <span>&lt;For Software Engineers /&gt;</span></a>
@@ -23,10 +23,8 @@
       </ul>
     </nav>
   </section>
+  <%= yield %>
 </body>
-  <div>
-    <%= yield %>
-  </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154169557-1"></script>
 <script data-ad-client="ca-pub-5501544683216495" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
