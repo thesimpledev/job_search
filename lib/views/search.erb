@@ -12,7 +12,7 @@
     </p>
     <div class="location-selections">
       <% @location_with_count.each do |record| %>
-        <p class="location-selection">
+        <p class="location-selection" onclick="gtag('event', 'click', { 'event_category': 'search', 'event_label': 'change-location' })">
           <%= record['count'] %>
           <span><%= record['search_location'] %></span>
         </p>
@@ -46,7 +46,7 @@
       name="passing_points"
     />
 
-    <div class="slider">
+    <div class="slider" onclick="gtag('event', 'click', { 'event_category': 'search', 'event_label': 'slider' })">
       <div class="slider-fill" style="width: <%= stored_points_or_default %>%"></div>
 
       <div class="slider-label-container">
@@ -60,7 +60,9 @@
         <span>2</span>
         <h4>Define your keywords</h4>
       </div>
-      <a class="reset" href="?reset=true">Reset search terms</a>
+      <a class="reset" href="?reset=true" onclick="gtag('event', 'click', { 'event_category': 'search', 'event_label': 'reset' })">
+        Reset search terms
+      </a>
     </div>
     <section class="fields">
       <fieldset>
@@ -79,7 +81,11 @@
         <textarea
           id="good-keywords"
           class="textarea-goodkeywords"
-          name="good_keywords"><%= stored_good_keywords_or_default %></textarea>
+          name="good_keywords"
+          onclick="gtag('event', 'click', { 'event_category': 'search', 'event_label': 'good keywords' })"
+        >
+          <%= stored_good_keywords_or_default %>
+        </textarea>
       </fieldset>
 
       <fieldset>
@@ -98,7 +104,11 @@
         <textarea
           id="bad-keywords"
           class="textarea-bad"
-          name="bad_keywords"><%= stored_bad_keywords_or_default %></textarea>
+          name="bad_keywords"
+          onclick="gtag('event', 'click', { 'event_category': 'search', 'event_label': 'bad keywords' })"
+        >
+          <%= stored_bad_keywords_or_default %>
+        </textarea>
       </fieldset>
 
       <fieldset>
@@ -117,11 +127,15 @@
         <textarea
           id="position-exclusions"
           class="textarea-bad"
-          name="position_exclusions"><%= stored_position_exclusions_or_default %></textarea>
+          name="position_exclusions"
+          onclick="gtag('event', 'click', { 'event_category': 'search', 'event_label': 'position exclusions' })"
+        >
+          <%= stored_position_exclusions_or_default %>
+        </textarea>
       </fieldset>
     </section>
 
-    <button class="submit">Search</button>
+    <button class="submit" onclick="gtag('event', 'click', { 'event_category': 'search', 'event_label': 'search' })">Search</button>
   </form>
 </div>
 
