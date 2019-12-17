@@ -64,7 +64,7 @@ class Server < Sinatra::Base
     @jobs = if hashed_params[:position_exclusions].empty?
               Job
             else
-              Job.where("LOWER(position) NOT SIMILAR TO ?", "%(#{hashed_params[:position_exclusions].map { |term| Regexp.escape(term.downcase) }.join('|')})%")
+              Job.where(*QueryBuilder.not_similar_to('position', hashed_params[:position_exclusions]))
             end.where(search_location: params['location'])
 
     @jobs.each do |job|
