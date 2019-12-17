@@ -1,10 +1,19 @@
+<section
+  class="search-jumbo"
+  style="background-image: url(assets/<%= location_to_background %>)"
+>
+  <div class="gradient"></div>
+</section>
+
 <div class="container jobs">
   <% if @jobs.empty? %>
     <div class="no-matches-container">
+      <h2>Jobs in <span><%= params[:location] %></span></h2>
       <h4 class="no-matches-text">Oh noes. We didn't find any jobs. Try altering your search.</h4>
       <a href="/" class="nav-link nav-search">Try Again</a>
     </div>
   <% else %>
+    <h2>Jobs in <span><%= params[:location] %></span></h2>
     <p>Matched <%= @jobs.count %> out of <%= @total_jobs %> jobs</p>
     <% @jobs.each do |job| %>
       <li class="job-card">

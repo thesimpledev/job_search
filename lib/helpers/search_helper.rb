@@ -1,5 +1,5 @@
 def location_to_background
-  return 'sanfrancisco.jpg' unless cookies[:location]
+  return 'sanfrancisco.jpg' unless (params[:location] || cookies[:location])
   {
     'San Francisco, CA' => 'sanfrancisco.jpg',
     'New York, NY' => 'newyork.jpg',
@@ -8,7 +8,7 @@ def location_to_background
     'Seattle, WA' => 'seattle.jpg',
     'Denver, CO' => 'denver.jpg',
     'Remote' => 'remote.jpg',
-  }[cookies[:location]]
+  }[params[:location] || cookies[:location]]
 end
 
 def stored_location_or_default
