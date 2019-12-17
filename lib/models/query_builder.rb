@@ -1,6 +1,4 @@
 class QueryBuilder
-  attr_reader :select, :table, :where_conditions
-
   def self.unique_with_count(table, column, order = "ASC")
     <<-SQL
       SELECT DISTINCT(#{column}), COUNT(#{column})
