@@ -25,8 +25,7 @@ def pluralized_points
 end
 
 def stored_good_keywords_or_default
-  default = '
-css 10
+  default = 'css 10
 html 10
 ruby 20
 rails 20
@@ -51,8 +50,7 @@ pto 5'
 end
 
 def stored_bad_keywords_or_default
-  default = '
-phd -10
+  default = 'phd -10
 crypto -10
 blockchain -10
 java -10
@@ -62,14 +60,12 @@ c++ -10'
 end
 
 def stored_position_exclusions_or_default
-  default = '
-senior
+  default = 'senior
 lead
 instructor
 scientist
 aws
 teaching
-teacher
-'
+teacher'
   cookies[:position_exclusions] || default
 end

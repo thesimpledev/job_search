@@ -8,6 +8,16 @@
   <link rel="stylesheet" href="assets/main.css" type="text/css" />
   <link rel='icon' href="icon.png" />
   <title>Better Jobs - For Software Engineers</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154169557-1"></script>
+  <script data-ad-client="ca-pub-5501544683216495" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-154169557-1');
+  </script>
 </head>
 <body class="<%= request.path == '/' ? 'landing' : '' %>">
   <section class="nav-container">
@@ -15,8 +25,8 @@
       <a href="/" class="nav-logo">Better Jobs <span>&lt;For Software Engineers /&gt;</span></a>
 
       <ul class="nav-links">
-        <li><a href="/" class="nav-link">About</a></li>
-        <li><a href="/" class="nav-link">Logs</a></li>
+<!--        <li><a href="/" class="nav-link">About</a></li>-->
+<!--        <li><a href="/" class="nav-link">Logs</a></li>-->
         <% if request.path != '/' %>
           <li><a href="/" class="nav-link nav-search">New Search</a></li>
         <% end %>
@@ -25,14 +35,4 @@
   </section>
   <%= yield %>
 </body>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154169557-1"></script>
-<script data-ad-client="ca-pub-5501544683216495" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-154169557-1');
-</script>
 </html>
