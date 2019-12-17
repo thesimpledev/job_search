@@ -10,6 +10,7 @@ class Server < Sinatra::Base
 
   helpers Sinatra::Cookies
   set :environment, Sprockets::Environment.new
+  use Rack::Deflater
 
   environment.append_path 'assets/images'
   environment.append_path 'assets/styles'
@@ -24,6 +25,7 @@ class Server < Sinatra::Base
   end
 
   get '/' do
+    @page_title = '- For Software Engineers'
     if params[:reset]
       %i[
         good_keywords
@@ -48,6 +50,7 @@ class Server < Sinatra::Base
   end
 
   get '/jobs' do
+    @page_title = "in #{params['location']}"
     hashed_params = RequestParser.parse_search_params(params)
 
     cookies[:location] = params['location']

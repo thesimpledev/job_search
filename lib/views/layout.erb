@@ -1,13 +1,15 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="description" content="Efficiently & easily find awesome jobs matches as a Software Engineer. Let the computer do the work for you, as usual."/>
+  <meta name="keywords" content="software,engineer,engineering,jobs,remote,san francisco,software engineer jobs,developer jobs,remote jobs,san francisco,new york,boston,seattle,denver,colorado" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/main.css" type="text/css" />
   <link rel='icon' href="icon.png" />
-  <title>Better Jobs - For Software Engineers</title>
+  <title>Better Jobs <%= @page_title %></title>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154169557-1"></script>
   <script data-ad-client="ca-pub-5501544683216495" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -22,7 +24,7 @@
 <body class="<%= request.path == '/' ? 'landing' : '' %>">
   <section class="nav-container">
     <nav class="nav">
-      <a href="/" class="nav-logo">Better Jobs <span>&lt;For Software Engineers /&gt;</span></a>
+      <h1><a href="/" class="nav-logo">Better Jobs <span>&lt;For Software Engineers /&gt;</span></a></h1>
 
       <ul class="nav-links">
 <!--        <li><a href="/" class="nav-link">About</a></li>-->
