@@ -3,7 +3,7 @@
   justify-content: space-between;
   padding: 100px 0;
   margin-top: -60px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-color: #ccc;
   background-image: url('sanfrancisco.jpg');
   background-position: center;
@@ -23,7 +23,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 60%, #efefef);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 60%, #fff);
 }
 
 .search-jumbo-title,
@@ -39,7 +39,7 @@
     border-bottom: 3px solid greenyellow;
     font-weight: 700;
     padding-bottom: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     cursor: pointer;
   }
 }
@@ -76,7 +76,7 @@
 
 .search-jumbo-detail {
   color: $gray-medium;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .search-jumbo-action {
@@ -96,7 +96,7 @@
 fieldset {
   width: 32%;
   background: white;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: $border-radius;
   overflow: hidden;
   box-shadow: $box-shadow;
@@ -114,7 +114,7 @@ button.submit {
   transition: 0.5s background;
   cursor: pointer;
   border-radius: $border-radius;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   box-shadow: $box-shadow;
 }
 
@@ -134,7 +134,7 @@ input[type="range"] {
   overflow: hidden;
   width: 100%;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   cursor: ew-resize;
   box-shadow: $box-shadow;
 }
@@ -239,7 +239,7 @@ textarea:focus {
 }
 
 .form-section-header span {
-  background: white;
+  background: #efefef;
   color: $gray-dark;
   display: inline-block;
   margin-right: 10px;
@@ -259,12 +259,11 @@ textarea:focus {
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .reset:hover {
-  background-color: white;
-  color: $gray-medium;
+  box-shadow: none;
 }
 
 .location {
