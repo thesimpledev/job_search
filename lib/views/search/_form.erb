@@ -1,0 +1,99 @@
+<form class="search" action="/jobs" method="get">
+  <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
+
+  <div class="form-section-header">
+    <div>
+      <span>1</span>
+      <h4>Choose points needed to pass</h4>
+    </div>
+  </div>
+
+  <input
+    type="range"
+    id="passing_points"
+    value="<%= stored_points_or_default %>"
+    name="passing_points"
+  />
+
+  <div class="slider">
+    <div class="slider-fill" style="width: <%= stored_points_or_default %>%"></div>
+
+    <div class="slider-label-container">
+      <i class="fas fa-check"></i>
+      <p class="slider-label-detail"><%= pluralized_points %></p>
+    </div>
+  </div>
+
+  <div class="form-section-header">
+    <div>
+      <span>2</span>
+      <h4>Define your keywords</h4>
+    </div>
+    <a class="reset" href="?reset=true">
+      Reset search terms
+    </a>
+  </div>
+  <section class="fields">
+    <fieldset>
+      <div class="search-label-container label-good">
+        <label
+          for="good-keywords"
+          class="search-label">
+          Good Keywords
+        </label>
+        <i class="fas fa-thumbs-up"></i>
+      </div>
+      <p class="label-explanation">
+        <i class="fas fa-info-circle"></i>
+        If a keyword is found, points are added to the total once.
+      </p>
+      <textarea
+        id="good-keywords"
+        class="textarea-goodkeywords"
+        name="good_keywords"
+      ><%= stored_good_keywords_or_default %></textarea>
+    </fieldset>
+
+    <fieldset>
+      <div class="search-label-container label-bad">
+        <label
+          for="bad-keywords"
+          class="search-label">
+          Bad Keywords
+        </label>
+        <i class="fas fa-thumbs-down"></i>
+      </div>
+      <p class="label-explanation">
+        <i class="fas fa-info-circle"></i>
+        If a keyword is found, points are deducted from the total once.
+      </p>
+      <textarea
+        id="bad-keywords"
+        class="textarea-bad"
+        name="bad_keywords"
+      ><%= stored_bad_keywords_or_default %></textarea>
+    </fieldset>
+
+    <fieldset>
+      <div class="search-label-container label-bad">
+        <label
+          for="position-exclusions"
+          class="search-label">
+          Position Exclusions
+        </label>
+        <i class="fas fa-ban"></i>
+      </div>
+      <p class="label-explanation">
+        <i class="fas fa-info-circle"></i>
+        If any of these words are found in the position title, it will be excluded from your results.
+      </p>
+      <textarea
+        id="position-exclusions"
+        class="textarea-bad"
+        name="position_exclusions"
+      ><%= stored_position_exclusions_or_default %></textarea>
+    </fieldset>
+  </section>
+
+  <button class="submit">Search</button>
+</form>

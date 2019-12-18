@@ -1,0 +1,29 @@
+<section
+  class="search-jumbo"
+  style="background-image: url(assets/<%= location_to_background %>)"
+>
+  <div class="gradient"></div>
+  <div class="container">
+    <h2 class="search-jumbo-title">Find awesome job matches</h2>
+    <h2 class="search-jumbo-location">near
+      <span class="selected-location">
+        <%= stored_location_or_default %>
+      </span>
+    </h2>
+    <div class="location-selections">
+      <% @location_with_count.each do |record| %>
+        <p class="location-selection">
+          <%= record['count'] %>
+          <span><%= record['search_location'] %></span>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <img src="assets/sanfrancisco.jpg" alt="sanfrancisco" class="location-selection-image-preload" />
+  <img src="assets/newyork.jpg" alt="newyork" class="location-selection-image-preload" />
+  <img src="assets/boston.jpg" alt="boston" class="location-selection-image-preload" />
+  <img src="assets/austin.jpg" alt="austin" class="location-selection-image-preload" />
+  <img src="assets/seattle.jpg" alt="seattle" class="location-selection-image-preload" />
+  <img src="assets/denver.jpg" alt="denver" class="location-selection-image-preload" />
+  <img src="assets/remote.jpg" alt="remote" class="location-selection-image-preload" />
+</section>

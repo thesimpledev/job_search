@@ -1,0 +1,103 @@
+<%
+cards = [
+  {
+    background: 'bootcamp.jpg',
+    bad_keywords: [
+      'assembly -100',
+      'c -100',
+      'c# -100',
+      'c++ -100',
+      'java -100',
+    ],
+    good_keywords: [
+      'app academy 50',
+      'appacademy 50',
+      'boot camp 50',
+      'bootcamp 50',
+      'bootcamps 50',
+      'css 5',
+      'entry 10',
+      'entry level 10',
+      'hack reactor 50',
+      'hackreactor 50',
+      'html 5',
+      'javascript 5',
+      'learning 10',
+      'react 5',
+      'redux 5',
+      'ruby 5',
+      'ruby on rails 5',
+      'junior 5',
+      'jr 5',
+      'jr. 5',
+    ],
+    position_exclusions: [
+      'senior',
+      'sr',
+      'sr.',
+      'lead',
+      'devops',
+      'aws',
+      'principal',
+      'staff',
+    ],
+    text: 'Bootcamp Grad'
+  },
+  {
+    background: 'frontend.jpg',
+    bad_keywords: [
+    ],
+    good_keywords: [
+
+    ],
+    position_exclusions: [
+
+    ],
+    text: 'Frontend'
+  },
+  {
+    background: 'backend.jpg',
+    bad_keywords: [
+
+    ],
+    good_keywords: [
+
+    ],
+    position_exclusions: [
+
+    ],
+    text: 'Backend'
+  },
+  {
+    background: 'perks.jpg',
+    bad_keywords: [
+
+    ],
+    good_keywords: [
+
+    ],
+    position_exclusions: [
+
+    ],
+    text: 'Cool Perks'
+  }
+]
+%>
+
+<section class="easysearch">
+  <h3 class="easysearch-label">Easy Search</h3>
+
+  <section class="easysearch-buttons">
+    <% cards.each do |card| %>
+      <form class="easysearch-button" style="background-image: url(assets/<%= card[:background] %>)" action="/jobs" method="get">
+        <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
+        <input type="hidden" name="good_keywords" value="<%= card[:good_keywords].join("\r\n") %>" />
+        <input type="hidden" name="bad_keywords" value="<%= card[:bad_keywords].join("\r\n") %>" />
+        <input type="hidden" name="position_exclusions" value="<%= card[:position_exclusions].join("\r\n") %>" />
+        <input type="hidden" name="points" value="50" />
+        <p class="easysearch-button-text"><%= card[:text] %></p>
+        <button class="easysearch-button-submit"></button>
+      </form>
+    <% end %>
+  </section>
+</section>

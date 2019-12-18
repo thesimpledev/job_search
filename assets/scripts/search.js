@@ -1,7 +1,7 @@
 (function() {
   function _setLocation(location) {
     const selectedLocation = document.querySelector('.selected-location');
-    const locationForm = document.querySelector('#location');
+    const locationForms = document.querySelectorAll('.location');
     const jumbo = document.querySelector('.search-jumbo');
     const locationToBackground = {
       'San Francisco, CA': 'sanfrancisco.jpg',
@@ -13,7 +13,7 @@
       'Remote': 'remote.jpg',
     };
 
-    locationForm.value = location;
+    locationForms.forEach(form => form.value = location);
     selectedLocation.textContent = location;
     jumbo.style.backgroundImage = `url('assets/${locationToBackground[location]}')`;
   }

@@ -19,7 +19,7 @@ class RequestParser
     end
 
     def parse_bad_keywords(bad_keywords)
-      Hash[*bad_keywords.split("\r\n").map { |el| el.split(/\s(\w+)$/) }.flatten]
+      Hash[*bad_keywords.split("\r\n").map { |el| el.split(/\s(-\w+)$/) }.flatten]
     end
 
     def parse_position_exclusions(position_exclusions)
