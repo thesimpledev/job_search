@@ -11,43 +11,13 @@
   <link rel='icon' href="icon.png" />
   <title>Better Jobs <%= @page_title %></title>
   <% if Sinatra::Base.production? %>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154169557-1"></script>
-    <script data-ad-client="ca-pub-5501544683216495" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-154169557-1');
-    </script>
-    <!-- Hotjar Tracking Code for www.betterjobs.us -->
-    <script>
-      (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1615424,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
+    <%= erb :'layout/_analytics' %>
+    <%= erb :'layout/_hotjar' %>
   <% end %>
 </head>
 <body class="<%= request.path == '/' ? 'landing' : '' %>">
-  <section class="nav-container">
-    <nav class="nav">
-      <h1><a href="/" class="nav-logo">Better Jobs <span>&lt;For Software Engineers /&gt;</span></a></h1>
-
-      <ul class="nav-links">
-        <% if request.path != '/' %>
-          <li><a href="/" class="nav-link nav-search">New Search</a></li>
-        <% end %>
-      </ul>
-    </nav>
-  </section>
+  <%= erb :'layout/_nav' %>
   <%= yield %>
-
   <%= erb :'layout/_footer' %>
 </body>
 </html>
