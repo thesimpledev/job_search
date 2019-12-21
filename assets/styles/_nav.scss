@@ -41,10 +41,23 @@
 }
 
 .nav-link {
-  padding: 10px 0;
+  color: white;
   display: block;
   margin-left: 10px;
-  color: $gray-medium;
+  padding: 10px 0;
+
+  &:hover {
+    border-bottom: 1px solid #ccc;
+  }
+
+  &.active {
+    border-bottom: 1px solid white;
+    font-weight: 700;
+
+    &:hover {
+      border-bottom: 1px solid white;
+    }
+  }
 }
 
 .nav-search {
