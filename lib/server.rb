@@ -26,6 +26,9 @@ class Server < Sinatra::Base
 
   get '/' do
     @page_title = '- For Software Engineers'
+
+    cookies[:location] = params[:location] if params[:location]
+
     if params[:reset]
       %i[
         good_keywords

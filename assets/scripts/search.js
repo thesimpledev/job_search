@@ -117,7 +117,12 @@
     slider.addEventListener('touchleave', endSlide);
   }
 
+  function clearQueryString() {
+    window.history.pushState({}, document.title, '/');
+  }
+
   locationSelect();
   disableSubmitAfterClicking();
   pointsSlider();
+  clearQueryString();
 })();

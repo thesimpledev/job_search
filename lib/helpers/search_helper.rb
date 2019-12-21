@@ -12,7 +12,7 @@ def location_to_background
 end
 
 def stored_location_or_default
-  cookies[:location] || 'San Francisco, CA'
+  params[:location] || cookies[:location] || 'San Francisco, CA'
 end
 
 def stored_points_or_default
