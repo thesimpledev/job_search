@@ -44,6 +44,18 @@ class Server < Sinatra::Base
     erb :search
   end
 
+  get '/about' do
+    erb :static_layout, layout: :layout do
+      erb :about
+    end
+  end
+
+  get '/contact' do
+    erb :static_layout, layout: :layout do
+      erb :contact
+    end
+  end
+
   get '/scrapes' do
     @scrapes = Scrape.includes(:jobs).all
     erb :scrapes

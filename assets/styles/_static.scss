@@ -1,0 +1,30 @@
+.search-jumbo.static {
+  background-size: initial;
+  background-repeat: repeat;
+}
+
+.static {
+  &-title {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    margin-top: -100px;
+    position: relative;
+    text-align: center;
+    z-index: 10;
+  }
+
+  &-body {
+    align-items: center;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
+  }
+}
