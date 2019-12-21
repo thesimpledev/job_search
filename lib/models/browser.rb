@@ -1,8 +1,9 @@
 require 'selenium-webdriver'
 require_relative 'alert'
 
-# responsible for basic browser interactions
+# Responsible for basic browser interactions
 # such as filling in fields pressing buttons and scrolling
+#
 class Browser
   attr_reader :driver, :wait
 
@@ -16,6 +17,11 @@ class Browser
     @wait = wait || Selenium::WebDriver::Wait.new(timeout: 2)
   end
 
+  # enter position and location and start search
+  #
+  # @param [String] position to be searched
+  # @param [String] location to be searched
+  #
   def search(position, location)
     driver.navigate.to('http://indeed.com')
     fill_in_position(position)
@@ -31,6 +37,8 @@ class Browser
     ")
   end
 
+  # Once #search complete iterate over each page
+  #
   def each_page
     page_number = 1
     loop do

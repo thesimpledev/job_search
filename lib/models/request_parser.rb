@@ -2,9 +2,9 @@ class RequestParser
   class << self
     def parse_search_params(params)
       {
-        good_keywords: parse_good_keywords(params['good_keywords']),
-        bad_keywords: parse_bad_keywords(params['bad_keywords']),
-        position_exclusions: parse_position_exclusions(params['position_exclusions'])
+        good_keywords: parse_good_keywords(params[:good_keywords]),
+        bad_keywords: parse_bad_keywords(params[:bad_keywords]),
+        position_exclusions: parse_position_exclusions(params[:position_exclusions])
       }
     end
 

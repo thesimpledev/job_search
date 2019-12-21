@@ -1,31 +1,10 @@
-require_relative 'job'
 require_relative 'alert'
-require 'pry'
+require_relative 'job'
+require_relative 'sanitizer'
 
 # responsible for pulling data from page to return job postings
 class Parser
   attr_reader :browser, :driver, :wait
-
-  # location can come in as '- some city name, STATEINITIALS (extra detail)'
-  # or as '- Remote (extra details)'. So we either match words before comma
-  # and initials after or just the remote part. If it's already sanitized, it
-  # will return itself.
-  #
-  # example:
-  # Parser.sanitize_location('- San Luis Somewhere, CA (extra details here)')
-  # => 'San Luis Somewhere, CA'
-  #
-  # Parser.sanitize_location('- Remote with some extra detail')
-  # => 'Remote'
-  #
-  # Parser.sanitize_location('San Francisco, CA')
-  # => 'San Francisco, CA'
-  #
-  # @param [String] location to sanitize
-  # @return [String] sanitized location
-  def self.sanitize_location(location)
-    location.match(/^[-\s]*(?'location'([\w*\s*]*, \w+)|([\w*]*))/)[:location]
-  end
 
   def initialize(driver, browser, wait)
     @driver = driver
@@ -33,7 +12,7 @@ class Parser
     @wait = wait
   end
 
-  def parse_jobs(search_location)
+  def parse_jobs
     jobs = []
 
     job_cards.each_with_index do |job_card, i|
@@ -45,7 +24,6 @@ class Parser
         job = parse_job_posting(job_card)
         Alert.job_saved(job)
         job.date_scraped = Date.today
-        job.search_location = search_location
         job.save!
         jobs << job
       rescue => e
@@ -77,7 +55,7 @@ class Parser
     begin
       wait.until { driver.find_element(id: 'vjs-jobtitle') }
     rescue Selenium::WebDriver::Error::TimeoutError
-      Alert.timeout('Timeout occured. Job was most likely opened in a new tab.')
+      Alert.timeout('Timeout occurred. Job was most likely opened in a new tab.')
     end
   end
 
@@ -101,7 +79,7 @@ class Parser
     {
       position: driver.find_element(id: 'vjs-jobtitle').text,
       company: driver.find_element(id: 'vjs-cn').text,
-      location: Parser.sanitize_location(driver.find_element(id: 'vjs-loc').text),
+      location: Sanitizer.location(driver.find_element(id: 'vjs-loc').text),
       description: driver.find_element(id: 'vjs-content').text,
       job_id: job_card.attribute('id'),
       url: job_card.find_element(tag_name: 'a').attribute('href')

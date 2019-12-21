@@ -1,4 +1,4 @@
-require_relative '../config/environment.rb'
+require_relative '../config/environment'
 
 class Server < Sinatra::Base
   configure :development do
@@ -50,7 +50,7 @@ class Server < Sinatra::Base
   end
 
   get '/jobs' do
-    @page_title = "in #{params['location']}"
+    @page_title = "in #{params[:location]}"
     hashed_params = RequestParser.parse_search_params(params)
 
     cookies[:location] = params[:location]
@@ -59,19 +59,19 @@ class Server < Sinatra::Base
     cookies[:position_exclusions] = params[:position_exclusions]
     cookies[:passing_points] = params[:passing_points].to_i
 
-    @total_jobs = Job.where(search_location: params['location']).count
+    @total_jobs = Job.where(search_location: params[:location]).count
 
     @jobs = if hashed_params[:position_exclusions].empty?
               Job
             else
               Job.where(*QueryBuilder.not_similar_to('position', hashed_params[:position_exclusions]))
-            end.where(search_location: params['location'])
+            end.where(search_location: params[:location])
 
     @jobs.each do |job|
       job.set_point_allocation(
         hashed_params[:good_keywords],
         hashed_params[:bad_keywords],
-        params['passing_points'].to_i
+        params[:passing_points]
       )
     end
 

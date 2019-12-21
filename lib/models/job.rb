@@ -5,13 +5,16 @@ require_relative '../../config/settings'
 
 class Job < ActiveRecord::Base
   attr_reader :point_allocation
+
   belongs_to :scrape, optional: true
+
   delegate :points,
            :passing_score?,
            :good_matches,
            :bad_matches,
            to: :point_allocation,
            allow_nil: true
+
   validates :company,
             :description,
             :job_id,

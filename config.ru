@@ -1,2 +1,2 @@
-require_relative './lib/server.rb'
+require_relative './lib/server'
 run Server
