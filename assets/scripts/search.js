@@ -126,18 +126,17 @@
     window.history.pushState({}, document.title, '/');
   }
 
-  const goodKeywordStorage = [];
-  function handleGoodKeywords() {
-    const formAddedKeywords = document.querySelector('.form-added-keywords');
-    const formAddButton = document.querySelector('.form-add-button');
-    const keywordInput = document.querySelector('.form-add-keyword');
-    const pointsInput = document.querySelector('.form-add-points');
+  function handleKeywords(storage, index) {
+    const formAddedKeywords = document.querySelectorAll('.form-added-keywords')[index];
+    const formAddButton = document.querySelectorAll('.form-add-button')[index];
+    const keywordInput = document.querySelectorAll('.form-add-keyword')[index];
+    const pointsInput = document.querySelectorAll('.form-add-points')[index];
 
     [keywordInput, pointsInput].forEach(node => {
       node.addEventListener('keydown', function(e) {
         if (e.code === "Enter") {
           e.preventDefault();
-          goodKeywordStorage.push([keywordInput.value, parseInt(pointsInput.value)]);
+          storage.push([keywordInput.value, parseInt(pointsInput.value)]);
           render();
           clearInputs();
         }
@@ -154,15 +153,25 @@
     formAddedKeywords.addEventListener('click', function(e) {
       if (e.target && e.target.nodeName === 'BUTTON') {
         e.preventDefault();
-        delete goodKeywordStorage[e.target.dataset.index];
+        delete storage[e.target.dataset.index];
         render();
       }
     });
 
+    /*
+      Element example:
+       <li class="form-added-keyword">
+         <p>css</p>
+         <p>
+           20 points
+           <button>X</button>
+         </p>
+       </li>
+     */
     function render() {
       formAddedKeywords.innerHTML = '';
 
-      goodKeywordStorage.forEach(function(entry, i) {
+      storage.forEach(function(entry, i) {
         const container = document.createElement('li');
         container.classList.add('form-added-keyword');
 
@@ -190,9 +199,13 @@
     }
   }
 
+  const goodKeywordStorage = [];
+  const badKeywordStorage = [];
+
   locationSelect();
   disableSubmitAfterClicking();
   pointsSlider();
   clearQueryString();
-  handleGoodKeywords();
+  handleKeywords(goodKeywordStorage, 0);
+  handleKeywords(badKeywordStorage, 1);
 })();

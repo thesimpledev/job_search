@@ -339,8 +339,14 @@ textarea:focus {
   &-button {
     background: greenyellow;
     border: none;
+    color: white;
     cursor: pointer;
+    font-weight: 700;
     padding: 0 15px;
+
+    &.bad {
+      background: $pink;
+    }
   }
 }
 
