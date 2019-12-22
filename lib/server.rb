@@ -26,6 +26,9 @@ class Server < Sinatra::Base
 
   get '/' do
     @page_title = '- For Software Engineers'
+    @new_job_count = Job.joins(:scrape)
+                        .where('scrapes.created_at >= ?', 1.days.ago)
+                        .count
 
     cookies[:location] = params[:location] if params[:location]
 

@@ -274,6 +274,33 @@ textarea:focus {
   cursor: pointer;
 }
 
+@keyframes pulse {
+  from { opacity: 1 }
+  to { opacity: 0.8 }
+}
+
+.new-job-count {
+  animation: pulse linear 1s infinite alternate;
+  background: #e74c3c;
+  border-radius: $border-radius;
+  box-shadow: 0 0 10px red;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+
+  span {
+    font-weight: 700;
+    margin-right: 3px;
+  }
+
+  i {
+    color: darkred;
+    margin-right: 5px;
+  }
+}
+
 @media screen and (max-width: $breakpoint-mobile) {
   .fields {
     display: block;
