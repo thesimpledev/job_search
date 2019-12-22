@@ -196,6 +196,7 @@ cards = [
   <section class="easysearch-buttons">
     <% cards.each do |card| %>
       <form class="easysearch-button" style="background-image: url(assets/<%= card[:background] %>)" action="/jobs" method="get">
+        <input type="hidden" name="easy_search" value="true" />
         <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
         <input type="hidden" name="good_keywords" value="<%= card[:good_keywords].join("\r\n") %>" />
         <input type="hidden" name="bad_keywords" value="<%= card[:bad_keywords].join("\r\n") %>" />

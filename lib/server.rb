@@ -69,11 +69,13 @@ class Server < Sinatra::Base
     @page_title = "in #{params[:location]}"
     hashed_params = RequestParser.parse_search_params(params)
 
-    cookies[:location] = params[:location]
-    cookies[:good_keywords] = params[:good_keywords]
-    cookies[:bad_keywords] = params[:bad_keywords]
-    cookies[:position_exclusions] = params[:position_exclusions]
-    cookies[:passing_points] = params[:passing_points].to_i
+    unless params[:easy_search]
+      cookies[:location] = params[:location]
+      cookies[:good_keywords] = params[:good_keywords]
+      cookies[:bad_keywords] = params[:bad_keywords]
+      cookies[:position_exclusions] = params[:position_exclusions]
+      cookies[:passing_points] = params[:passing_points].to_i
+    end
 
     @total_jobs = Job.where(search_location: params[:location]).count
 
