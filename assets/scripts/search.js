@@ -126,8 +126,73 @@
     window.history.pushState({}, document.title, '/');
   }
 
+  const goodKeywordStorage = [];
+  function handleGoodKeywords() {
+    const formAddedKeywords = document.querySelector('.form-added-keywords');
+    const formAddButton = document.querySelector('.form-add-button');
+    const keywordInput = document.querySelector('.form-add-keyword');
+    const pointsInput = document.querySelector('.form-add-points');
+
+    [keywordInput, pointsInput].forEach(node => {
+      node.addEventListener('keydown', function(e) {
+        if (e.code === "Enter") {
+          e.preventDefault();
+          goodKeywordStorage.push([keywordInput.value, parseInt(pointsInput.value)]);
+          render();
+          clearInputs();
+        }
+      });
+    });
+
+    formAddButton.addEventListener('click', function(e) {
+      if (e.target.textContent !== 'Add') {
+        e.preventDefault();
+        clearInputs();
+      }
+    });
+
+    formAddedKeywords.addEventListener('click', function(e) {
+      if (e.target && e.target.nodeName === 'BUTTON') {
+        e.preventDefault();
+        delete goodKeywordStorage[e.target.dataset.index];
+        render();
+      }
+    });
+
+    function render() {
+      formAddedKeywords.innerHTML = '';
+
+      goodKeywordStorage.forEach(function(entry, i) {
+        const container = document.createElement('li');
+        container.classList.add('form-added-keyword');
+
+        const keywordContainer = document.createElement('p');
+        keywordContainer.textContent = entry[0];
+
+        const pointsContainer = document.createElement('p');
+        pointsContainer.textContent = `${entry[1]} points`;
+        const button = document.createElement('button');
+        button.dataset.index = i;
+        button.textContent = 'X';
+        pointsContainer.appendChild(button);
+
+        container.appendChild(keywordContainer);
+        container.appendChild(pointsContainer);
+
+        formAddedKeywords.appendChild(container);
+      });
+    }
+
+    function clearInputs() {
+      keywordInput.value = '';
+      pointsInput.value = '';
+      keywordInput.focus();
+    }
+  }
+
   locationSelect();
   disableSubmitAfterClicking();
   pointsSlider();
   clearQueryString();
+  handleGoodKeywords();
 })();

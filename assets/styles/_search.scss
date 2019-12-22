@@ -90,6 +90,7 @@
 .fields {
   display: flex;
   width: 100%;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -298,6 +299,48 @@ textarea:focus {
   i {
     color: darkred;
     margin-right: 5px;
+  }
+}
+
+.form-added-keywords {
+  min-height: 100px;
+}
+
+.form-added-keyword {
+  align-items: center;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 10px;
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+.form-add {
+  border-top: 1px solid #efefef;
+  display: flex;
+
+  &-keyword,
+  &-points {
+    border: none;
+    flex: 1;
+    padding: 10px;
+  }
+
+  &-keyword {
+  }
+
+  &-points {
+  }
+
+  &-button {
+    background: greenyellow;
+    border: none;
+    cursor: pointer;
+    padding: 0 15px;
   }
 }
 

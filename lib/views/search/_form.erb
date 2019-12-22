@@ -47,11 +47,21 @@
         <i class="fas fa-info-circle"></i>
         If a keyword is found, points are added to the total once.
       </p>
-      <textarea
-        id="good-keywords"
-        class="textarea-goodkeywords"
-        name="good_keywords"
-      ><%= stored_good_keywords_or_default %></textarea>
+      <ul class="form-added-keywords">
+        <li class="form-added-keyword">
+          <p>css</p>
+          <p>
+            20 points
+            <button>X</button>
+          </p>
+        </li>
+      </ul>
+
+      <div class="form-add">
+        <input type="text" placeholder="Enter a good keyword" class="form-add-keyword" />
+        <input type="text" placeholder="Points to add" class="form-add-points" />
+        <button class="form-add-button">Add</button>
+      </div>
     </fieldset>
 
     <fieldset>
