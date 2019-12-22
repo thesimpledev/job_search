@@ -3,11 +3,6 @@ cards = [
   {
     background: 'appacademy.jpg',
     bad_keywords: [
-      'assembly -100',
-      'c -100',
-      'c# -100',
-      'c++ -100',
-      'java -100',
     ],
     good_keywords: [
       'app academy 50',
@@ -51,15 +46,8 @@ cards = [
   {
     background: 'hackreactor.jpg',
     bad_keywords: [
-      'assembly -100',
-      'c -100',
-      'c# -100',
-      'c++ -100',
-      'java -100',
     ],
     good_keywords: [
-      'app academy 50',
-      'appacademy 50',
       'boot camp 50',
       'bootcamp 50',
       'bootcamps 50',
@@ -94,10 +82,6 @@ cards = [
   {
     background: 'frontend.jpg',
     bad_keywords: [
-      'backend -50',
-      'ruby on rails -50',
-      'ruby -50',
-      'python -50',
     ],
     good_keywords: [
       'react 10',
@@ -122,10 +106,6 @@ cards = [
   {
     background: 'backend.jpg',
     bad_keywords: [
-      'frontend -50',
-      'front end -50',
-      'html -10',
-      'css -10',
     ],
     good_keywords: [
       'backend 10',
@@ -155,6 +135,8 @@ cards = [
     bad_keywords: [
     ],
     good_keywords: [
+      'fullstack 50',
+      'full-stack 50',
     ],
     position_exclusions: [
       'frontend',
@@ -173,6 +155,8 @@ cards = [
       'beer 10',
       'beer on tap 10',
       'pet 10',
+      'dog friendly 10',
+      'dog-friendly 10',
       'pet friendly 10',
       'conference 10',
       'conferences 10',
@@ -212,7 +196,7 @@ cards = [
         <input type="hidden" name="good_keywords" value="<%= card[:good_keywords].join("\r\n") %>" />
         <input type="hidden" name="bad_keywords" value="<%= card[:bad_keywords].join("\r\n") %>" />
         <input type="hidden" name="position_exclusions" value="<%= card[:position_exclusions].join("\r\n") %>" />
-        <input type="hidden" name="passing_points" value="50" />
+        <input type="hidden" name="passing_points" value="25" />
         <p class="easysearch-button-text"><%= card[:text] %></p>
         <button class="easysearch-button-submit"></button>
       </form>
