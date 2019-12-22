@@ -10,7 +10,7 @@ class PointAllocation
   # Initialize and keep track of points, good_matches, bad matches, and passing
   # score while allocate points and parsing text to find matches
   #
-  # @param [String] text to be parsed
+  # @param [String] description to be parsed
   # @param [Hash] good_keywords with String as key and positive points as value
   # @param [Hash] bad_keywords with String as key and negative points as value
   # @param [Integer] passing_score is the amount of points needed to pass
@@ -34,7 +34,7 @@ class PointAllocation
   private
 
   attr_reader :words_found
-  attr_writer :bad_matches, :good_matches, :passing_score, :points
+  attr_writer :bad_matches, :good_matches, :passing_score, :points, :description
 
   def allocate_good_matches(good_keywords)
     match(good_keywords, :good_matches)
