@@ -12,7 +12,7 @@ class Parser
     @wait = wait
   end
 
-  def parse_jobs
+  def parse_jobs(location)
     jobs = []
 
     job_cards.each_with_index do |job_card, i|
@@ -22,9 +22,10 @@ class Parser
       begin
         go_to_card(job_card, i)
         job = parse_job_posting(job_card)
-        Alert.job_saved(job)
+        job.search_location = location
         job.date_scraped = Date.today
         job.save!
+        Alert.job_saved(job)
         jobs << job
       rescue => e
         puts e

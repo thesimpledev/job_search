@@ -44,7 +44,7 @@ class Scraper
           browser.search(position, location)
           browser.each_page do
             pages += 1
-            jobs << parser.parse_jobs
+            jobs += parser.parse_jobs(location)
             raise 'Breaking' if break_at_page && break_at_page == pages
           end
         rescue => e
@@ -55,9 +55,7 @@ class Scraper
             finish: Time.now,
             pages: pages,
           )
-          scrape.jobs << jobs.flatten
-          scrape.jobs.update_all(search_location: location)
-
+          scrape.jobs = jobs
           puts '-' * 20
           puts 'Done with search or an error occurred.'
           puts e
