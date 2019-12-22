@@ -25,8 +25,13 @@
       element.addEventListener('click', function(e) {
         const location = e.currentTarget.lastElementChild.textContent;
         _setLocation(location);
+        changePageTitle(location)
       });
     });
+  }
+
+  function changePageTitle(location) {
+    document.title = `Better Jobs - For Software Engineers in ${location}`
   }
 
   // disable button after submitting and append '.'s while waiting for search
