@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 ruby '2.5.1'
 
 source "https://rubygems.org"
@@ -12,6 +10,7 @@ gem 'pg'
 gem 'pry'
 gem 'pry-byebug'
 gem 'rspec'
+gem 'rack-ssl', '~> 1.4'
 gem 'sassc', '~> 2.2', '>= 2.2.1'
 gem 'selenium-webdriver'
 gem 'sinatra'
@@ -19,3 +18,4 @@ gem 'sinatra-contrib'
 gem 'sprockets', '~> 4.0'
 gem 'tty-table'
 gem 'uglifier'
+

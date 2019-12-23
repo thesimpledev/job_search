@@ -43,6 +43,8 @@ GEM
     rack (2.0.7)
     rack-protection (2.0.7)
       rack
+    rack-ssl (1.4.1)
+      rack
     rake (12.3.3)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
@@ -110,6 +112,7 @@ DEPENDENCIES
   pg
   pry
   pry-byebug
+  rack-ssl (~> 1.4)
   rspec
   sassc (~> 2.2, >= 2.2.1)
   selenium-webdriver

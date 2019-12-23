@@ -1,11 +1,12 @@
 # gems
 require 'active_record'
+require 'pry'
+require 'rack/ssl'
 require 'sassc'
 require 'sinatra'
-require "sinatra/cookies"
+require 'sinatra/cookies'
 require 'sinatra/reloader'
 require 'sprockets'
-require 'pry'
 require 'uglifier'
 
 # app

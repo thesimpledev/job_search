@@ -11,6 +11,7 @@ class Server < Sinatra::Base
   helpers Sinatra::Cookies
   set :environment, Sprockets::Environment.new
   use Rack::Deflater
+  use Rack::SSL
 
   environment.append_path 'assets/images'
   environment.append_path 'assets/styles'
