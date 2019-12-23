@@ -15,7 +15,7 @@
 
     locationForms.forEach(form => form.value = location);
     selectedLocation.textContent = location;
-    jumbo.style.backgroundImage = `url('assets/${locationToBackground[location]}')`;
+    jumbo.style.backgroundImage = `url('${locationToBackground[location]}')`;
   }
 
   function locationSelect() {
@@ -229,8 +229,33 @@
     }
 
     function _renderPlaceholder() {
+      const details = [
+        {
+          alt: 'Emerald gem',
+          image: 'emerald.png',
+          detail: 'If a keyword is found in the job description, points will be added to an accumulated total.',
+          title: 'Adds Points'
+        },
+        {
+          alt: 'Ruby gem',
+          image: 'ruby.png',
+          detail: 'If a keyword is found in the job description, points will be deducted from the accumulated total.',
+          title: 'Subtracts Points'
+        },
+        {
+          alt: 'Icon to illustrate exclusion',
+          image: 'ban.png',
+          detail: 'If any of these words are found in the title of the position, it will be excluded from results.',
+          title: 'Removes Positions'
+        },
+      ];
+
       formAddedKeywords.innerHTML = `
-        <li class="form-added-placeholder">Oh noes, you don't have anything yet</li>
+        <li class="form-added-placeholder">
+          <img src="${details[index].image}" alt="${details[index].alt}" />
+          <h6>${details[index].title}</h6>
+          <p>${details[index].detail}</p>
+        </li>
       `;
     }
 

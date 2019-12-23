@@ -3,11 +3,6 @@
   position: relative;
   z-index: 100;
 
-  &-label {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-
   &-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +15,6 @@
     background-position: center;
     background-size: cover;
     border-radius: 10px;
-    box-shadow: $box-shadow;
     display: flex;
     font-size: 12px;
     height: 50px;
@@ -28,7 +22,6 @@
     margin-bottom: 2%;
     position: relative;
     text-align: center;
-    transition: 0.3s box-shadow ease;
     width: 32%;
 
     &-submit {
@@ -43,8 +36,6 @@
     }
 
     &:hover {
-      box-shadow: none;
-
       &::before {
         background: rgba(0,0,0,0.1);
       }

@@ -1,3 +1,15 @@
+.section-label {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.section-detail {
+  color: $gray-medium;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
 .search-jumbo {
   color: white;
   justify-content: space-between;
@@ -23,14 +35,15 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5)
+  background: rgba(0,0,0,0.75)
 }
 
 .search-jumbo-title,
 .search-jumbo-location {
+  color: white;
   font-size: 42px;
   margin-bottom: 10px;
-  color: white;
+  text-shadow: 0 0 18px rgba(0,0,0,0.75);
 }
 
 .search-jumbo-location {
@@ -49,7 +62,6 @@
   font-size: 10px;
 
   p {
-    transition: 0.5s box-shadow, 0.5s background;
     border-radius: $border-radius;
     display: inline-block;
     padding: 5px 10px;
@@ -59,7 +71,6 @@
     font-weight: 400;
 
     &:hover {
-      box-shadow: $box-shadow;
       background: $green;
     }
   }
@@ -95,28 +106,27 @@
 }
 
 .field {
-  width: 32%;
   background: white;
-  margin-bottom: 10px;
   border-radius: $border-radius;
+  border: 1px solid #efefef;
+  margin-bottom: 40px;
   overflow: hidden;
-  box-shadow: $box-shadow;
+  width: 32%;
 }
 
 button.submit {
-  display: block;
-  width: 100%;
-  padding: 10px;
   background: $green;
-  border: none;
-  font-weight: 700;
-  color: white;
-  line-height: 1.5;
-  transition: 0.5s background;
-  cursor: pointer;
   border-radius: $border-radius;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-weight: 700;
+  line-height: 1.5;
   margin-bottom: 10px;
-  box-shadow: $box-shadow;
+  padding: 10px;
+  transition: 0.5s background;
+  width: 100%;
 }
 
 button.disabled {
@@ -129,15 +139,14 @@ input[type="range"] {
 }
 
 .slider {
-  background-color: white;
+  background-color: #efefef;
   border-radius: 10px;
   height: 50px;
+  margin-bottom: 40px;
   overflow: hidden;
   width: 100%;
   position: relative;
-  margin-bottom: 10px;
   cursor: ew-resize;
-  box-shadow: $box-shadow;
 }
 
 .slider-fill {
@@ -165,7 +174,7 @@ input[type="range"] {
 }
 
 .slider-label-detail {
-  color: $gray-dark;
+  color: white;
   font-weight: 700;
   user-select: none;
 }
@@ -174,7 +183,7 @@ input[type="range"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .label-good {
@@ -258,20 +267,13 @@ textarea:focus {
   color: $gray-medium;
   border: none;
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
   cursor: pointer;
-  transition: box-shadow 0.3s ease;
-}
-
-.reset:hover {
-  box-shadow: none;
 }
 
 .location {
   padding: 10px;
   color: $gray-dark;
   border: none;
-  box-shadow: $box-shadow;
   cursor: pointer;
 }
 
@@ -284,7 +286,6 @@ textarea:focus {
   animation: pulse linear 1s infinite alternate;
   background: #e74c3c;
   border-radius: $border-radius;
-  box-shadow: 0 0 10px red;
   color: white;
   display: inline-block;
   font-size: 12px;
@@ -306,16 +307,41 @@ textarea:focus {
   min-height: 100px;
 }
 
-.form-added-keyword {
-  align-items: center;
-  border-bottom: 1px solid #efefef;
-  display: flex;
-  font-size: 12px;
-  justify-content: space-between;
-  padding: 10px;
+.form-added {
+  &-keyword {
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    padding: 10px;
 
-  button {
-    margin-left: 10px;
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  &-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+
+    img {
+      margin-bottom: 20px;
+    }
+
+    h6 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 1.5;
+    }
   }
 }
 
@@ -340,7 +366,7 @@ textarea:focus {
   }
 
   &-button {
-    background: greenyellow;
+    background: $green;
     border: none;
     color: white;
     cursor: pointer;

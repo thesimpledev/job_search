@@ -10,6 +10,7 @@
     color: white;
     font-size: 32px;
     text-align: center;
+    text-shadow: 0 0 18px rgba(0,0,0,0.75);
 
     span {
       font-weight: 700;
@@ -42,15 +43,13 @@
 .job-card {
   background: white;
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
   display: flex;
   margin-bottom: 10px;
   overflow: hidden;
-  transition: 0.5s margin, 0.5s box-shadow;
+  transition: 0.5s margin;
 }
 
 .job-card:hover {
-  box-shadow: 0 0 0 2px $green;
   margin-left: -10px;
   margin-right: -10px;
 }
@@ -77,6 +76,8 @@
 }
 
 .job-main {
+  border: 1px solid #efefef;
+  border-radius: 0 $border-radius $border-radius 0;
   flex-grow: 1;
 }
 

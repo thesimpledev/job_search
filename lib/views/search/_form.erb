@@ -1,3 +1,6 @@
+<h3 class="section-label">Advanced Search</h3>
+<h4 class="section-detail">Find job matches based upon how you rank keywords</h4>
+
 <form class="search" action="/jobs" method="get">
   <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
 
@@ -43,16 +46,15 @@
         </label>
         <i class="fas fa-thumbs-up"></i>
       </div>
-      <p class="label-explanation">
-        <i class="fas fa-info-circle"></i>
-        If a keyword is found, points are added to the total once.
-      </p>
       <ul class="form-added-keywords">
-        <li>Oh noes, you don't have anything here</li>
+        <li class="form-added-placeholder">
+          <img src="emerald.png" alt="Icon to illustrate points" />
+          For each keyword, if found in the description of job, points are added to the accumulated total.
+        </li>
       </ul>
 
       <div class="form-add">
-        <input type="hidden" name="good_keywords" value='<%= stored_good_keywords %>' id="goodKeywords" />
+        <input type="hidden" name="good_keywords" value='' id="goodKeywords" />
         <input type="text" placeholder="Enter a good keyword" class="form-add-keyword" />
         <input type="text" placeholder="Points to add" class="form-add-points" />
         <button class="form-add-button">Add</button>
@@ -68,16 +70,16 @@
         </label>
         <i class="fas fa-thumbs-down"></i>
       </div>
-      <p class="label-explanation">
-        <i class="fas fa-info-circle"></i>
-        If a keyword is found, points are deducted from the total once.
-      </p>
+
       <ul class="form-added-keywords">
-        <li>Oh noes, you don't have anything here</li>
+        <li class="form-added-placeholder">
+          <img src="emerald.png" alt="Icon to illustrate points" />
+          Oh noes you don't have anything here!
+        </li>
       </ul>
 
       <div class="form-add">
-        <input type="hidden" name="bad_keywords" value='<%= stored_bad_keywords %>' id="badKeywords" />
+        <input type="hidden" name="bad_keywords" value='' id="badKeywords" />
         <input type="text" placeholder="Enter a bad keyword" class="form-add-keyword" />
         <input type="text" placeholder="Points to add" class="form-add-points" />
         <button class="form-add-button bad">Add</button>
@@ -93,22 +95,31 @@
         </label>
         <i class="fas fa-ban"></i>
       </div>
-      <p class="label-explanation">
-        <i class="fas fa-info-circle"></i>
-        If any of these words are found in the position title, it will be excluded from your results.
-      </p>
 
       <ul class="form-added-keywords">
-        <li class="form-added-placeholder">Oh noes you don't have anything here!</li>
+        <li class="form-added-placeholder">
+          <img src="ban.png" alt="Icon to illustrate exclusion" />
+          Oh noes you don't have anything here!
+        </li>
       </ul>
 
       <div class="form-add">
-        <input type="hidden" name="position_exclusions" value='<%= stored_bad_keywords %>' id="positionExclusions" />
+        <input type="hidden" name="position_exclusions" value='' id="positionExclusions" />
         <input type="text" placeholder="Enter a word" class="form-add-keyword" />
         <button class="form-add-button bad">Add</button>
       </div>
     </div>
   </section>
 
+  <img src="ban.png" alt="Icon to illustrate exclusion" class="image-preload" />
+  <img src="ruby.png" alt="Icon to illustrate exclusion" class="image-preload" />
+  <img src="emerald.png" alt="Icon to illustrate exclusion" class="image-preload" />
+
+  <div class="form-section-header">
+    <div>
+      <span>3</span>
+      <h4>Find awesome job matches</h4>
+    </div>
+  </div>
   <button class="submit">Search</button>
 </form>
