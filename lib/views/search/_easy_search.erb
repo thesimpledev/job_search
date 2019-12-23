@@ -196,7 +196,7 @@ cards = [
         <input type="hidden" name="easy_search" value="true" />
         <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
         <input type="hidden" name="good_keywords" value='<%= card[:good_keywords].to_json %>' />
-        <input type="hidden" name="bad_keywords" value="<%= card[:bad_keywords].to_json %>" />
+        <input type="hidden" name="bad_keywords" value='<%= card[:bad_keywords].to_json %>' />
         <input type="hidden" name="position_exclusions" value="<%= card[:position_exclusions].join(",") %>" />
         <input type="hidden" name="passing_points" value="50" />
         <p class="easysearch-button-text"><%= card[:text] %></p>
