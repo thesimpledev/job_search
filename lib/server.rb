@@ -26,7 +26,7 @@ class Server < Sinatra::Base
   end
 
   get '/' do
-    @page_title = '- For Software Engineers'
+    @page_title = "- For Software Engineers#{params[:location] ? ' near ' + params[:location] : ''}"
     @new_job_count = Job.where('date_scraped >= ?', 1.days.ago).count
 
     cookies[:location] = params[:location] if params[:location]
@@ -67,7 +67,7 @@ class Server < Sinatra::Base
   end
 
   get '/jobs' do
-    @page_title = "in #{params[:location]}"
+    @page_title = "near #{params[:location]}"
     hashed_params = RequestParser.parse_search_params(params)
 
     unless params[:easy_search]
