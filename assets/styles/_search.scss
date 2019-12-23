@@ -42,17 +42,18 @@
 .search-jumbo-location {
   color: white;
   font-size: 42px;
-  margin-bottom: 10px;
+  font-weight: 700;
   text-shadow: 0 0 18px rgba(0,0,0,0.75);
 }
 
 .search-jumbo-location {
+  margin-bottom: 50px;
+
   span {
     display: inline-block;
     border-bottom: 3px solid greenyellow;
     font-weight: 700;
     padding-bottom: 5px;
-    margin-bottom: 10px;
     cursor: pointer;
   }
 }
@@ -289,7 +290,7 @@ textarea:focus {
   color: white;
   display: inline-block;
   font-size: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   padding: 5px 10px;
 
   span {
