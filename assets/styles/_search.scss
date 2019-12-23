@@ -94,7 +94,7 @@
   justify-content: space-between;
 }
 
-fieldset {
+.field {
   width: 32%;
   background: white;
   margin-bottom: 10px;
@@ -320,20 +320,23 @@ textarea:focus {
 }
 
 .form-add {
+  background: #efefef;
   border-top: 1px solid #efefef;
   display: flex;
 
   &-keyword,
   &-points {
+    background: none;
     border: none;
-    flex: 1;
     padding: 10px;
   }
 
   &-keyword {
+    flex: 1;
   }
 
   &-points {
+    width: 33%;
   }
 
   &-button {
@@ -355,7 +358,7 @@ textarea:focus {
     display: block;
   }
 
-  fieldset {
+  .field {
     width: 100%;
   }
 

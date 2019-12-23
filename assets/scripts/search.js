@@ -132,61 +132,68 @@
     const keywordInput = document.querySelectorAll('.form-add-keyword')[index];
     const pointsInput = document.querySelectorAll('.form-add-points')[index];
 
+    const goodkeywordsInput = document.querySelector("#goodKeywords");
+    const badkeywordsInput = document.querySelector("#badKeywords");
+
     [keywordInput, pointsInput].forEach(node => {
       node.addEventListener('keydown', function(e) {
-        if (e.code === "Enter") {
-          e.preventDefault();
-          storage.push([keywordInput.value, parseInt(pointsInput.value)]);
-          render();
-          clearInputs();
-        }
+        if (e.code === "Enter") _addKeyword(e);
       });
     });
 
     formAddButton.addEventListener('click', function(e) {
-      if (e.target.textContent !== 'Add') {
-        e.preventDefault();
-        clearInputs();
-      }
+      if (e.target.textContent === 'Add') _addKeyword(e);
     });
+
+    function _addKeyword(e) {
+      e.preventDefault();
+      storage[keywordInput.value] = parseInt(pointsInput.value);
+      render();
+      clearInputs();
+    }
 
     formAddedKeywords.addEventListener('click', function(e) {
       if (e.target && e.target.nodeName === 'BUTTON') {
         e.preventDefault();
-        delete storage[e.target.dataset.index];
+        delete storage[e.target.dataset.key];
         render();
       }
     });
 
+    function render() {
+      if (index === 0) {
+        goodkeywordsInput.value = JSON.stringify(goodKeywordStorage);
+      } else {
+        badkeywordsInput.value = JSON.stringify(badKeywordStorage);
+      }
+
+      _renderNodes();
+    }
+
     /*
       Element example:
-       <li class="form-added-keyword">
-         <p>css</p>
-         <p>
-           20 points
-           <button>X</button>
-         </p>
-       </li>
-     */
-    function render() {
+
+      <li class="form-added-keyword">
+        <p>css</p>
+        <p>
+          20 points
+          <button>X</button>
+        </p>
+      </li>
+    */
+    function _renderNodes() {
       formAddedKeywords.innerHTML = '';
 
-      storage.forEach(function(entry, i) {
+      Object.keys(storage).forEach(function(key) {
         const container = document.createElement('li');
         container.classList.add('form-added-keyword');
-
-        const keywordContainer = document.createElement('p');
-        keywordContainer.textContent = entry[0];
-
-        const pointsContainer = document.createElement('p');
-        pointsContainer.textContent = `${entry[1]} points`;
-        const button = document.createElement('button');
-        button.dataset.index = i;
-        button.textContent = 'X';
-        pointsContainer.appendChild(button);
-
-        container.appendChild(keywordContainer);
-        container.appendChild(pointsContainer);
+        container.innerHTML = `
+          <p>${key}</p>
+          <p>
+            ${storage[key]} points
+            <button data-key="${key}">X</button>
+          </p>
+        `;
 
         formAddedKeywords.appendChild(container);
       });
@@ -199,13 +206,32 @@
     }
   }
 
-  const goodKeywordStorage = [];
-  const badKeywordStorage = [];
+  let goodKeywordStorage = {};
+  let badKeywordStorage = {};
+  const GOOD_KEYWORD_STORAGE = 'GOOD_KEYWORD_STORAGE';
+  const BAD_KEYWORD_STORAGE = 'BAD_KEYWORD_STORAGE';
+
+  function loadStorageFromCookies() {
+    goodKeywordStorage = JSON.parse(localStorage.getItem(GOOD_KEYWORD_STORAGE)) || {};
+    badKeywordStorage = JSON.parse(localStorage.getItem(BAD_KEYWORD_STORAGE)) || {};
+
+    handleKeywords(goodKeywordStorage, 0);
+    handleKeywords(badKeywordStorage, 1);
+  }
+
+  function saveSearch() {
+    const form = document.querySelector('form.search');
+
+    form.addEventListener('submit', function() {
+      localStorage.setItem(GOOD_KEYWORD_STORAGE, JSON.stringify(goodKeywordStorage));
+      localStorage.setItem(BAD_KEYWORD_STORAGE, JSON.stringify(badKeywordStorage));
+    });
+  }
 
   locationSelect();
   disableSubmitAfterClicking();
   pointsSlider();
   clearQueryString();
-  handleKeywords(goodKeywordStorage, 0);
-  handleKeywords(badKeywordStorage, 1);
+  loadStorageFromCookies();
+  saveSearch();
 })();

@@ -34,7 +34,7 @@
     </a>
   </div>
   <section class="fields">
-    <fieldset>
+    <div class="field">
       <div class="search-label-container label-good">
         <label
           for="good-keywords"
@@ -48,23 +48,28 @@
         If a keyword is found, points are added to the total once.
       </p>
       <ul class="form-added-keywords">
-        <li class="form-added-keyword">
-          <p>css</p>
-          <p>
-            20 points
-            <button>X</button>
-          </p>
-        </li>
+        <% if stored_good_keywords %>
+          <% stored_good_keywords.each do |keyword, points| %>
+            <li class="form-added-keyword">
+              <p><%= keyword %></p>
+              <p>
+                <%= points %> points
+                <button>X</button>
+              </p>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
 
       <div class="form-add">
+        <input type="hidden" name="good_keywords" value='<%= stored_good_keywords %>' id="goodKeywords" />
         <input type="text" placeholder="Enter a good keyword" class="form-add-keyword" />
         <input type="text" placeholder="Points to add" class="form-add-points" />
         <button class="form-add-button">Add</button>
       </div>
-    </fieldset>
+    </div>
 
-    <fieldset>
+    <div class="field">
       <div class="search-label-container label-bad">
         <label
           for="bad-keywords"
@@ -78,23 +83,28 @@
         If a keyword is found, points are deducted from the total once.
       </p>
       <ul class="form-added-keywords">
-        <li class="form-added-keyword">
-          <p>css</p>
-          <p>
-            -20 points
-            <button>X</button>
-          </p>
-        </li>
+        <% if stored_bad_keywords %>
+          <% stored_bad_keywords.each do |keyword, value| %>
+            <li class="form-added-keyword">
+              <p><%= keyword %></p>
+              <p>
+                <%= value %> points
+                <button>X</button>
+              </p>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
 
       <div class="form-add">
+        <input type="hidden" name="bad_keywords" value='<%= stored_bad_keywords %>' id="badKeywords" />
         <input type="text" placeholder="Enter a bad keyword" class="form-add-keyword" />
         <input type="text" placeholder="Points to add" class="form-add-points" />
         <button class="form-add-button bad">Add</button>
       </div>
-    </fieldset>
+    </div>
 
-    <fieldset>
+    <div class="field">
       <div class="search-label-container label-bad">
         <label
           for="position-exclusions"
@@ -112,7 +122,7 @@
         class="textarea-bad"
         name="position_exclusions"
       ><%= stored_position_exclusions_or_default %></textarea>
-    </fieldset>
+    </div>
   </section>
 
   <button class="submit">Search</button>
