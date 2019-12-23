@@ -48,17 +48,7 @@
         If a keyword is found, points are added to the total once.
       </p>
       <ul class="form-added-keywords">
-        <% if stored_good_keywords %>
-          <% stored_good_keywords.each do |keyword, points| %>
-            <li class="form-added-keyword">
-              <p><%= keyword %></p>
-              <p>
-                <%= points %> points
-                <button>X</button>
-              </p>
-            </li>
-          <% end %>
-        <% end %>
+        <li>Oh noes, you don't have anything here</li>
       </ul>
 
       <div class="form-add">
@@ -83,17 +73,7 @@
         If a keyword is found, points are deducted from the total once.
       </p>
       <ul class="form-added-keywords">
-        <% if stored_bad_keywords %>
-          <% stored_bad_keywords.each do |keyword, value| %>
-            <li class="form-added-keyword">
-              <p><%= keyword %></p>
-              <p>
-                <%= value %> points
-                <button>X</button>
-              </p>
-            </li>
-          <% end %>
-        <% end %>
+        <li>Oh noes, you don't have anything here</li>
       </ul>
 
       <div class="form-add">
@@ -117,11 +97,16 @@
         <i class="fas fa-info-circle"></i>
         If any of these words are found in the position title, it will be excluded from your results.
       </p>
-      <textarea
-        id="position-exclusions"
-        class="textarea-bad"
-        name="position_exclusions"
-      ><%= stored_position_exclusions_or_default %></textarea>
+
+      <ul class="form-added-keywords">
+        <li class="form-added-placeholder">Oh noes you don't have anything here!</li>
+      </ul>
+
+      <div class="form-add">
+        <input type="hidden" name="position_exclusions" value='<%= stored_bad_keywords %>' id="positionExclusions" />
+        <input type="text" placeholder="Enter a word" class="form-add-keyword" />
+        <button class="form-add-button bad">Add</button>
+      </div>
     </div>
   </section>
 

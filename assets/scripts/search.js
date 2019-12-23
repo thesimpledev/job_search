@@ -134,8 +134,9 @@
 
     const goodkeywordsInput = document.querySelector("#goodKeywords");
     const badkeywordsInput = document.querySelector("#badKeywords");
+    const positionExclusionsInput = document.querySelector("#positionExclusions");
 
-    [keywordInput, pointsInput].forEach(node => {
+    [keywordInput, pointsInput].filter(e => e !== undefined).forEach(node => {
       node.addEventListener('keydown', function(e) {
         if (e.code === "Enter") _addKeyword(e);
       });
@@ -147,7 +148,13 @@
 
     function _addKeyword(e) {
       e.preventDefault();
-      storage[keywordInput.value] = parseInt(pointsInput.value);
+
+      if (index === 2) {
+        storage.push(keywordInput.value);
+      } else {
+        storage[keywordInput.value] = parseInt(pointsInput.value);
+      }
+
       render();
       clearInputs();
     }
@@ -155,16 +162,24 @@
     formAddedKeywords.addEventListener('click', function(e) {
       if (e.target && e.target.nodeName === 'BUTTON') {
         e.preventDefault();
-        delete storage[e.target.dataset.key];
+
+        if (index === 2) {
+          storage.splice(e.target.dataset.index, 1);
+        } else {
+          delete storage[e.target.dataset.key];
+        }
+
         render();
       }
     });
 
     function render() {
       if (index === 0) {
-        goodkeywordsInput.value = JSON.stringify(goodKeywordStorage);
+        goodkeywordsInput.value = JSON.stringify(storage);
+      } else if (index === 1) {
+        badkeywordsInput.value = JSON.stringify(storage);
       } else {
-        badkeywordsInput.value = JSON.stringify(badKeywordStorage);
+        positionExclusionsInput.value = storage.toString();
       }
 
       _renderNodes();
@@ -184,39 +199,59 @@
     function _renderNodes() {
       formAddedKeywords.innerHTML = '';
 
-      Object.keys(storage).forEach(function(key) {
+      let i = 0;
+      (index === 2 ? storage : Object.keys(storage)).forEach(function(key) {
         const container = document.createElement('li');
         container.classList.add('form-added-keyword');
-        container.innerHTML = `
-          <p>${key}</p>
-          <p>
-            ${storage[key]} points
-            <button data-key="${key}">X</button>
-          </p>
-        `;
+
+        if (index === 2) {
+          container.innerHTML = `
+            <p>${key}</p>
+            <button data-index="${i}">X</button>
+          `;
+        } else {
+          container.innerHTML = `
+            <p>${key}</p>
+            <p>
+              ${storage[key]} points
+              <button data-key="${key}">X</button>
+            </p>
+          `;
+        }
 
         formAddedKeywords.appendChild(container);
+        i += 1;
       });
+
+      if (i === 0) {
+        _renderPlaceholder();
+      }
+    }
+
+    function _renderPlaceholder() {
+      formAddedKeywords.innerHTML = `
+        <li class="form-added-placeholder">Oh noes, you don't have anything yet</li>
+      `;
     }
 
     function clearInputs() {
       keywordInput.value = '';
-      pointsInput.value = '';
+      if (index !== 2) pointsInput.value = '';
       keywordInput.focus();
     }
-  }
 
-  let goodKeywordStorage = {};
-  let badKeywordStorage = {};
-  const GOOD_KEYWORD_STORAGE = 'GOOD_KEYWORD_STORAGE';
-  const BAD_KEYWORD_STORAGE = 'BAD_KEYWORD_STORAGE';
+    render();
+  }
 
   function loadStorageFromCookies() {
     goodKeywordStorage = JSON.parse(localStorage.getItem(GOOD_KEYWORD_STORAGE)) || {};
     badKeywordStorage = JSON.parse(localStorage.getItem(BAD_KEYWORD_STORAGE)) || {};
+    const positionExclusionsFound = localStorage.getItem(POSITION_EXCLUSIONS_STORAGE);
+    positionExclusionsStorage = positionExclusionsFound ? positionExclusionsFound.split(',') : [];
 
     handleKeywords(goodKeywordStorage, 0);
     handleKeywords(badKeywordStorage, 1);
+    handleKeywords(positionExclusionsStorage, 2);
   }
 
   function saveSearch() {
@@ -225,8 +260,16 @@
     form.addEventListener('submit', function() {
       localStorage.setItem(GOOD_KEYWORD_STORAGE, JSON.stringify(goodKeywordStorage));
       localStorage.setItem(BAD_KEYWORD_STORAGE, JSON.stringify(badKeywordStorage));
+      localStorage.setItem(POSITION_EXCLUSIONS_STORAGE, positionExclusionsStorage.toString());
     });
   }
+
+  let goodKeywordStorage = {};
+  let badKeywordStorage = {};
+  let positionExclusionsStorage = [];
+  const GOOD_KEYWORD_STORAGE = 'GOOD_KEYWORD_STORAGE';
+  const BAD_KEYWORD_STORAGE = 'BAD_KEYWORD_STORAGE';
+  const POSITION_EXCLUSIONS_STORAGE = 'POSITION_EXCLUSIONS_STORAGE';
 
   locationSelect();
   disableSubmitAfterClicking();
