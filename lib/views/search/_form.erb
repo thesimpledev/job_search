@@ -1,129 +1,103 @@
-<h3 class="section-label">Advanced Search</h3>
-<h4 class="section-detail">Find job matches based upon how you rank keywords</h4>
+<section>
+  <h3 class="section-label">Advanced Search</h3>
+  <h4 class="section-detail">Find job matches based upon how you rank keywords</h4>
 
-<form class="search" action="/jobs" method="get">
-  <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
+  <form class="search" action="/jobs" method="get">
+    <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
 
-  <div class="form-section-header">
-    <div>
-      <span>1</span>
-      <h4>Choose points needed to pass</h4>
-    </div>
-  </div>
-
-  <input
-    type="range"
-    id="passing_points"
-    value="<%= stored_points_or_default %>"
-    name="passing_points"
-  />
-
-  <div class="slider">
-    <div class="slider-fill" style="width: <%= stored_points_or_default %>%"></div>
-
-    <div class="slider-label-container">
-      <i class="fas fa-check"></i>
-      <p class="slider-label-detail"><%= pluralized_points %></p>
-    </div>
-  </div>
-
-  <div class="form-section-header">
-    <div>
-      <span>2</span>
-      <h4>Define your keywords</h4>
-    </div>
-    <a class="reset" href="?reset=true" rel="nofollow">
-      Reset search terms
-    </a>
-  </div>
-  <section class="fields">
-    <div class="field">
-      <div class="search-label-container label-good">
-        <label
-          for="good-keywords"
-          class="search-label">
-          Good Keywords
-        </label>
-        <i class="fas fa-thumbs-up"></i>
-      </div>
-
-      <div class="form-added-placeholder">
-        <img src="emerald.png" alt="Icon to illustrate points" />
-        <h6>Adds Points</h6>
-        <p>For each keyword, if found in the description of job, points are added to the accumulated total.</p>
-      </div>
-      <ul class="form-added-keywords">
-      </ul>
-
-      <div class="form-add">
-        <input type="hidden" name="good_keywords" value='' id="goodKeywords" />
-        <input type="text" placeholder="Enter a good keyword" class="form-add-keyword" />
-        <input type="text" placeholder="Points to add" class="form-add-points" />
-        <button class="form-add-button">Add</button>
+    <div class="form-section-header">
+      <div>
+        <span>1</span>
+        <h4>Choose points needed to pass</h4>
       </div>
     </div>
 
-    <div class="field">
-      <div class="search-label-container label-bad">
-        <label
-          for="bad-keywords"
-          class="search-label">
-          Bad Keywords
-        </label>
-        <i class="fas fa-thumbs-down"></i>
-      </div>
+    <input
+      type="range"
+      id="passing_points"
+      value="<%= stored_points_or_default %>"
+      name="passing_points"
+    />
 
-      <div class="form-added-placeholder">
-        <img src="ruby.png" alt="Ruby" />
-        <h6>Subtracts Points</h6>
-        <p>If a keyword is found in the job description, points will be deducted from the accumulated total.</p>
-      </div>
-      <ul class="form-added-keywords">
-      </ul>
+    <div class="slider">
+      <div class="slider-fill" style="width: <%= stored_points_or_default %>%"></div>
 
-      <div class="form-add">
-        <input type="hidden" name="bad_keywords" value='' id="badKeywords" />
-        <input type="text" placeholder="Enter a bad keyword" class="form-add-keyword" />
-        <input type="text" placeholder="Points to add" class="form-add-points" />
-        <button class="form-add-button bad">Add</button>
+      <div class="slider-label-container">
+        <p class="slider-label-detail"><%= pluralized_points %></p>
       </div>
     </div>
 
-    <div class="field">
-      <div class="search-label-container label-bad">
-        <label
-          for="position-exclusions"
-          class="search-label">
-          Position Exclusions
-        </label>
-        <i class="fas fa-ban"></i>
+    <div class="form-section-header">
+      <div>
+        <span>2</span>
+        <h4>Define your keywords</h4>
+      </div>
+      <a class="reset" href="?reset=true" rel="nofollow">
+        Reset search terms
+      </a>
+    </div>
+    <section class="fields">
+      <div class="field">
+        <div class="form-added-placeholder">
+          <img src="emerald.png" alt="Icon to illustrate points" />
+          <h6>Add Points</h6>
+          <p>For each keyword, if found in the description of job, points are added to the accumulated total.</p>
+        </div>
+        <ul class="form-added-keywords">
+        </ul>
+
+        <div class="form-add">
+          <input type="hidden" name="good_keywords" value='' id="goodKeywords" />
+          <input type="text" placeholder="Keyword" class="form-add-keyword" />
+          <input type="text" placeholder="Points" class="form-add-points" />
+          <button class="form-add-button">+</button>
+        </div>
       </div>
 
-      <div class="form-added-placeholder">
-        <img src="ban.png" alt="Icon to illustrate exclusion" />
-        <h6>Removes Positions</h6>
-        <p>If any of these words are found in the title of the position, it will be excluded from results.</p>
-      </div>
-      <ul class="form-added-keywords">
-      </ul>
+      <div class="field">
+        <div class="form-added-placeholder">
+          <img src="ruby.png" alt="Ruby" />
+          <h6>Subtract Points</h6>
+          <p>If a keyword is found in the job description, points will be deducted from the accumulated total.</p>
+        </div>
+        <ul class="form-added-keywords">
+        </ul>
 
-      <div class="form-add">
-        <input type="hidden" name="position_exclusions" value='' id="positionExclusions" />
-        <input type="text" placeholder="Enter a word" class="form-add-keyword" />
-        <button class="form-add-button bad">Add</button>
+        <div class="form-add">
+          <input type="hidden" name="bad_keywords" value='' id="badKeywords" />
+          <input type="text" placeholder="Keyword" class="form-add-keyword" />
+          <input type="text" placeholder="Points" class="form-add-points" />
+          <button class="form-add-button bad">+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="form-added-placeholder">
+          <img src="ban.png" alt="Icon to illustrate exclusion" />
+          <h6>Filter Positions</h6>
+          <p>If any of these words are found in the title of the position, it will be excluded from results.</p>
+        </div>
+        <ul class="form-added-keywords">
+        </ul>
+
+        <div class="form-add">
+          <input type="hidden" name="position_exclusions" value='' id="positionExclusions" />
+          <input type="text" placeholder="Enter a word" class="form-add-keyword" />
+          <button class="form-add-button bad">+</button>
+        </div>
+      </div>
+    </section>
+
+    <img src="ban.png" alt="Icon to illustrate exclusion" class="image-preload" />
+    <img src="ruby.png" alt="Icon to illustrate exclusion" class="image-preload" />
+    <img src="emerald.png" alt="Icon to illustrate exclusion" class="image-preload" />
+
+    <div class="form-section-header">
+      <div>
+        <span>3</span>
+        <h4>Find awesome job matches</h4>
       </div>
     </div>
-  </section>
-
-  <img src="ban.png" alt="Icon to illustrate exclusion" class="image-preload" />
-  <img src="ruby.png" alt="Icon to illustrate exclusion" class="image-preload" />
-  <img src="emerald.png" alt="Icon to illustrate exclusion" class="image-preload" />
-
-  <div class="form-section-header">
-    <div>
-      <span>3</span>
-      <h4>Find awesome job matches</h4>
-    </div>
-  </div>
-  <button class="submit">Search</button>
-</form>
+    <button class="submit">Search</button>
+  </form>
+</section>

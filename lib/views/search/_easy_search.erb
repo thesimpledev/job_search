@@ -184,22 +184,23 @@ cards = [
 ]
 %>
 
-<section class="easysearch">
-  <h3 class="section-label">Easy Search</h3>
-  <h4 class="section-detail">Quickly find jobs ranked through presets</h4>
+<aside class="easysearch">
+  <h3 class="section-label">Presets</h3>
 
   <section class="easysearch-buttons">
     <% cards.each do |card| %>
-      <form class="easysearch-button" style="background-image: url(<%= card[:background] %>)" action="/jobs" method="get">
+      <form class="easysearch-button" action="/jobs" method="get">
         <input type="hidden" name="easy_search" value="true" />
         <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
         <input type="hidden" name="good_keywords" value='<%= card[:good_keywords].to_json %>' />
         <input type="hidden" name="bad_keywords" value='<%= card[:bad_keywords].to_json %>' />
         <input type="hidden" name="position_exclusions" value="<%= card[:position_exclusions].join(",") %>" />
         <input type="hidden" name="passing_points" value="50" />
-        <p class="easysearch-button-text"><%= card[:text] %></p>
-        <button class="easysearch-button-submit"></button>
+        <button class="easysearch-button-submit"><%= card[:text] %></button>
       </form>
     <% end %>
   </section>
-</section>
+
+  <h3 class="section-label">Saved Searches</h3>
+  <p class="savedsearch-placeholder">Coming soon. One search is currently saved automatically when you submit.</p>
+</aside>

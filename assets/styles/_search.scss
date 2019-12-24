@@ -1,3 +1,14 @@
+.container-search {
+  display: flex;
+  flex-direction: row;
+  padding-top: 40px;
+
+  aside {
+    margin-right: 25px;
+    width: 33.33%;
+  }
+}
+
 .section-label {
   font-size: 22px;
   margin-bottom: 10px;
@@ -11,15 +22,9 @@
 }
 
 .search-jumbo {
-  color: white;
+  background: #efefef;
   justify-content: space-between;
-  padding: 100px 0;
-  margin-top: -60px;
-  margin-bottom: 10px;
-  background-color: #ccc;
-  background-image: url('sanfrancisco.jpg');
-  background-position: center;
-  background-size: cover;
+  padding: 40px 0;
   position: relative;
 
   .container {
@@ -40,14 +45,13 @@
 
 .search-jumbo-title,
 .search-jumbo-location {
-  color: white;
+  color: #333;
   font-size: 42px;
   font-weight: 700;
-  text-shadow: 0 0 18px rgba(0,0,0,0.75);
 }
 
 .search-jumbo-location {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 
   span {
     display: inline-block;
@@ -59,27 +63,32 @@
 }
 
 .location-selections {
+  align-items: center;
   cursor: pointer;
+  display: flex;
   font-size: 10px;
+  justify-content: space-around;
 
   p {
     border-radius: $border-radius;
     display: inline-block;
-    padding: 5px 10px;
-    background: rgba(255,255,255,0.25);
-    margin-right: 5px;
-    margin-bottom: 5px;
+    flex: 1;
     font-weight: 400;
-
-    &:hover {
-      background: $green;
-    }
+    margin-right: 5px;
+    padding: 10px 5px;
+    text-align: center;
   }
 
   span {
     margin-left: 5px;
     font-weight: 700;
   }
+}
+
+.location-selection {
+  @include clickable-button(white, white, #ddd);
+
+  color: #333;
 }
 
 .location-selection-image-preload {
@@ -116,9 +125,9 @@
 }
 
 button.submit {
-  background: $green;
+  @include clickable-button($green, $green-light, $green-dark);
+
   border-radius: $border-radius;
-  border: none;
   color: white;
   cursor: pointer;
   display: block;
@@ -126,12 +135,16 @@ button.submit {
   line-height: 1.5;
   margin-bottom: 10px;
   padding: 10px;
-  transition: 0.5s background;
   width: 100%;
+
+  &:active {
+    margin-top: 13px;
+  }
 }
 
 button.disabled {
   background: #ccc !important;
+  border-bottom: 3px solid #aaa;
   cursor: not-allowed;
 }
 
@@ -148,13 +161,21 @@ input[type="range"] {
   width: 100%;
   position: relative;
   cursor: ew-resize;
+
+  &:hover {
+    .slider-fill {
+      background: $green-light;
+    }
+  }
 }
 
 .slider-fill {
   background: $green;
+  border-bottom: 3px solid $green-dark;
   height: 100%;
   width: 50%;
   position: relative;
+  transition: 0.25s background;
 }
 
 .slider-label-container {
@@ -169,22 +190,15 @@ input[type="range"] {
   font-size: 16px;
 }
 
-.slider-label-container i {
-  color: limegreen;
-  margin-right: 5px;
-}
-
 .slider-label-detail {
-  color: white;
+  color: #333;
   font-weight: 700;
   user-select: none;
 }
 
 .search-label-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 10px;
+  text-align: center;
 }
 
 .label-good {
@@ -197,8 +211,7 @@ input[type="range"] {
 
 .search-label {
   display: block;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
   color: white;
 }
 
@@ -290,7 +303,7 @@ textarea:focus {
   color: white;
   display: inline-block;
   font-size: 12px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   padding: 5px 10px;
 
   span {
@@ -339,7 +352,7 @@ textarea:focus {
 
     img {
       height: 16px;
-      margin-right: 5px;
+      margin-left: 5px;
       width: 16px;
     }
   }
@@ -349,7 +362,7 @@ textarea:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
 
     img {
@@ -389,15 +402,14 @@ textarea:focus {
   }
 
   &-button {
-    background: $green;
-    border: none;
+    @include clickable-button($green, $green-light, $green-dark);
+
     color: white;
-    cursor: pointer;
     font-weight: 700;
     padding: 0 15px;
 
     &.bad {
-      background: $pink;
+      @include clickable-button($pink, $pink-light, $pink-dark);
     }
   }
 }

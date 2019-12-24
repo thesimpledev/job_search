@@ -1,33 +1,31 @@
 <section
-  class="search-jumbo"
-  style="background-image: url(<%= location_to_background %>)"
+  class="search-jumbo jumbo-results"
 >
-  <div class="gradient"></div>
+  <h2>Jobs in <span><%= params[:location] %></span></h2>
+  <p>Matched <%= @jobs.count %> out of <%= @total_jobs %> jobs</p>
 </section>
-`
+
 <div class="container jobs">
   <% if @jobs.empty? %>
     <div class="no-matches-container">
-      <h2>Jobs in <span><%= params[:location] %></span></h2>
+      <h2>Jobs near <span><%= params[:location] %></span></h2>
       <h4 class="no-matches-text">
         Oh noes. We didn't find any jobs. Try altering your search.
       </h4>
       <a href="/" class="nav-link nav-search">Try Again</a>
     </div>
   <% else %>
-    <h2>Jobs in <span><%= params[:location] %></span></h2>
-    <p>Matched <%= @jobs.count %> out of <%= @total_jobs %> jobs</p>
     <% @jobs.each do |job| %>
       <li class="job-card">
-        <% if job.point_allocation %>
-          <aside class="job-points <%= pass_or_fail_class(job) %>">
-            <p><%= job.points %></p>
-          </aside>
-        <% end %>
-
         <main class="job-main">
           <a href="<%= job.url %>" target="_blank" class="job-link">
             <div class="job-top">
+              <% if job.point_allocation %>
+                <p class="job-points <%= pass_or_fail_class(job) %>">
+                  <img src="emerald.png" alt="Emerald" />
+                  <%= job.points %>
+                </p>
+              <% end %>
               <div class="job-heading">
                 <h3 class="job-position"><%= job.position %></h3>
                 <h4 class="job-company"><%= job.company %></h4>

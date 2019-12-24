@@ -2,20 +2,9 @@
   function _setLocation(location) {
     const selectedLocation = document.querySelector('.selected-location');
     const locationForms = document.querySelectorAll('.location');
-    const jumbo = document.querySelector('.search-jumbo');
-    const locationToBackground = {
-      'San Francisco, CA': 'sanfrancisco.jpg',
-      'New York, NY': 'newyork.jpg',
-      'Boston, MA': 'boston.jpg',
-      'Austin, TX': 'austin.jpg',
-      'Seattle, WA': 'seattle.jpg',
-      'Denver, CO': 'denver.jpg',
-      'Remote': 'remote.jpg',
-    };
 
     locationForms.forEach(form => form.value = location);
     selectedLocation.textContent = location;
-    jumbo.style.backgroundImage = `url('${locationToBackground[location]}')`;
   }
 
   function locationSelect() {
@@ -185,8 +174,8 @@
         </p>
 
         <p class="${index === 0 ? 'good' : 'bad'}">
-          <img src="${index === 0 ? 'emerald.png' : 'ruby.png'}" alt="Gem" />
           ${_prependParitySign(points)}
+          <img src="${index === 0 ? 'emerald.png' : 'ruby.png'}" alt="Gem" />
         </p>
       `;
     }
@@ -242,7 +231,7 @@
     });
 
     formAddButton.addEventListener('click', function(e) {
-      if (e.target.textContent === 'Add') _addKeyword(e);
+      if (e.target.textContent === '+') _addKeyword(e);
     });
 
     formAddedKeywords.addEventListener('click', function(e) {

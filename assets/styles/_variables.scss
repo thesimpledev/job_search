@@ -1,6 +1,11 @@
 $black: #222;
-$green: #A6E22E;
-$pink: #F92672;
+$blue: #45b0f6;
+$green-light: #84dc05;
+$green: #78c805;
+$green-dark: #58a700;
+$pink-light: #FF5852;
+$pink:  #e53e38;
+$pink-dark: darkred;
 $gray-light: #efefef;
 $gray-medium: #b3b3b3;
 $gray-dark: #121212;
@@ -10,3 +15,34 @@ $gray-medium: #b3b3b3;
 $gray-dark: #121212;
 $breakpoint-mobile: 600px;
 $border-radius: 5px;
+
+@mixin _background-highlight($normal, $highlight) {
+  background: $normal;
+  transition: 0.25s background;
+
+  &:hover {
+    background: $highlight;
+  }
+}
+
+@mixin interactable($background, $background-highlight) {
+  @include _background-highlight($background, $background-highlight);
+}
+
+@mixin clickable-button($background, $background-highlight, $border-color) {
+  @include _background-highlight($background, $background-highlight);
+
+  border: none;
+  border-bottom: 3px solid $border-color;
+  cursor: pointer;
+  position: relative;
+
+  &:focus {
+    box-shadow: 0 0 10px 1px $background;
+    outline: none;
+  }
+
+  &:active {
+    border-bottom: none;
+  }
+}
