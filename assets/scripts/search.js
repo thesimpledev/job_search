@@ -127,14 +127,113 @@
   }
 
   function handleKeywords(storage, index) {
+    // form elements based upon index
     const formAddedKeywords = document.querySelectorAll('.form-added-keywords')[index];
     const formAddButton = document.querySelectorAll('.form-add-button')[index];
     const keywordInput = document.querySelectorAll('.form-add-keyword')[index];
     const pointsInput = document.querySelectorAll('.form-add-points')[index];
 
-    const goodkeywordsInput = document.querySelector("#goodKeywords");
-    const badkeywordsInput = document.querySelector("#badKeywords");
-    const positionExclusionsInput = document.querySelector("#positionExclusions");
+    // hidden form input elements
+    const indexToHiddenFieldSelector = [
+      '#goodKeywords',
+      '#badKeywords',
+      '#positionExclusions'
+    ];
+    const hiddenFormField = document.querySelector(indexToHiddenFieldSelector[index]);
+    console.log(hiddenFormField);
+
+    // clear inputs
+    function _clearInputs() {
+      keywordInput.value = '';
+      if (index !== 2) pointsInput.value = '';
+      keywordInput.focus();
+    }
+
+    // add keyword to storage render & clear inputs
+    function _addKeyword(e) {
+      e.preventDefault();
+
+      if (index === 2) {
+        storage.push(keywordInput.value);
+      } else {
+        let points = parseInt(pointsInput.value);
+        points = _parseNumber(points, (index === 1 ? 'negative' : 'positive'));
+        storage[keywordInput.value] = points;
+      }
+
+      render();
+      _clearInputs();
+    }
+
+    // handle NaN and select correct parity for number
+    function _parseNumber(number, parity) {
+      if (isNaN(number)) return 0;
+
+      if (parity === 'negative') {
+        return (number > 0 ? -number : number)
+      } else {
+        return (number < 0 ? -number : number)
+      }
+    }
+
+    // handle logic for keywordWithPoints nodes
+    function _keywordWithPointsNode(keyword, points) {
+      return `
+        <p>
+          <button data-key="${keyword}">X</button>
+          ${keyword}
+        </p>
+
+        <p class="${index === 0 ? 'good' : 'bad'}">
+          <img src="${index === 0 ? 'emerald.png' : 'ruby.png'}" alt="Gem" />
+          ${_prependParitySign(points)}
+        </p>
+      `;
+    }
+
+    // 0 => '0'
+    // -5 => '- 5'
+    // 5 => '+ 5'
+    function _prependParitySign(number) {
+      if (number === 0) return '0';
+      return (number < 0 ? `- ${-number}` : `+ ${number}`);
+    }
+
+    // based upon what type of input field (based upon index: 2 being no points)
+    // clears the keyword container and re-rendered all nodes based upon storage
+    function _renderNodes() {
+      formAddedKeywords.innerHTML = '';
+
+      let i = 0;
+      (index === 2 ? storage : Object.keys(storage)).forEach(function(key) {
+        const container = document.createElement('li');
+        container.classList.add('form-added-keyword');
+
+        if (index === 2) {
+          container.innerHTML = `
+            <p>
+              <button data-index="${i}">X</button>
+              ${key}
+            </p>
+          `;
+        } else {
+          container.innerHTML = _keywordWithPointsNode(key, storage[key]);
+        }
+
+        formAddedKeywords.appendChild(container);
+        i += 1;
+      });
+    }
+
+    // find and fill hidden form fields with storage
+    function _fillHiddenFormField() {
+      hiddenFormField.value = (index === 2 ? storage.toString() : JSON.stringify(storage));
+    }
+
+    function render() {
+      _fillHiddenFormField();
+      _renderNodes();
+    }
 
     [keywordInput, pointsInput].filter(e => e !== undefined).forEach(node => {
       node.addEventListener('keydown', function(e) {
@@ -145,19 +244,6 @@
     formAddButton.addEventListener('click', function(e) {
       if (e.target.textContent === 'Add') _addKeyword(e);
     });
-
-    function _addKeyword(e) {
-      e.preventDefault();
-
-      if (index === 2) {
-        storage.push(keywordInput.value);
-      } else {
-        storage[keywordInput.value] = parseInt(pointsInput.value);
-      }
-
-      render();
-      clearInputs();
-    }
 
     formAddedKeywords.addEventListener('click', function(e) {
       if (e.target && e.target.nodeName === 'BUTTON') {
@@ -172,98 +258,6 @@
         render();
       }
     });
-
-    function render() {
-      if (index === 0) {
-        goodkeywordsInput.value = JSON.stringify(storage);
-      } else if (index === 1) {
-        badkeywordsInput.value = JSON.stringify(storage);
-      } else {
-        positionExclusionsInput.value = storage.toString();
-      }
-
-      _renderNodes();
-    }
-
-    /*
-      Element example:
-
-      <li class="form-added-keyword">
-        <p>css</p>
-        <p>
-          20 points
-          <button>X</button>
-        </p>
-      </li>
-    */
-    function _renderNodes() {
-      formAddedKeywords.innerHTML = '';
-
-      let i = 0;
-      (index === 2 ? storage : Object.keys(storage)).forEach(function(key) {
-        const container = document.createElement('li');
-        container.classList.add('form-added-keyword');
-
-        if (index === 2) {
-          container.innerHTML = `
-            <p>${key}</p>
-            <button data-index="${i}">X</button>
-          `;
-        } else {
-          container.innerHTML = `
-            <p>${key}</p>
-            <p>
-              ${storage[key]} points
-              <button data-key="${key}">X</button>
-            </p>
-          `;
-        }
-
-        formAddedKeywords.appendChild(container);
-        i += 1;
-      });
-
-      if (i === 0) {
-        _renderPlaceholder();
-      }
-    }
-
-    function _renderPlaceholder() {
-      const details = [
-        {
-          alt: 'Emerald gem',
-          image: 'emerald.png',
-          detail: 'If a keyword is found in the job description, points will be added to an accumulated total.',
-          title: 'Adds Points'
-        },
-        {
-          alt: 'Ruby gem',
-          image: 'ruby.png',
-          detail: 'If a keyword is found in the job description, points will be deducted from the accumulated total.',
-          title: 'Subtracts Points'
-        },
-        {
-          alt: 'Icon to illustrate exclusion',
-          image: 'ban.png',
-          detail: 'If any of these words are found in the title of the position, it will be excluded from results.',
-          title: 'Removes Positions'
-        },
-      ];
-
-      formAddedKeywords.innerHTML = `
-        <li class="form-added-placeholder">
-          <img src="${details[index].image}" alt="${details[index].alt}" />
-          <h6>${details[index].title}</h6>
-          <p>${details[index].detail}</p>
-        </li>
-      `;
-    }
-
-    function clearInputs() {
-      keywordInput.value = '';
-      if (index !== 2) pointsInput.value = '';
-      keywordInput.focus();
-    }
 
     render();
   }
