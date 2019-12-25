@@ -132,6 +132,7 @@
 .good-keywords,
 .bad-keywords {
   display: flex;
+  align-items: flex-start;
 }
 
 .keyword {
