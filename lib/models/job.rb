@@ -28,7 +28,7 @@ class Job < ActiveRecord::Base
     all.select(&:passing_score?)
   end
 
-  def set_point_allocation(good_keywords, bad_keywords, passing_score)
+  def set_point_allocation(good_keywords, bad_keywords, passing_score = 0)
     @point_allocation = PointAllocation.new(description, good_keywords, bad_keywords, passing_score)
   end
 end

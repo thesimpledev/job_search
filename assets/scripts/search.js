@@ -80,11 +80,11 @@
       e.preventDefault();
 
       if (index === 2) {
-        storage.push(keywordInput.value);
+        storage.push(keywordInput.value.toLocaleLowerCase());
       } else {
         let points = parseInt(pointsInput.value);
         points = _parseNumber(points, (index === 1 ? 'negative' : 'positive'));
-        storage[keywordInput.value] = points;
+        storage[keywordInput.value.toLocaleLowerCase()] = points;
       }
 
       render();
@@ -223,6 +223,28 @@
     });
   }
 
+  function handleNewsletterForm() {
+    const form = document.querySelector('.form-updates');
+
+    function _handleSuccess() {
+      document.querySelector('#emailInput').value = '';
+
+      const button = document.querySelector('#emailInputButton');
+      button.classList.add('disabled');
+      button.textContent = "Thanks, we'll keep you updated!"
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      _handleSuccess();
+
+      const request = new XMLHttpRequest();
+
+      request.open('POST', '/newsletter');
+      request.send(new FormData(form));
+    });
+  }
+
   let goodKeywordStorage = {};
   let badKeywordStorage = {};
   let positionExclusionsStorage = [];
@@ -234,6 +256,7 @@
   disableSubmitAfterClicking();
   clearQueryString();
   loadStorageFromCookies();
+  handleNewsletterForm();
   resetSearch();
   saveSearch();
 })();
