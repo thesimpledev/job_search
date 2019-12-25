@@ -1,41 +1,11 @@
 <section>
-  <h3 class="section-label">Advanced Search</h3>
+  <h3 class="section-label">Search</h3>
   <h4 class="section-detail">Find job matches based upon how you rank keywords</h4>
 
   <form class="search" action="/jobs" method="get">
     <input type="hidden" name="location" value="<%= stored_location_or_default %>" class="location" />
 
-    <div class="form-section-header">
-      <div>
-        <span>1</span>
-        <h4>Choose points needed to pass</h4>
-      </div>
-    </div>
-
-    <input
-      type="range"
-      id="passing_points"
-      value="<%= stored_points_or_default %>"
-      name="passing_points"
-    />
-
-    <div class="slider">
-      <div class="slider-fill" style="width: <%= stored_points_or_default %>%"></div>
-
-      <div class="slider-label-container">
-        <p class="slider-label-detail"><%= pluralized_points %></p>
-      </div>
-    </div>
-
-    <div class="form-section-header">
-      <div>
-        <span>2</span>
-        <h4>Define your keywords</h4>
-      </div>
-      <a class="reset" href="?reset=true" rel="nofollow">
-        Reset search terms
-      </a>
-    </div>
+    <button class="reset">Clear search terms</button>
     <section class="fields">
       <div class="field">
         <div class="form-added-placeholder">
@@ -92,12 +62,6 @@
     <img src="ruby.png" alt="Icon to illustrate exclusion" class="image-preload" />
     <img src="emerald.png" alt="Icon to illustrate exclusion" class="image-preload" />
 
-    <div class="form-section-header">
-      <div>
-        <span>3</span>
-        <h4>Find awesome job matches</h4>
-      </div>
-    </div>
     <button class="submit">Search</button>
   </form>
 </section>

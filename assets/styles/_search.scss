@@ -1,11 +1,20 @@
+.search-jumbo .container {
+  align-items: center;
+  display: flex;
+}
+
 .container-search {
   display: flex;
   flex-direction: row;
   padding-top: 40px;
 
   aside {
-    margin-right: 25px;
-    width: 33.33%;
+    margin-right: 40px;
+    max-width: 300px;
+  }
+
+  section {
+    flex: 1;
   }
 }
 
@@ -67,15 +76,16 @@
   cursor: pointer;
   display: flex;
   font-size: 10px;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 
   p {
     border-radius: $border-radius;
     display: inline-block;
-    flex: 1;
     font-weight: 400;
+    margin-bottom: 5px;
     margin-right: 5px;
-    padding: 10px 5px;
+    padding: 5px 10px;
     text-align: center;
   }
 
@@ -106,6 +116,55 @@
   display: inline-block;
   padding: 10px 25px;
   font-size: 14px;
+}
+
+.form-updates {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+  max-width: 300px;
+  justify-content: space-between;
+  padding: 20px;
+
+  input {
+    border: 1px solid #efefef;
+    border-radius: $border-radius;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  button {
+    @include clickable-button($green, $green-light, $green-dark);
+
+    border-radius: $border-radius;
+    color: white;
+    font-weight: 700;
+    padding: 10px;
+  }
+}
+
+.form-updates-title {
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.form-updates-description {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+.reset {
+  @include clickable-button(#efefef, #fff, #aaa);
+
+  border-radius: 5px;
+  color: #333;
+  font-size: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
 }
 
 .fields {
@@ -275,15 +334,6 @@ textarea:focus {
   color: $gray-dark;
 }
 
-.reset {
-  padding: 5px 10px;
-  font-size: 10px;
-  color: $gray-medium;
-  border: none;
-  border-radius: $border-radius;
-  cursor: pointer;
-}
-
 .location {
   padding: 10px;
   color: $gray-dark;
@@ -414,7 +464,7 @@ textarea:focus {
   }
 }
 
-@media screen and (max-width: $breakpoint-mobile) {
+@media screen and (max-width: $breakpoint-medium) {
   .fields {
     display: block;
   }
@@ -425,5 +475,15 @@ textarea:focus {
 
   textarea {
     height: 200px;
+  }
+
+  .form-updates {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  .easysearch {
+    display: none;
   }
 }

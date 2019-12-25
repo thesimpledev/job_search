@@ -39,78 +39,6 @@
     });
   }
 
-  // points slider
-  function pointsSlider() {
-    const slider = document.querySelector('.slider');
-    const sliderFill = document.querySelector('.slider-fill');
-    const sliderLabelDetail = document.querySelector('.slider-label-detail');
-    const rangeInput = document.querySelector('#passing_points');
-    let mouseHeld = false;
-
-    function updateInputValue(points) {
-      rangeInput.value = points;
-    }
-
-    function startSlide() {
-      mouseHeld = true;
-    }
-
-    function endSlide() {
-      mouseHeld = false;
-    }
-
-    function sliderSlide(e) {
-      const sliderBoundingRect = slider.getBoundingClientRect();
-
-      if (mouseHeld) {
-        let points = parseInt(e.offsetX / sliderBoundingRect.width * 100);
-        if (points < 0) {
-          points = 0;
-        } else if (points > 100) {
-          points = 100;
-        }
-
-        sliderLabelDetail.textContent = `${points} point${points === 1 ? '' : 's'}`;
-        sliderFill.style.width = `${e.offsetX}px`;
-        updateInputValue(points);
-      }
-    }
-
-    function sliderSlideMobile(e) {
-      const sliderBoundingRect = slider.getBoundingClientRect();
-      e.preventDefault();
-
-      if (mouseHeld) {
-        let points = parseInt(e.touches[0].clientX / sliderBoundingRect.width * 100);
-        if (points < 0) {
-          points = 0;
-        } else if (points > 100) {
-          points = 100;
-        }
-
-        sliderLabelDetail.textContent = _pluralizePoints(points);
-        sliderFill.style.width = `${e.touches[0].clientX}px`;
-        updateInputValue(points);
-      }
-    }
-
-    function _pluralizePoints(points) {
-      return `${points} point${points === 1 ? '' : 's'}`;
-    }
-
-    slider.addEventListener('mousedown', startSlide);
-    slider.addEventListener('touchstart', startSlide);
-
-    slider.addEventListener('mousemove', sliderSlide);
-    slider.addEventListener('touchmove', sliderSlideMobile);
-
-    slider.addEventListener('mouseup', endSlide);
-    slider.addEventListener('touchend', endSlide);
-
-    slider.addEventListener('mouseleave', endSlide);
-    slider.addEventListener('touchleave', endSlide);
-  }
-
   function clearQueryString() {
     window.history.pushState({}, document.title, '/');
   }
@@ -129,7 +57,16 @@
       '#positionExclusions'
     ];
     const hiddenFormField = document.querySelector(indexToHiddenFieldSelector[index]);
-    console.log(hiddenFormField);
+
+    // listen for reset and clear storage within closure
+    document.addEventListener('reset', function() {
+      if (index === 2) {
+        storage = [];
+      } else {
+        storage = {};
+      }
+      render();
+    });
 
     // clear inputs
     function _clearInputs() {
@@ -262,6 +199,20 @@
     handleKeywords(positionExclusionsStorage, 2);
   }
 
+  // dispatch 'reset' event and clear local storage
+  function resetSearch() {
+    const resetButton = document.querySelector('.reset');
+
+    resetButton.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const resetEvent = new Event('reset');
+      document.dispatchEvent(resetEvent);
+
+      localStorage.clear();
+    })
+  }
+
   function saveSearch() {
     const form = document.querySelector('form.search');
 
@@ -281,8 +232,8 @@
 
   locationSelect();
   disableSubmitAfterClicking();
-  pointsSlider();
   clearQueryString();
   loadStorageFromCookies();
+  resetSearch();
   saveSearch();
 })();

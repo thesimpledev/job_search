@@ -2,23 +2,32 @@
   class="search-jumbo"
 >
   <div class="container">
-    <p class="new-job-count">
-      <i class="fas fa-bell"></i>
-      <span><%= @new_job_count %></span> new jobs today
-    </p>
-    <h2 class="search-jumbo-title">Find awesome job matches</h2>
-    <h2 class="search-jumbo-location">near
-      <span class="selected-location">
-        <%= stored_location_or_default %>
-      </span>
-    </h2>
-    <div class="location-selections">
-      <% @location_with_count.each do |record| %>
-        <p class="location-selection">
-          <%= record['count'] %>
-          <span><%= record['search_location'] %></span>
-        </p>
-      <% end %>
-    </div>
+    <form class="form-updates">
+      <h5 class="form-updates-title">Get weekly development & job updates</h5>
+      <p class="form-updates-description">BetterJobs is being developed and improved. Find out what's on the horizon and about new updates.</p>
+      <input type="email" placeholder="Email" required />
+      <button>Submit</button>
+    </form>
+
+    <section>
+      <p class="new-job-count">
+        <i class="fas fa-bell"></i>
+        <span><%= @new_job_count %></span> new jobs today
+      </p>
+      <h2 class="search-jumbo-title">Find awesome job matches</h2>
+      <h2 class="search-jumbo-location">near
+        <span class="selected-location">
+          <%= stored_location_or_default %>
+        </span>
+      </h2>
+      <div class="location-selections">
+        <% @location_with_count.each do |record| %>
+          <p class="location-selection">
+            <%= record['count'] %>
+            <span><%= record['search_location'] %></span>
+          </p>
+        <% end %>
+      </div>
+    </section>
   </div>
 </section>

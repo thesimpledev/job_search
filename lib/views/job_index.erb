@@ -20,21 +20,21 @@
         <main class="job-main">
           <a href="<%= job.url %>" target="_blank" class="job-link">
             <div class="job-top">
-              <% if job.point_allocation %>
-                <p class="job-points <%= pass_or_fail_class(job) %>">
-                  <img src="emerald.png" alt="Emerald" />
-                  <%= job.points %>
-                </p>
-              <% end %>
               <div class="job-heading">
                 <h3 class="job-position"><%= job.position %></h3>
                 <h4 class="job-company"><%= job.company %></h4>
               </div>
+              <% if job.point_allocation && job.points != 0 %>
+                <p class="job-points <%= pass_or_fail_class(job) %>">
+                  <%= job.points %>
+                  <img src="<%= job.passing_score? ? 'emerald.png' : 'ruby.png' %>" alt="Emerald or Ruby" />
+                </p>
+              <% end %>
               <h5 class="job-location"><%= job.location %></h5>
             </div>
 
-            <main class="job-body">
-              <% if job.point_allocation %>
+            <% if job.point_allocation && (!job.good_matches.empty? || !job.bad_matches.empty?) %>
+              <main class="job-body">
                 <section class="keyword-matches">
                   <ul class="good-keywords">
                     <% job.good_matches.each do |matched_keyword| %>
@@ -50,8 +50,8 @@
                     </ul>
                   <% end %>
                 </section>
-              <% end %>
-            </main>
+              </main>
+            <% end %>
           </a>
 
         </main>

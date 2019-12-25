@@ -20,6 +20,10 @@
   }
 }
 
+.container.jobs {
+  max-width: 600px;
+}
+
 .jobs {
   position: relative;
   z-index: 10;
@@ -44,8 +48,8 @@
   border: 1px solid #efefef;
   border-radius: 10px;
   display: flex;
-  margin-bottom: 10px;
-  overflow: hidden;
+  margin-bottom: 15px;
+  position: relative;
   transition: 0.5s margin;
 }
 
@@ -55,7 +59,6 @@
 }
 
 .job-heading {
-  text-align: center;
 }
 
 .job-points {
@@ -64,12 +67,15 @@
   display: flex;
   font-size: 14px;
   justify-content: center;
-  margin-right: 20px;
   width: 50px;
+
+  &-failing {
+    color: $pink;
+  }
 
   img {
     height: 32px;
-    margin-right: 5px;
+    margin-left: 5px;
     width: 32px;
   }
 }
@@ -101,12 +107,20 @@
 }
 
 .job-location {
-  font-size: 12px;
+  color: #777;
+  position: absolute;
+  font-size: 10px;
+  top: -9px;
+  right: 20px;
+  z-index: 500;
+  background: white;
+  border: 1px solid #efefef;
+  padding: 3px 10px;
+  border-radius: 10px;
 }
 
 .job-body {
-  background: #efefef;
-  padding: 10px;
+  padding: 0 20px 20px;
 }
 
 /* KEYWORDS *******************************************************************/
@@ -140,45 +154,4 @@
 }
 
 @media screen and (max-width: $breakpoint-mobile) {
-  .job-position {
-    font-size: 13px;
-    margin-bottom: 3px;
-  }
-
-  .job-company {
-    font-size: 12px;
-  }
-
-  .keyword-matches {
-    flex-direction: column;
-  }
-
-  .bad-keyword {
-    margin-top: 3px;
-    margin-right: 2px;
-    margin-left: 0px;
-  }
-
-  .good-keyword {
-    margin-right: 2px;
-  }
-
-  .job-card {
-    position: relative;
-    display: block;
-  }
-
-  .job-location {
-    position: absolute;
-    right: 6px;
-    top: 6px;
-  }
-
-  .keyword {
-    padding: 3px;
-  }
-
-  .job-points-passing {
-    padding: 3px;
-  }
 }
