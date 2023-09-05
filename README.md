@@ -1,10 +1,3 @@
-* [About](#about)
-* [Todo](#todo)
-* [Setup](#setup)
-* [Settings](#settings)
-* [Observer Pattern](#observer_pattern)
-* [Performance](#performance) - a small experiment I wanted to do
-
 # About
 I will give a brief overview of why I've built this and how it works from a high level soon!
 
@@ -86,10 +79,10 @@ simple_ouput: false
 ```
 ![](https://github.com/thesimpledev/job_search/blob/master/readme/non_simple_output.png?raw=true)
 
-# Overserver Pattern
-My understanding of the observer patten is you create an initial class which is a blueprint of the API (somewhat of an abstract class) and then have it delegate calls to classes that implement that same API. Insert analogy of a mask that I can't articulate well here.
+# Abstract Factory Pattern
+My understanding of the abstract factory pattern is you create an initial class which is a blueprint (somewhat of an abstract class) and then have it delegate calls to classes that implement that same API. Insert analogy of a mask that I can't articulate well here.
 
-By using this pattern we increase our amount of lines by about 50%, and add two additional files. But we gain clarity of what each class' purpose is, using the single responsibility principle. We also allow for additional alerters to easily be created in the future. If we were to add another alerter, before using this pattern, we would have a bunch of nested conditionals and ugly branching that's hard to read. Instead, we make the decision 1 time of what we want to use and then use it.
+By using this pattern we increase our amount of lines by about 50% and add two additional files. But we gain clarity of what each class' purpose is, using the single responsibility principle. We also allow for additional alerters to easily be created in the future. If we were to add another alerter, before using this pattern, we would have a bunch of nested conditionals and ugly branching that's hard to read. Instead, we make the decision 1 time of what we want to use and then use it.
 ![](https://github.com/thesimpledev/job_search/blob/master/readme/observer.png?raw=true)
 
 # Performance
